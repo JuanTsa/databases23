@@ -1,0 +1,105 @@
+=======================
+==== CONNECT TO DB ====
+=======================
+cd /xampp/mysql/bin/
+.\mysql.exe -u root -p
+show databases;
+use db_name;
+
+==================
+==== ENTITIES ====
+==================
+-- school_unit --
+SCHOOL_ID, school_name, address, phone, email, principal_name, operator_name
+|
+//we need to relate operator_name with operator's attributes
+
+-- book --
+BOOK_ID, isbn, title, publisher, pages, summary, available_copies, inventory, cover, language
+|
+//we could use as ID: isbn + number_of_copy
+
+
+-- keyword --
+KW_ID, kw_name
+
+
+-- book_keyword --
+keyword_id (foreign key to keyword.kw_id), book_isbn (foreign key to book.isbn)
+
+-- copy --
+COPY_ID, book_id (foreign key to book.id)
+
+
+-- author --
+AUTHOR_ID, author_name
+
+
+-- book_author --
+book_isbn (foreign key to book.isbn), author_id (foreign key to author.author_id)
+
+
+-- category --
+CATEGORY_ID, category_name
+
+
+-- book_category --
+book_isbn (foreign key to book.isbn)
+category_id (foreign key to category.category_id)
+
+
+-- borrowing --
+BORROWING_ID, copy_id (foreign key to copy.copy_id), user_id (foreign key to user.user_id), borrow_date, return_date, status
+|
+//status: available, borrowed
+
+
+-- reservation --
+RESERVATION_ID, book_id (foreign key to book.book_id), user_id (foreign key to user.user_id), request_date, status
+|
+//status: on hold, fullfilled
+
+-- review --
+REVIEW_ID, rating, review_text, book_isbn (foreign key to book.isbn), user_id (foreign key to user.user_id), status
+
+
+-- user --
+USER_ID, username, password, name, surname, email, copies_borrowed, copies_reserved, max_copies_borrowed, max_copies_reserved
+|
+|
+SPECIALIZITION (no extra attributes): administrator, operator, student, teacher
+
+//administrator, operator: max_copies_borrowed/reserved = 0
+//teacher: max_copies_borrowed/reserved = 1
+//student: max_copies_borrowed = 2
+
+
+=======================
+==== RELATIONSHIPS ====
+=======================
+admin		registers	school_unit
+school_unit	has		book
+admin	 	approves	operator
+
+operator	approves	student, teacher
+operator	registers	book, borrowing, reservation, review
+
+user		views		book, borrowing, reservation, review
+
+
+===============
+==== EXTRA ====
+===============
+administrator: backup, restore
+
+In case a copy of the book is not available, the user's request (reservation) is put on hold and is served upon the return of a copy
+
+A reservation cannot be made if a book has not been returned on time or if the same user has already borrowed the title.
+
+Users have the option to cancel any current reservations.
+
+Reservations have a time frame of one week and are automatically canceled once it expires.
+
+In addition to inputting the aforementioned information, all users of the application must have the ability to manage information, including a search mechanism and options for updating or deleting it (CRUD).
+
+

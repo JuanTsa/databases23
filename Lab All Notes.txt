@@ -1,0 +1,507 @@
+=======================
+==== CONNECT TO DB ====
+=======================
+cd /xampp/mysql/bin/
+.\mysql.exe -u root -p
+show databases;
+use db_name;
+
+
+===========================
+==== Lab 2 - SQL Intro ====
+===========================
+
+-> Data Definition Language (DDL)
+create: create new databases and tables
+drop: delete databases and tables
+alter: modify an already existing database object such as a table
+
+-> Data Manipulation Language (DML)
+insert: store new recprds or rows to the table
+update: modify an existing record in the table
+delete: deleting a certain record or a set of records from the table
+select: retrieving specific record from one or more tables (Data Query Language)
+
+-> Data Control Language (DCL)
+GRANT: allow users privileges to database
+REVOKE: withdraw users access privileges given by using the GRANT command
+
+-> Transaction Control Language (TCL)
+COMMIT: commits a transaction
+ROLLBACK: rollback a transaction in case of any error occurs
+SAVEPOINT: a point inside a transaction that allows rollback state to what it was at the time of the savepoint
+SET TRANSACTION: specify characteristics for the transaction
+
+-> Useful Commands
+show databases;
+use db_name;
+quit (or exit) 		//exit from mysql client
+show tables;		//while in a db_name
+desc tb_name;		//while in a db_name
+
+-> Data Types
+--Character
+char(20) 			//fixed-length, limit: 255b
+varchar(20)			//var-length, limit: 65.535b
+				//types: tinytext, text, mediumtext, longtext
+--Numeric
+int(10)			//int-types: tinyint, smallint, mediumint, int, bigint
+float(4,2)			//total of 4 digits, 2 are decimals
+				//fl-types: float(p,s), double(p,s)
+				//p: precision a.k.a. total_digits
+				//s: nr_digits_to_right
+
+-> Select Query Clause
+select: determines which columns to include in the query's result set
+from: identifies the tables from which to retrieve data and how the tables should be joined
+where: filters out unwanted data
+group by: used to group rows together by common column values
+having: filters out unwanted groups
+order by: sorts the rows of the final result set by one or more columns
+
+select * from table_name 	//select all columns and rows of table_name
+select lang_id, name from language;		//select columns lang_id, name from table language
+
+-> Assign new columns
+select language_id, 'COMMON' language_usage,
+	language_id * 3.14 lang_pi_value, upper(name) lang_name
+	from language;
+//creates 3 columns with names: language_usage, lang_pi_value, lang_name
+//and data: COMMON, =id*3.14, uppercase the name
+
+-> Removing Duplicates
+select distinct actor_id from film_actor order by actor_id;
+
+-> Derived (subquery-generated) tables
+select concat(cust.last_name, ', ', cust.first_name) full_name
+from
+(select first_name, last_name, email
+from customer
+where first_name = 'JESSE'
+) cust;
+
+-> Temporary tables
+create temporary table actors_j
+(actor_id smallint(5), first_name varchar(45), last_name varchar(45) );
+desc actors_j;
+
+-> Views
+//view a query that is stored in the data dictionary, it looks and acts a like a table but without any data (~virtual table)
+create view cust_vw as
+select customer_id, first_name, last_name, active
+from customer;
+desc cust_vw;
+
+select first_name, last_name
+from cust_vw
+where active = 0;
+
+-> where
+//way to filter out those rows that are not of interest
+select title
+from film
+where rating = 'G' and rental_duration >= 7;
+//all conditions must evaluate to true
+
+select title
+from film
+where rating = 'G' or rental_duration >= 7;
+//only one of the conditions need to evaluate to true
+
+select title, rating, rental_duration from film
+where (rating = 'G' and rental_duration >= 7)
+or (rating = 'PG-13' and rental_duration < 4);
+//use parentheses to separate groups of conditions when mixing different operators
+
+-> group by/ having
+-group by: group rows together by common column values/ summarize unique combinations of columns values
+-having: Filters out unwanted groups / select all of the customers who have rented 40 or more films
+
+select c.first_name, c.last_name, count(*)
+from customer c
+inner join rental r
+on c.customer_id = r.customer_id
+group by c.first_name, c.last_name
+having count(*) >= 40;
+
+-> order by
+Sorts the rows of the final result set by one or more columns
+
+select * from actor order by last_name desc;
+//desc == descending order
+//asc == ascending order
+
+//how many distinct actors last names are there?
+select count(distinct last_name) from actor;
+
+//which last names are not repeated?
+select last_name from actor group by last_name having count(*) = 1;
+
+//which last names appear more than once?
+select last_name from actor group by last_name having count(*) > 1;
+
+//average length of all films?
+select avg(length) from film;
+
+======================================
+==== Lab 3 - Create Populate Delete ====
+======================================
+
+create database db_name;
+
+create table (if not exists) tb_name(
+column1_name,
+...
+table_constraints
+) [ENGINE=storage_engine]; //usually InnoDB
+
+-> Column definition
+column_name data_type(length) [NOT NULL] [DEFAULT value] [AUTO_INCREMENT] column_constraint;
+
+column_name: each column has a specific data_type and optional size, e.g. varchar(25)
+NOT NULL: constraint ensures that the column will not contain NULL. A column may have additional constraint such as CHECK, and UNIQUE.
+DEFAULT: specifies a default value for the column.
+AUTO_INCREMENT: the value of the column is incremented by oneautomatically whenever a new row is inserted into the table. (Max one AUTO_INCREMENT column per table)
+
+-> table constraints
+unique: values in a column or group of columns to be unique
+check: boolean expression which must evaluate to TRUE or UNKNOWN for each row of the table
+primary key: unique values, cannot have null value, a table can have an only primary key
+foreign key: a column(s) in a table that links to a column(s) in another table, mantain referential integrity
+
+-> truncate/ drop
+truncate table tb_name: deletes the data of tb_name
+drop table tb_name: deletes the entire fucking existence of tb_name (just like papa)
+
+-> Foreign Key
+//How to reference foreign keys from different tables (and also to the same table)
+create table customers (
+customerNum int(11) NOT NULL,
+customerName varchar(50) NOT NULL,
+PRIMARY KEY (customerNum)
+) ENGINE = InnoDB;
+
+create table orders (
+orderNum int(11) NOT NULL,
+orderDate date NOT NULL,
+customerNum int(11) NOT NULL,
+PRIMARY KEY (orderNum),
+CONSTRAINT orders_ibfk_1 FOREIGN KEY (customerNum) REFERENCES customers (customerNum)
+) ENGINE = InnoDB;
+
+-> Populating
+insert into actor (first_name, last_name) values ('Zach', 'Black');
+//if you don't put the other fields, they take default value (e.g. id = last id + 1)
+
+update actor 
+set first_name = 'ZACH', last_name = upper('Black')
+where actor_id = 201;
+//for actor_id = 201, put the values of 'set'
+
+-> Deleting
+delete from actor where actor_id = 300;
+//deletes the data of the row with actor_id = 300;
+
+============
+
+update customer set create_date = str_to_date("Aug 10 2017", "%b %d %Y")
+where customer.customer_id = 1;
+//%b short month name (Jan, Feb), %d numeric day (00,01), %Y 4-digit year
+
+
+==========================================
+==== Lab 4 - Querying Multiple Tables ====
+==========================================
+
+-> foreign key constraint
+verify that the values in one table exist in another table
+
+-> simple joins
+select c.first_name, c.last_name, a.address
+from customer c join address a
+on c.address_id = a.address_id	//don't use 'WHERE' instead of 'ON'
+where a.postal_code = 1234;
+
+//retrieve only those films in which 2 actors appeared
+select f.title
+from film f
+inner join film_actor fa1
+	on f.film_id = fa1.film_id
+inner join actor a1
+	on fa1.actor_id = a1.actor_id
+inner join film_actor fa2
+	on f.film_id = fa2.film_id
+inner join actor a2
+	on fa2.actor_id = a2.actor_id
+where (a1.first_name = 'ED' and a1.last_name = 'CHASE')
+and (a2.first_name = 'KARL' and a2.last_name = 'BERRY')
+
+//retrieve all customers whose last name matches the first name of another customer
+SELECT
+	c1.customer_id as customer_1_id,
+	c1.first_name as customer_1_first_name,
+	c1.last_name as customer_1_last_name,
+	c2.customer_id as customer_2_id,
+	c2.first_name as customer_2_first_name,
+	c2.last_name
+FROM customer c1
+INNER JOIN customer c2
+ON c1.last_name = c2.first_name
+ORDER BY c1.last_name;
+
+//is 'CAMP' available for rent from store 1?
+SELECT f.film_id, f.title, s.store_id, i.inventory_id FROM store s
+INNER JOIN inventory i ON s.store_id = i.store_id
+INNER JOIN film f ON i.film_id = f.film_id
+WHERE f.title = 'Academy Dinosaur'
+AND s.store_id = 1;
+
+
+==============================================
+==== Lab 05 - Indexes, Constraints, Views ====
+==============================================
+-> Indexes
+DBMS uses indexes to locate rows in a table without the need to inspect every row in the table
+
+//create index on the email column named idx_email
+create index idx_email on customer (email);
+
+//view indexes
+show index from customer;
+
+//delete index
+drop index idx_email on costumer;
+
+//unique index, with no duplicate values in indexed column
+create unique index idx_email on customer (email);
+
+//multicolumn indexes
+create index idx_full_name on customer (last_name, first_name);
+
+
+//index strategy
+-all primary keys columns are indexed
+-build indexes on all columns that are referenced in foreign key constraints
+-index any columns that will frequently be used to retrieve data
+-look at the server's execution plan, and modify indexing strategy to fit the most common access paths
+
+-> Constraints
+not null: ensures that a column cannot have a null value
+unique: ensures that all values in a column are different
+default: sets a default value for a column if no value is specified
+primary key: identify columns that guarantee uniqueness within a table (not null and unique)
+foreign key: restrict columns to contain only values found in another table's primary key columns
+check: ensures that the values in a column satisfies a specific condition
+
+//alter table
+alter table customer
+add constraint fk_customer_address foreign key (address_id)
+references address (Address_id) on delete restrict on update cascade
+
+-> on delete restrict on update cascade
+//on delete restrict: raise an error if a row is deleted in the parent table that is referenced in the child table, protects against orphanated records
+
+//on update cascade: on update the parent table update automatically data referenced in the child table, protects against orphaned records
+
+-> Check Constraints
+create table t2
+	(
+	check (c1 <> c2),
+	c1 int check (c1 < 100)
+	c2 int check (c2 > 0)
+	c3 int check (c1 < 10)
+	constraint c1_nonzero check (c1 <> 0),
+	check (c1 > c3)
+); 
+
+-> View
+//a mechanism for querying data, a query that is stored in the data dictionary, it looks and acts like a table but without any data (~virtual table), users are unware of querying a view
+
+//view creation
+create view customer_vw
+(customer_id, first_name, last_name, email)
+as
+select
+	customer_id, first_name, last_name,
+	concat(substr(email,1,2), '*****', substr(email, -4)) email
+from customer;
+
+//query view
+select first_name, last_name, email from customer_vw
+
+select cv.first_name, cv.last_name, p.amount from customer_vw cv
+inner join payment p on cv.customer_id = p.customer_id where p.amount >= 11;
+
+//updatable views if:
+-no aggregate functions are used
+-no group by or having clauses
+-no union, union all, or distinct
+-no subqueries exist in the select or from clause - any subqueries in the where clause do not refer to tables in the from clause
+-from clause: includes at least one table or updatable view, uses only inner joins if there is more than one table or view
+
+//simple update
+update customer_vw set last_name = 'SMITH-ALLEN' where customer_id = 1;
+
+select first_name, last_name, email from customer where customer_id = 1;
+
+//complex update
+CREATE VIEW customer_details AS
+SELECT c.customer_id, c.store_id, c.first_name, c.last_name, c.address_id, c.active,
+	c.create_date, a.address, ct.city, cn.country, a.postal_code
+FROM customer c
+INNER JOIN address a
+ON c.address_id = a.address_id
+INNER JOIN city ct
+ON a.city_id = ct.city_id
+INNER JOIN country cn
+ON ct.country_id = cn.country_id;
+
+UPDATE customer_details SET last_name = 'SMITH-ALLEN', active = 0 WHERE customer_id = 1;
+
+UPDATE customer_details SET address = '999 Mockingbird Lane' WHERE customer_id = 1;
+
+//SUPER SOS: Can not modify more than one base table through a join view
+
+//insert into view
+insert into customer_details (customer_id, store_id, first_name, last_name, address_id, active, create_date)
+values (9998, 1, 'BRIAN', 'SALAZAR', 5, 1, now());
+
+
+========================================================
+==== Lab 06 - Triggers, Stored Procedures/Functions ====
+========================================================
+-> Triggers
+//trigger is an action or event that causes another event to occur
+//keep the trigger as short as possible to execute quickly locks held on the underlying tables
+//use triggers to enforce business rules
+
+TRIGGER `ins_film` AFTER INSERT ON `film` FOR EACH ROW
+BEGIN
+	INSERT INTO film_text (film_id, title, description)
+		VALUES (new.film_id, new.title, new.description);
+END
+
+TRIGGER `upd_film` AFTER UPDATE ON `film` FOR EACH ROW
+BEGIN
+	IF (old.title != new.title) or (old.description != new.description)
+	THEN
+		UPDATE film_text SET title = new.title, description = new.description, film_id = new.film_id
+		WHERE film_id = old.film_id;
+	END IF;
+END
+
+-> Procedures
+show procedure status
+show create procedure myProc
+call film_in_stock (1,1,@out);
+
+//reside in the database, invoked with a CALL statement
+//can have arguments, use procedures to implement bussiness logic
+//they don't return necessarily a value
+
+-> Functions
+//always returns a value/table
+//use them with a SELECT statement
+
+
+==============================================
+==== Lab 07 - Filtering, Sets, More Joins ====
+==============================================
+-> Filtering
+_: exactly one char
+%: zero or more chars
+F%: strings beginning with F
+%t: strings ending with t
+%bas%: strings containing the substring 'bas'
+__t_: 4-char strings with a t in the 3rd position
+
+//the order in which the characters within a character set are sorted is called a collation
+show collation;
+
+//examples
+where ammount between 10.0 and 11.99
+where last_name between 'FA' and 'FR'
+where rating in ('G', 'PG')
+where rating in (select rating from film where title like '%PET%')
+where rating not in ('PG-13', 'R', 'NC-17')
+
+//find all customers whose last name begins with Q or Y
+select last_name, first_name from customer
+where last_name like 'Q%' or last_name like 'Y%';
+
+//find all customers whose last name begins with Q or Y
+SELECT last_name, first_name FROM customer
+WHERE last_name REGEXP '^[QY]';
+
+
+=======================================================================
+==== Lab 08 - Grouping & Aggregates, Subqueries, Conditional Logic ====
+=======================================================================
+-> Grouping & Aggregates
+ select customer_id max(amount) max_am, min(amount) min_am, sum(amount) sum_am, count(*) num_am, avg(amount) avg_am from payment;
+
+//Multicolumn Grouping
+SELECT fa.actor_id, f.rating, count(*) FROM film_actor fa
+INNER JOIN film f ON fa.film_id = f.film_id
+GROUP BY fa.actor_id, f.rating ORDER BY fa.actor_id, f.rating;
+
+//Grouping via Expressions
+SELECT extract(YEAR FROM rental_date) sel_year,
+COUNT(*) how_many
+FROM rental
+GROUP BY sel_year;
+
+-> Subqueries
+select customer_id, first_name, last_name from customer
+where sustomer_id = (select max(customer_id) from customer);
+
+//in & on operators
+select city_id, city from city
+where country_id not in
+(select country_id from country where country in ('Canada', 'Mexico'));
+
+//all operator
+select first_name, last_name from customer
+where customer_id <> all
+(select customer_id from payment where amount = 0);
+
+-> Conditional Logic - case operator
+case
+when cond1 then res1
+when cond2 then res2
+...
+else resN
+end;
+
+//example
+select first_name, last_name,
+case active=1
+then 'active'
+else 'inactive'
+end activity_type from customer;
+
+//checking for existence
+select a.first_name, a.last name
+case
+when exists (Select 1 from film_acotr fa inner join film f on fa.film_id = f.film_id where fa.actor_id = a.actor_id and f.rating = 'G')
+then 'yes'
+else 'no'
+end g_actor from actor a;
+
+//checking for existence 2
+select f.title, case (select count (*) from inventory i where i.film_id = f.film_id)
+when 0 then 'out of stock'
+when 1 then 'scarce'
+...
+else 'common'
+end film_availability from film f;
+
+//conditional updates
+update customer set active =
+case
+when 90 <= (select datediff(now(), max(rental_date)) from rental r
+where r.customer_id = customer.customer_id)
+then 0
+else 1
+end
+where active = 1;
