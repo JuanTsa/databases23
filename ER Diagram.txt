@@ -3,8 +3,11 @@
 =======================
 cd /xampp/mysql/bin/
 .\mysql.exe -u root -p
-show databases;
-use db_name;
+
+
+//in uppercase are the primary keys
+//in comments are extra stuff to take account of
+
 
 ==================
 ==== ENTITIES ====
@@ -14,18 +17,20 @@ SCHOOL_ID, school_name, address, phone, email, principal_name, operator_name
 |
 //we need to relate operator_name with operator's attributes
 
+
 -- book --
 BOOK_ID, isbn, title, publisher, pages, summary, available_copies, inventory, cover, language
 |
-//we could use as ID: isbn + number_of_copy
+//we could use as book_id: isbn + number_of_copy
 
 
 -- keyword --
-KW_ID, kw_name
+KEYWORD_ID, keyword_name
 
 
 -- book_keyword --
 keyword_id (foreign key to keyword.kw_id), book_isbn (foreign key to book.isbn)
+
 
 -- copy --
 COPY_ID, book_id (foreign key to book.id)
@@ -59,6 +64,7 @@ RESERVATION_ID, book_id (foreign key to book.book_id), user_id (foreign key to u
 |
 //status: on hold, fullfilled
 
+
 -- review --
 REVIEW_ID, rating, review_text, book_isbn (foreign key to book.isbn), user_id (foreign key to user.user_id), status
 
@@ -66,9 +72,11 @@ REVIEW_ID, rating, review_text, book_isbn (foreign key to book.isbn), user_id (f
 -- user --
 USER_ID, username, password, name, surname, email, copies_borrowed, copies_reserved, max_copies_borrowed, max_copies_reserved
 |
+SPECIALIZITION (no extra attributes): administrator, student, teacher
 |
-SPECIALIZITION (no extra attributes): administrator, operator, student, teacher
-
+SPECIALIZITION: operator: operator_name (foreign key to school_unit.operator_name)
+|
+|
 //administrator, operator: max_copies_borrowed/reserved = 0
 //teacher: max_copies_borrowed/reserved = 1
 //student: max_copies_borrowed = 2
@@ -78,8 +86,8 @@ SPECIALIZITION (no extra attributes): administrator, operator, student, teacher
 ==== RELATIONSHIPS ====
 =======================
 admin		registers	school_unit
-school_unit	has		book
 admin	 	approves	operator
+school_unit	has		book
 
 operator	approves	student, teacher
 operator	registers	book, borrowing, reservation, review
