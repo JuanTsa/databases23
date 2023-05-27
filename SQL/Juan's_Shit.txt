@@ -1,32 +1,4 @@
-ALTER TABLE "user"
-ADD CONSTRAINT check_max_copies_borrowed
-CHECK (
-    (user_id IN (SELECT user_id FROM teacher) AND max_copies_borrowed = 1) OR
-    (user_id IN (SELECT user_id FROM student) AND max_copies_borrowed = 2) OR
-    (user_id IN (SELECT user_id FROM operator) AND max_copies_borrowed = 0) OR
-    (user_id IN (SELECT user_id FROM admin) AND max_copies_borrowed = 0)
-);
-
-ALTER TABLE "user"
-ADD CONSTRAINT  check_max_copies_reserved
-CHECK (
-    (user_id IN (SELECT user_id FROM teacher) AND max_copies_reserved = 1) OR
-    (user_id IN (SELECT user_id FROM student) AND max_copies_reserved = 2) OR
-    (user_id IN (SELECT user_id FROM operator) AND max_copies_reserved = 0) OR
-    (user_id IN (SELECT user_id FROM admin) AND max_copies_reserved = 0)
-);
-
-
-
-+constraints for max_copies
-
 //we could use as book_id: isbn + number_of_copy
-//borrowing.status: available, borrowed
-//reservation.status: on hold, fullfilled
-
-//administrator, operator: max_copies_borrowed/reserved = 0
-//teacher: max_copies_borrowed/reserved = 1
-//student: max_copies_borrowed = 2
 
 =======================
 ==== RELATIONSHIPS ====
@@ -53,6 +25,3 @@ A reservation cannot be made if a book has not been returned on time or if the s
 Users have the option to cancel any current reservations.
 
 Reservations have a time frame of one week and are automatically canceled once it expires.
-
-In addition to inputting the aforementioned information, all users of the application must have the ability to manage information, including a search mechanism and options for updating or deleting it (CRUD).
-
