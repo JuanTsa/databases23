@@ -1,1 +1,29 @@
-insert into book (
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('1', '415221916-5', 'American Pimp', 'Juan', '69', 'idkshitwhatever', '8', 'red', 'english', '12', '2');
+
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('3', '054910193-4', 'Die Another Day', 'Tser', '38', 'idkshitwhatever', '15', 'blue', 'spanish', '18', '0');
+
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('3', '886752531-X', 'Passengers', 'Klemp', '45', 'idkshitwhatever', '20', 'green', 'greek', '24', '65');
+
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('4', '291320414-7', 'Last Man Standing', 'Spyros', '76', 'idkshitwhatever', '25', 'yellow', 'english', '30', '89');
+
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('5', '253034380-2', 'Hound of the Baskervilles, The', 'Jason', '120', 'idkshitwhatever', '30', 'blue', 'spanish', '36', '1254');
+
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('6', '337285529-9', 'Way, The', 'Tsetsil', '69', 'idkshitwhatever', '5000', 'yellow', 'greek', '42', '123');
+
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('7', '712553922-X', 'Sout Shaolin Master, The (Nan quan wang)', 'Sofro', '47', 'idkshitwhatever', '35', 'red', 'english', '49', '456');
+
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('8', '022217191-X', 'King Kong', 'Alex', '69', 'idkshitwhatever', '40', 'red', 'spanish', '54', '789');
+
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('9', '340249724-7', 'Zatoichi on the Road', 'Pavlos', '69', 'idkshitwhatever', '45', 'blue', 'greek', '45', '987');
+
+insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
+values ('10', '132339861-9', 'Original Sin', 'Voulina', '420', 'idkshitwhatever', '50', 'yellow', 'greek', '52', '654');
