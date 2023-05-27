@@ -1,35 +1,19 @@
 ======================
 ==== INSERT_BOOKS ====
 ======================
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('1', '415221916-5', 'American Pimp', 'Juan', '69', 'idkshitwhatever', '8', 'red', 'english', '12', '2');
+INSERT INTO `book` (`book_id`, `school_id`, `isbn`, `title`, `publisher`, `pages`, `summary`, `available_copies`, `cover`, `language`, `inventory`, `total_borrowings`)
+VALUES
+(1, 1, '9780142402511', 'To Kill a Mockingbird', 'Harper Perennial', '336', 'To Kill a Mockingbird is a novel by Harper Lee published in 1960. It was immediately successful, winning the Pulitzer Prize, and has become a classic of modern American literature.', '5', 'https://example.com/to-kill-a-mockingbird.jpg', 'English', '100', '50'),
+(2, 1, '9780061120084', '1984', 'Signet Classics', '328', '1984 is a dystopian novel by George Orwell published in 1949. The novel is set in Airstrip One, a world of perpetual war, omnipresent government surveillance, and public manipulation.', '3', 'https://example.com/1984.jpg', 'English', '75', '30'),
+(3, 1, '9780064407663', 'The Giver', 'HarperCollins', '240', 'The Giver is a 1993 novel by Lois Lowry. It is set in a society that at first appears to be utopian but is revealed to be dystopian as the story progresses.', '2', 'https://example.com/the-giver.jpg', 'English', '50', '20'),
+(4, 1, '9780142419404', 'The Hunger Games', 'Scholastic Press', '384', 'The Hunger Games is a dystopian novel by Suzanne Collins. The story is set in a post-apocalyptic world where young people are forced to participate in a televised death match.', '4', 'https://example.com/the-hunger-games.jpg', 'English', '60', '25');
 
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('2', '054910293-4', 'Die Another Day', 'Tser', '38', 'idkshitwhatever', '15', 'blue', 'spanish', '18', '0');
-
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('3', '886752531-X', 'Passengers', 'Klemp', '45', 'idkshitwhatever', '20', 'green', 'greek', '24', '65');
-
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('4', '291320414-7', 'Last Man Standing', 'Spyros', '76', 'idkshitwhatever', '25', 'yellow', 'english', '30', '89');
-
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('5', '253034380-2', 'Hound of the Baskervilles, The', 'Jason', '120', 'idkshitwhatever', '30', 'blue', 'spanish', '36', '1254');
-
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('6', '337285529-9', 'Way, The', 'Tsetsil', '69', 'idkshitwhatever', '5000', 'yellow', 'greek', '42', '123');
-
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('7', '712553922-X', 'Sout Shaolin Master, The (Nan quan wang)', 'Sofro', '47', 'idkshitwhatever', '35', 'red', 'english', '49', '456');
-
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('8', '022217191-X', 'King Kong', 'Alex', '69', 'idkshitwhatever', '40', 'red', 'spanish', '54', '789');
-
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('9', '340249724-7', 'Zatoichi on the Road', 'Pavlos', '69', 'idkshitwhatever', '45', 'blue', 'greek', '45', '987');
-
-insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('10', '132339861-9', 'Original Sin', 'Voulina', '420', 'idkshitwhatever', '50', 'yellow', 'greek', '52', '654');
+========================
+==== INSERT_SCHOOLS ====
+========================
+INSERT INTO `school_unit` (`school_id`, `school_name`, `address`, `phone`, `email`, `principal_name`, `principal_surname`, `operator_name`, `operator_surname`, `operator_id`)
+VALUES
+(1, 'ABC Public School', '123 Main Street', '1234567890', 'school@example.com', 'John', 'Doe', 'Jane', 'Smith', 1);
 
 ======================
 ==== INSERT_USERS ====
