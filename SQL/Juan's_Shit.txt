@@ -16,7 +16,8 @@ CHECK (
     (user_id IN (SELECT user_id FROM admin) AND max_copies_reserved = 0)
 );
 
-+book.school_id (fk to school_unit.school_id)
+
+
 +constraints for max_copies
 
 //we could use as book_id: isbn + number_of_copy
