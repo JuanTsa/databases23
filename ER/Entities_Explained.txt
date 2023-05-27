@@ -1,0 +1,56 @@
+admin: user_id (fk to user.user_id)
+author: author_id, author_name, books_written
+book: book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings
+book_author: book_isbn (fk to book.isbn), author_id (fk to author.author_id)
+book_category: book_isbn (fk to book.isbn), category_id (fk to category.category_id)
+book_keyword: book_isbn (fk to book.isbn), keyword_id (fk to keyword.keyword_id)
+borrowing: borrowing_id, copy_id (fk to copy.copy_id), user_id (fk to user.user_id), borrow_date, return_date, status (constraint: available, borrowed)
+category: category_id, category_name
+copy: copy_id, book_id (fk to book.book_id)
+keyword: keyword_id, keyword_name
+operator: user_id (fk to user.user_id)
+reservation: reservation_id, book_id (fk to book.book_id), user_id (fk to user.user_id), request_date, status (constraint: on hold, completed)
+review: review_id, review_text, book_isbn (fk to book.isbn), user_id (fk to user.user_id), status (constraint: ), rating (constraint: 1 to 5)
+school_unit: school_id, school_name, address, phone, email, principal_name, principal_surname, operator_name, operator_surname, operator_id (fk to operator.user_id)
+student: user_id (fk to user.user_id)
+teacher: user_id (fk to user.user_id)
+user: user_id, username, password, name, surname, email, age, copies_borrowed, copies_reserved, max_copies_borrowed, max_copies_reserved (constraints for max_copies: 0 for admin and oper, 1 for student, 2 for teacher)
+
+
+//we could use as book_id: isbn + number_of_copy
+//borrowing.status: available, borrowed
+//reservation.status: on hold, fullfilled
+
+//administrator, operator: max_copies_borrowed/reserved = 0
+//teacher: max_copies_borrowed/reserved = 1
+//student: max_copies_borrowed = 2
+
+=======================
+==== RELATIONSHIPS ====
+=======================
+admin		registers	school_unit
+admin	 	approves	operator
+school_unit	has		book
+
+operator	approves	student, teacher
+operator	registers	book, borrowing, reservation, review
+
+user		views		book, borrowing, reservation, review
+
+
+===============
+==== EXTRA ====
+===============
+administrator: backup, restore
+
+In case a copy of the book is not available, the user's request (reservation) is put on hold and is served upon the return of a copy
+
+A reservation cannot be made if a book has not been returned on time or if the same user has already borrowed the title.
+
+Users have the option to cancel any current reservations.
+
+Reservations have a time frame of one week and are automatically canceled once it expires.
+
+In addition to inputting the aforementioned information, all users of the application must have the ability to manage information, including a search mechanism and options for updating or deleting it (CRUD).
+
+
