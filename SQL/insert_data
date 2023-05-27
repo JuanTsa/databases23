@@ -1,0 +1,10 @@
+INSERT INTO `Category` (`Category_Name`)
+VALUES ('Fiction');
+
+INSERT INTO `Category` (`Category_Name`)
+VALUES ('Science Fiction');
+
+INSERT INTO `Category` (`Category_Name`)
+VALUES ('Mystery');
+
+
