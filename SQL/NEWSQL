@@ -1,0 +1,68 @@
+CREATE TABLE `User` (
+  `User_ID` int(50) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Surname` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Age` varchar(50) NOT NULL,
+  `Copies_Borrowed` int(50) NOT NULL,
+  `Copies_Reserved` int(50) NOT NULL,
+  `Max_Copies_Borrowed` int(50) NOT NULL,
+  `Max_Copies_Reserved` int(50) NOT NULL,
+  `User_Type` enum('Administrator', 'Operator', 'Teacher', 'Student') NOT NULL,
+  PRIMARY KEY (`User_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `School_Unit` (
+  `School_ID` int(50) NOT NULL AUTO_INCREMENT,
+  `School_Name` varchar(50) NOT NULL,
+  `Address` varchar(50) NOT NULL,
+  `Phone` varchar(11) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Principal_Name` varchar(50) NOT NULL,
+  `Principal_Surname` varchar(50) NOT NULL,
+  `Operator_Name` varchar(50) NOT NULL,
+  `Operator_Surname` varchar(50) NOT NULL,
+  PRIMARY KEY (`School_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `Reservation` (
+  `Reservation_ID` int(50) NOT NULL AUTO_INCREMENT,
+  `Book_ID` int(50) NOT NULL,
+  `User_ID` int(50) NOT NULL,
+  `Request_Date` varchar(50) NOT NULL,
+  `Status` varchar(50) NOT NULL,
+  PRIMARY KEY (`Reservation_ID`),
+  FOREIGN KEY (`Book_ID`) REFERENCES `book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`User_ID`) REFERENCES `user` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CHECK (`Status` IN ('On Hold', 'Completed'))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `Review` (
+  `Review_ID` int(50) NOT NULL AUTO_INCREMENT,
+  `Review_Text` text NOT NULL,
+  `Book_ISBN` varchar(13) NOT NULL,
+  `User_ID` int(50) NOT NULL,
+  `Rating` int(1) NOT NULL,
+  `Status` varchar(50) NOT NULL,
+  PRIMARY KEY (`Review_ID`),
+  FOREIGN KEY (`Book_ISBN`) REFERENCES `Book` (`ISBN`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CHECK (`Rating` >= 1 AND `Rating` <= 5),
+  CHECK (`Status` IN ('On Hold', 'Approved'))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `Borrowing` (
+  `Borrowing_ID` int(50) NOT NULL AUTO_INCREMENT,
+  `Book_ID` int(50) NOT NULL,
+  `User_ID` int(50) NOT NULL,
+  `Borrow_Date` varchar(50) NOT NULL,
+  `Due_Date` varchar(50) NOT NULL,
+  `Returning_Date` varchar(50),
+  `Status` varchar(50) NOT NULL,
+  PRIMARY KEY (`Borrowing_ID`),
+  FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CHECK (`Status` IN ('Available', 'Borrowed'))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
