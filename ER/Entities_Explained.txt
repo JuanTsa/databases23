@@ -17,7 +17,6 @@ teacher: user_id (fk to user.user_id)
 user: user_id, username, password, name, surname, email, age, copies_borrowed, copies_reserved, max_copies_borrowed, max_copies_reserved (constraints for max_copies: 0 for admin and oper, 1 for student, 2 for teacher)
 
 
-//we could use as book_id: isbn + number_of_copy
 //borrowing.status: available, borrowed
 //reservation.status: on hold, fullfilled
 
