@@ -15,3 +15,44 @@ CHECK (
     (user_id IN (SELECT user_id FROM operator) AND max_copies_reserved = 0) OR
     (user_id IN (SELECT user_id FROM admin) AND max_copies_reserved = 0)
 );
+
++book.school_id (fk to school_unit.school_id)
++constraints for max_copies
++admin.backup, admin.restore
+
+//we could use as book_id: isbn + number_of_copy
+//borrowing.status: available, borrowed
+//reservation.status: on hold, fullfilled
+
+//administrator, operator: max_copies_borrowed/reserved = 0
+//teacher: max_copies_borrowed/reserved = 1
+//student: max_copies_borrowed = 2
+
+=======================
+==== RELATIONSHIPS ====
+=======================
+admin		registers	school_unit
+admin	 	approves	operator
+school_unit	has		book
+
+operator	approves	student, teacher
+operator	registers	book, borrowing, reservation, review
+
+user		views		book, borrowing, reservation, review
+
+
+===============
+==== EXTRA ====
+===============
+administrator: backup, restore
+
+In case a copy of the book is not available, the user's request (reservation) is put on hold and is served upon the return of a copy
+
+A reservation cannot be made if a book has not been returned on time or if the same user has already borrowed the title.
+
+Users have the option to cancel any current reservations.
+
+Reservations have a time frame of one week and are automatically canceled once it expires.
+
+In addition to inputting the aforementioned information, all users of the application must have the ability to manage information, including a search mechanism and options for updating or deleting it (CRUD).
+
