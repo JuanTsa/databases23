@@ -1,3 +1,6 @@
+INSERT INTO `School_Unit` (`School_Name`, `Address`, `Phone`, `Email`, `Principal_Name`, `Principal_Surname`, `Operator_Name`, `Operator_Surname`)
+VALUES ('ABC Public School', '123 Main Street', 1234567890, 'school@example.com', 'John', 'Doe', 'Jane', 'Smith');
+
 INSERT INTO `Category` (`Category_Name`)
 VALUES ('Fiction');
 
@@ -7,4 +10,33 @@ VALUES ('Science Fiction');
 INSERT INTO `Category` (`Category_Name`)
 VALUES ('Mystery');
 
+INSERT INTO `Keyword` (`Keyword_Name`)
+VALUES ('Adventure');
 
+INSERT INTO `Keyword` (`Keyword_Name`)
+VALUES ('Romance');
+
+INSERT INTO `Keyword` (`Keyword_Name`)
+VALUES ('Thriller');
+
+INSERT INTO `Author` (`Author_Name`, `Books_Written`)
+VALUES ('J.K. Rowling', 7);
+
+INSERT INTO `Author` (`Author_Name`, `Books_Written`)
+VALUES ('Stephen King', 60);
+
+INSERT INTO `Author` (`Author_Name`, `Books_Written`)
+VALUES ('Jane Austen', 6);
+
+INSERT INTO `Book` (`ISBN`, `School_ID`, `Title`, `Publisher`, `Pages`, `Summary`, `Available_Copies`, `Cover`, `Language`, `Inventory`, `Total_Borrowings`, `Category_ID`, `Author_ID`, `Keyword_ID`)
+VALUES
+(9780142402511, 1, 'To Kill a Mockingbird', 'Harper Perennial', 336, 'To Kill a Mockingbird is a novel by Harper Lee published in 1960. It was immediately successful, winning the Pulitzer Prize, and has become a classic of modern American literature.', 5, 'https://example.com/to-kill-a-mockingbird.jpg', 'English', 100, 50, 1, 1, 1),
+(9780061120084, 1, '1984', 'Signet Classics', 328, '1984 is a dystopian novel by George Orwell published in 1949. The novel is set in Airstrip One, a world of perpetual war, omnipresent government surveillance, and public manipulation.', 3, 'https://example.com/1984.jpg', 'English', 75, 30, 2, 2, 2),
+(9780307277675, 1, 'The Catcher in the Rye', 'Little, Brown and Company', 277, 'The Catcher in the Rye is a novel by J.D. Salinger published in 1951. It has been widely influential, especially among adolescent readers.', 7, 'https://example.com/the-catcher-in-the-rye.jpg', 'English', 50, 20, 3, 3, 3),
+(9780141182605, 1, 'Animal Farm', 'Penguin Classics', 112, 'Animal Farm is an allegorical novella by George Orwell published in 1945. It is a satirical and dystopian novel about a group of farm animals who rebel against their human farmer.', 2, 'https://example.com/animal-farm.jpg', 'English', 30, 10, 2, 2, 3),
+(9780679783268, 1, 'Crime and Punishment', 'Vintage Classics', 545, 'Crime and Punishment is a novel by Fyodor Dostoevsky published in 1866. It is a psychological thriller that explores themes of morality, guilt, and redemption.', 4, 'https://example.com/crime-and-punishment.jpg', 'English', 60, 25, 1, 2, 1),
+(9780060256672, 1, 'Where the Wild Things Are', 'HarperCollins', 48, 'Where the Wild Things Are is a children\'s picture book by Maurice Sendak published in 1963. It tells the story of a young boy named Max and his adventures with a group of wild creatures.', 10, 'https://example.com/where-the-wild-things-are.jpg', 'English', 20, 5, 3, 1, 1),
+(9780143127550, 1, 'The Great Gatsby', 'Penguin Classics', 180, 'The Great Gatsby is a novel by F. Scott Fitzgerald published in 1925. Set in the Jazz Age, it explores themes of wealth, love, and the American Dream.', 8, 'https://example.com/the-great-gatsby.jpg', 'English', 40, 15, 1, 3, 2),
+(9780545010221, 1, 'Harry Potter and the Sorcerer\'s Stone', 'Scholastic', 320, 'Harry Potter and the Sorcerer\'s Stone is the first book in the Harry Potter series by J.K. Rowling. It introduces the young wizard Harry Potter and his journey at Hogwarts School of Witchcraft and Wizardry.', 6, 'https://example.com/harry-potter-and-the-sorcerers-stone.jpg', 'English', 90, 40, 2, 2, 2),
+(9780064400558, 1, 'Bridge to Terabithia', 'HarperCollins', 208, 'Bridge to Terabithia is a children\'s novel by Katherine Paterson published in 1977. It tells the story of a friendship between two fifth-grade children and their magical world of Terabithia.', 3, 'https://example.com/bridge-to-terabithia.jpg', 'English', 25, 8, 3, 1, 2),
+(9780439064873, 1, 'Harry Potter and the Chamber of Secrets', 'Scholastic', 341, 'Harry Potter and the Chamber of Secrets is the second book in the Harry Potter series by J.K. Rowling. It follows Harry Potter\'s second year at Hogwarts School of Witchcraft and Wizardry.', 4, 'https://example.com/harry-potter-and-the-chamber-of-secrets.jpg', 'English', 85, 35, 2, 3, 2);
