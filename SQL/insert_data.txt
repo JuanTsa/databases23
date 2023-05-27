@@ -2,7 +2,7 @@ insert into book (book_id, isbn, title, publisher, pages, summary, available_cop
 values ('1', '415221916-5', 'American Pimp', 'Juan', '69', 'idkshitwhatever', '8', 'red', 'english', '12', '2');
 
 insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
-values ('2', '054910193-4', 'Die Another Day', 'Tser', '38', 'idkshitwhatever', '15', 'blue', 'spanish', '18', '0');
+values ('2', '054910293-4', 'Die Another Day', 'Tser', '38', 'idkshitwhatever', '15', 'blue', 'spanish', '18', '0');
 
 insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
 values ('3', '886752531-X', 'Passengers', 'Klemp', '45', 'idkshitwhatever', '20', 'green', 'greek', '24', '65');
