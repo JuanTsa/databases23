@@ -18,7 +18,6 @@ CHECK (
 
 +book.school_id (fk to school_unit.school_id)
 +constraints for max_copies
-+admin.backup, admin.restore
 
 //we could use as book_id: isbn + number_of_copy
 //borrowing.status: available, borrowed
