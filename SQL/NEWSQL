@@ -1,4 +1,4 @@
-CREATE TABLE `User` (
+CREATE TABLE IF NOT EXISTS `User` (
   `User_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Username` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `User` (
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `School_Unit` (
+CREATE TABLE IF NOT EXISTS `School_Unit` (
   `School_ID` int(50) NOT NULL AUTO_INCREMENT,
   `School_Name` varchar(50) NOT NULL,
   `Address` varchar(50) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE `School_Unit` (
   PRIMARY KEY (`School_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Reservation` (
+CREATE TABLE IF NOT EXISTS `Reservation` (
   `Reservation_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `Reservation` (
   CHECK (`Status` IN ('On Hold', 'Completed'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Review` (
+CREATE TABLE IF NOT EXISTS `Review` (
   `Review_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Review_Text` text NOT NULL,
   `Book_ISBN` varchar(13) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE `Review` (
   CHECK (`Status` IN ('On Hold', 'Approved'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Borrowing` (
+CREATE TABLE IF NOT EXISTS `Borrowing` (
   `Borrowing_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
