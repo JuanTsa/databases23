@@ -1,0 +1,17 @@
+ALTER TABLE "user"
+ADD CONSTRAINT check_max_copies_borrowed
+CHECK (
+    (user_id IN (SELECT user_id FROM teacher) AND max_copies_borrowed = 1) OR
+    (user_id IN (SELECT user_id FROM student) AND max_copies_borrowed = 2) OR
+    (user_id IN (SELECT user_id FROM operator) AND max_copies_borrowed = 0) OR
+    (user_id IN (SELECT user_id FROM admin) AND max_copies_borrowed = 0)
+);
+
+ALTER TABLE "user"
+ADD CONSTRAINT max_copies_reserved
+CHECK (
+    (user_id IN (SELECT user_id FROM teacher) AND max_copies_reserved = 1) OR
+    (user_id IN (SELECT user_id FROM student) AND max_copies_reserved = 2) OR
+    (user_id IN (SELECT user_id FROM operator) AND max_copies_reserved = 0) OR
+    (user_id IN (SELECT user_id FROM admin) AND max_copies_reserved = 0)
+);
