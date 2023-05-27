@@ -15,39 +15,3 @@ school_unit: school_id, school_name, address, phone, email, principal_name, prin
 student: user_id (fk to user.user_id)
 teacher: user_id (fk to user.user_id)
 user: user_id, username, password, name, surname, email, age, copies_borrowed, copies_reserved, max_copies_borrowed, max_copies_reserved (constraints for max_copies: 0 for admin and oper, 1 for student, 2 for teacher)
-
-
-//borrowing.status: available, borrowed
-//reservation.status: on hold, fullfilled
-
-//administrator, operator: max_copies_borrowed/reserved = 0
-//teacher: max_copies_borrowed/reserved = 1
-//student: max_copies_borrowed = 2
-
-=======================
-==== RELATIONSHIPS ====
-=======================
-admin		registers	school_unit
-admin	 	approves	operator
-school_unit	has		book
-
-operator	approves	student, teacher
-operator	registers	book, borrowing, reservation, review
-
-user		views		book, borrowing, reservation, review
-
-
-===============
-==== EXTRA ====
-===============
-administrator: backup, restore
-
-In case a copy of the book is not available, the user's request (reservation) is put on hold and is served upon the return of a copy
-
-A reservation cannot be made if a book has not been returned on time or if the same user has already borrowed the title.
-
-Users have the option to cancel any current reservations.
-
-Reservations have a time frame of one week and are automatically canceled once it expires.
-
-
