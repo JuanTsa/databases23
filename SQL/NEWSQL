@@ -83,7 +83,7 @@ CREATE TABLE `Reservation` (
 CREATE TABLE `Review` (
   `Review_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Review_Text` text NOT NULL,
-  `Book_ISBN` varchar(13) NOT NULL,
+  `Book_ISBN` int(13) NOT NULL,
   `User_ID` int(50) NOT NULL,
   `Rating` int(1) NOT NULL,
   `Status` varchar(50) NOT NULL,
