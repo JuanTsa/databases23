@@ -50,6 +50,4 @@ Users have the option to cancel any current reservations.
 
 Reservations have a time frame of one week and are automatically canceled once it expires.
 
-In addition to inputting the aforementioned information, all users of the application must have the ability to manage information, including a search mechanism and options for updating or deleting it (CRUD).
-
 
