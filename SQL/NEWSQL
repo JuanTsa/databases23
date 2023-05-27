@@ -35,7 +35,7 @@ CREATE TABLE `Reservation` (
   `Status` varchar(50) NOT NULL,
   PRIMARY KEY (`Reservation_ID`),
   FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
   --CHECK (`Status` IN ('On Hold', 'Completed'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -49,7 +49,7 @@ CREATE TABLE `Review` (
   PRIMARY KEY (`Review_ID`),
   FOREIGN KEY (`Book_ISBN`) REFERENCES `Book` (`ISBN`) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CHECK (`Rating` >= 1 AND `Rating` <= 5),
+  CHECK (`Rating` >= 1 AND `Rating` <= 5)
   --CHECK (`Status` IN ('On Hold', 'Approved'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -63,7 +63,7 @@ CREATE TABLE `Borrowing` (
   `Status` varchar(50) NOT NULL,
   PRIMARY KEY (`Borrowing_ID`),
   FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
   --CHECK (`Status` IN ('Available', 'Borrowed'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
