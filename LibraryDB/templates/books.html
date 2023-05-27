@@ -1,0 +1,29 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="card-body" id="card">
+    <table class="table table-striped table-sm table-borderless">
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Publisher</th>
+                <th>Pages</th>
+                <th>Available Copies</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td> {{ book.book_id }} </td>
+                <td> {{ book.isbn }} </td>
+                <td> {{ book.title }} </td>
+                <td> {{ book.publisher }} </td>
+                <td> {{ book.pages }} </td>
+                <td> {{ book.available_copies }} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
