@@ -8,7 +8,7 @@ CHECK (
 );
 
 ALTER TABLE "user"
-ADD CONSTRAINT max_copies_reserved
+ADD CONSTRAINT  check_max_copies_reserved
 CHECK (
     (user_id IN (SELECT user_id FROM teacher) AND max_copies_reserved = 1) OR
     (user_id IN (SELECT user_id FROM student) AND max_copies_reserved = 2) OR
