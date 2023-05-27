@@ -11,9 +11,8 @@ VALUES
 -- ========================
 -- ==== INSERT_SCHOOLS ====
 -- ========================
-INSERT INTO `school_unit` (`school_id`, `school_name`, `address`, `phone`, `email`, `principal_name`, `principal_surname`, `operator_name`, `operator_surname`, `operator_id`)
-VALUES
-(1, 'ABC Public School', '123 Main Street', '1234567890', 'school@example.com', 'John', 'Doe', 'Jane', 'Smith', 1);
+INSERT INTO `school_unit` (`school_id`, `school_name`, `address`, `phone`, `email`, `principal_name`, `principal_surname`, `operator_name`, `operator_surname`)
+VALUES (1, 'ABC Public School', '123 Main Street', '1234567890', 'school@example.com', 'John', 'Doe', 'Jane', 'Smith');
 
 -- ======================
 -- ==== INSERT_USERS ====
