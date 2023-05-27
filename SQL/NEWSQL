@@ -34,8 +34,8 @@ CREATE TABLE `Reservation` (
   `Request_Date` varchar(50) NOT NULL,
   `Status` varchar(50) NOT NULL,
   PRIMARY KEY (`Reservation_ID`),
-  FOREIGN KEY (`Book_ID`) REFERENCES `book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  FOREIGN KEY (`User_ID`) REFERENCES `user` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CHECK (`Status` IN ('On Hold', 'Completed'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -66,3 +66,5 @@ CREATE TABLE `Borrowing` (
   FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CHECK (`Status` IN ('Available', 'Borrowed'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
