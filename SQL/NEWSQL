@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `User` (
+CREATE TABLE `User` (
   `User_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Username` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `School_Unit` (
+CREATE TABLE `School_Unit` (
   `School_ID` int(50) NOT NULL AUTO_INCREMENT,
   `School_Name` varchar(50) NOT NULL,
   `Address` varchar(50) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `School_Unit` (
   PRIMARY KEY (`School_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `Reservation` (
+CREATE TABLE `Reservation` (
   `Reservation_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE IF NOT EXISTS `Reservation` (
   PRIMARY KEY (`Reservation_ID`),
   FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CHECK (`Status` IN ('On Hold', 'Completed'))
+  --CHECK (`Status` IN ('On Hold', 'Completed'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `Review` (
+CREATE TABLE `Review` (
   `Review_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Review_Text` text NOT NULL,
   `Book_ISBN` varchar(13) NOT NULL,
@@ -50,10 +50,10 @@ CREATE TABLE IF NOT EXISTS `Review` (
   FOREIGN KEY (`Book_ISBN`) REFERENCES `Book` (`ISBN`) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CHECK (`Rating` >= 1 AND `Rating` <= 5),
-  CHECK (`Status` IN ('On Hold', 'Approved'))
+  --CHECK (`Status` IN ('On Hold', 'Approved'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `Borrowing` (
+CREATE TABLE `Borrowing` (
   `Borrowing_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `Borrowing` (
   PRIMARY KEY (`Borrowing_ID`),
   FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CHECK (`Status` IN ('Available', 'Borrowed'))
+  --CHECK (`Status` IN ('Available', 'Borrowed'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
   CREATE TABLE IF NOT EXISTS Category(
@@ -108,3 +108,4 @@ FOREIGN KEY (Category_ID) REFERENCES Category (Category_ID) ON DELETE RESTRICT O
 FOREIGN KEY (Author_ID) REFERENCES Author (Author_ID) ON DELETE RESTRICT ON UPDATE CASCADE,
 FOREIGN KEY (Keyword_ID) REFERENCES Keyword (Keyword_ID) ON DELETE RESTRICT ON UPDATE CASCADE
   )ENGINE = InnoDB; DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
