@@ -1,3 +1,6 @@
+======================
+==== INSERT_BOOKS ====
+======================
 insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
 values ('1', '415221916-5', 'American Pimp', 'Juan', '69', 'idkshitwhatever', '8', 'red', 'english', '12', '2');
 
@@ -27,3 +30,13 @@ values ('9', '340249724-7', 'Zatoichi on the Road', 'Pavlos', '69', 'idkshitwhat
 
 insert into book (book_id, isbn, title, publisher, pages, summary, available_copies, cover, language, inventory, total_borrowings)
 values ('10', '132339861-9', 'Original Sin', 'Voulina', '420', 'idkshitwhatever', '50', 'yellow', 'greek', '52', '654');
+
+======================
+==== INSERT_USERS ====
+======================
+INSERT INTO `user` (`user_id`, `username`, `password`, `name`, `surname`, `email`, `age`, `copies_borrowed`, `copies_reserved`, `max_copies_borrowed`, `max_copies_reserved`, `user_type`)
+VALUES
+(1, 'admin1', 'adminpass1', 'John', 'Doe', 'admin1@example.com', '30', 0, 0, 0, 0, 'admin'),
+(2, 'operator1', 'operatorpass1', 'Jane', 'Smith', 'operator1@example.com', '25', 0, 0, 0, 0, 'operator'),
+(3, 'teacher1', 'teacherpass1', 'Michael', 'Johnson', 'teacher1@example.com', '35', 0, 0, 2, 0, 'teacher'),
+(4, 'student1', 'studentpass1', 'Emily', 'Davis', 'student1@example.com', '20', 0, 0, 1, 0, 'student');
