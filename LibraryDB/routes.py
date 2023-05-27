@@ -27,8 +27,8 @@ def books():
     cur = db.connection.cursor()
     query = """
     SELECT *
-    FROM book
-    ORDER BY book_id
+    FROM Book
+    ORDER BY Book_ID
     """
     cur.execute(query)
     column_names = [i[0] for i in cur.description]
