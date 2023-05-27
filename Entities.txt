@@ -4,7 +4,7 @@ book: book_id, isbn, title, publisher, pages, summary, available_copies, cover, 
 book_author: book_isbn (fk to book.isbn), author_id (fk to author.author_id)
 book_category: book_isbn (fk to book.isbn), category_id (fk to category.category_id)
 book_keyword: book_isbn (fk to book.isbn), keyword_id (fk to keyword.keyword_id)
-borrowing: borrowing_id, copy_id (fk to copy.copy_id), user_id (fk to user.user_id), borrow_date, return_date, status (constraint: available, completed)
+borrowing: borrowing_id, copy_id (fk to copy.copy_id), user_id (fk to user.user_id), borrow_date, return_date, status (constraint: available, borrowed)
 category: category_id, category_name
 copy: copy_id, book_id (fk to book.book_id)
 keyword: keyword_id, keyword_name
