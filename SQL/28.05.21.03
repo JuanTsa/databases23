@@ -58,7 +58,7 @@ CREATE TABLE `Book` (
   `Pages` INT(50) NOT NULL,
   `Summary` TEXT NOT NULL,
   `Available_Copies` INT(50) NOT NULL,
-  `Cover` VARCHAR(1000) NOT NULL,
+  `Cover` VARCHAR(1000) NOT NULL DEFAULT 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png',
   `Language` VARCHAR(50) NOT NULL,
   `Inventory` INT(50) NOT NULL,
   `Total_Borrowings` INT(50) NOT NULL,
