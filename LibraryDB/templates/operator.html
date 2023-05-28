@@ -1,0 +1,75 @@
+{% extends "global_layout_logged.html" %}
+{% block content %}
+<div class="container" id="row-container">
+    <div class="row" id="row">
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body d-flex flex-column" id="card">
+                    <h4 class="card-title">View Books</h4>
+                    <p class="card-text" id="paragraph">Show all books in library</p>
+                    <div class="mt-auto">
+                    <a class="btn btn-primary" id="show-btn" href="/books">Show</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body d-flex flex-column" id="card">
+                    <h4 class="card-title">View Borrowings</h4>
+                    <p class="card-text" id="paragraph">Show borrowings in school<br></p>
+                    <div class="mt-auto">
+                    <a class="btn btn-primary" id="show-btn" href="/users">Show</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body d-flex flex-column" id="card">
+                    <h4 class="card-title">View Borrowings</h4>
+                    <p class="card-text" id="paragraph">Show reservations in school<br></p>
+                    <div class="mt-auto">
+                    <a class="btn btn-primary" id="show-btn" href="/query_1">Show</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p> </p>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body d-flex flex-column" id="card">
+                    <h4 class="card-title">Late borrowed books</h4>
+                    <p class="card-text" id="paragraph">Show late borrowed books<br></p>
+                    <div class="mt-auto">
+                    <a class="btn btn-primary" id="show-btn" href="/query_2">Show</a>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body d-flex flex-column" id="card">
+                    <h4 class="card-title">Average rating</h4>
+                    <p class="card-text" id="paragraph">Show average rating per book<br></p>
+                    <div class="mt-auto">
+                    <a class="btn btn-primary" id="show-btn" href="/query_3">Show</a>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body d-flex flex-column" id="card">
+                    <h4 class="card-title">New Users</h4>
+                    <p class="card-text" id="paragraph">Accept new users<br></p>
+                    <div class="mt-auto">
+                    <a class="btn btn-primary" id="show-btn" href="/query_4">Show</a>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <p></p>
+    </div>
+</div>
+{% endblock content %}

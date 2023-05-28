@@ -1,0 +1,30 @@
+{% extends "global_layout_logged.html" %}
+{% block content %}
+<div class="container" id="row-container">
+    <div class="row" id="row">
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body d-flex flex-column" id="card">
+                    <h4 class="card-title">View Books</h4>
+                    <p class="card-text" id="paragraph">Show all books in library</p>
+                    <div class="mt-auto">
+                    <a class="btn btn-primary" id="show-btn" href="/books">Show</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-container-layout">
+                <div class="card-body d-flex flex-column" id="card">
+                    <h4 class="card-title">View Borrowed Books</h4>
+                    <p class="card-text" id="paragraph">Show all borrowed books<br></p>
+                    <div class="mt-auto">
+                    <a class="btn btn-primary" id="show-btn" href="/users">Show</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p></p>
+    </div>
+</div>
+{% endblock content %}
