@@ -42,13 +42,14 @@ CREATE TABLE IF NOT EXISTS `Category` (
 CREATE TABLE `Author` (
   `Author_ID` INT(50) NOT NULL AUTO_INCREMENT,
   `Author_Name` VARCHAR(50) NOT NULL,
+  `Author_Surname` VARCHAR(50) NOT NULL,
   `Books_Written` INT(50) NOT NULL,
   PRIMARY KEY (`Author_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `Book` (
   `Book_ID` INT(50) NOT NULL AUTO_INCREMENT,
-  `ISBN` INT(9) NOT NULL,
+  `ISBN` VARCHAR(13) NOT NULL,
   `School_ID` INT(50) NOT NULL,
   `Title` VARCHAR(50) NOT NULL,
   `Publisher` VARCHAR(50) NOT NULL,
@@ -67,7 +68,7 @@ CREATE TABLE `Reservation` (
   `Reservation_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
-  `Request_Date` varchar(50) NOT NULL,
+  `Request_Date` date NOT NULL,
   `Status` varchar(50) NOT NULL,
   PRIMARY KEY (`Reservation_ID`),
   CONSTRAINT `fk_reservation_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -90,9 +91,9 @@ CREATE TABLE `Borrowing` (
   `Borrowing_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
-  `Borrow_Date` varchar(50) NOT NULL,
-  `Due_Date` varchar(50) NOT NULL,
-  `Returning_Date` varchar(50),
+  `Borrow_Date` date NOT NULL,
+  `Due_Date` date NOT NULL,
+  `Returning_Date` date NOT NULL,
   `Status` varchar(50) NOT NULL,
   PRIMARY KEY (`Borrowing_ID`),
   CONSTRAINT `fk_borrowing_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
