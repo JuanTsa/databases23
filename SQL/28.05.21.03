@@ -1,4 +1,4 @@
-CREATE TABLE `User` (
+CREATE TABLE IF NOT EXISTS `User` (
   `User_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Username` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `User` (
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `School_Unit` (
+CREATE TABLE IF NOT EXISTS `School_Unit` (
   `School_ID` int(50) NOT NULL AUTO_INCREMENT,
   `School_Name` varchar(50) NOT NULL,
   `Address` varchar(50) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE `School_Unit` (
   `Principal_Surname` varchar(50) NOT NULL,
   `Operator_Name` varchar(50) NOT NULL,
   `Operator_Surname` varchar(50) NOT NULL,
-  `User_ID' int(50) NOT NULL,
+  `User_ID` int(50) NOT NULL,
   PRIMARY KEY (`School_ID`),
   CONSTRAINT `fk_school_unit_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
