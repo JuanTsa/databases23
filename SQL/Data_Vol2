@@ -98,3 +98,16 @@ VALUES
 ('School C', 'Address C', 456789123, 'schoolc3@school.com', 'Daniel', 'Brown', 'Mia', 'Griffin', 83),
 ('School D', 'Address D', 321654987, 'schoold4@school.com', 'Michael', 'Davis', 'Henry', 'Kennedy', 84),
 ('School E', 'Address E', 789123456, 'schoole5@school.com', 'Emma', 'Miller', 'Elijah', 'Collins', 85);
+
+INSERT INTO `Category` (`Category_ID`, `Category_Name`)
+VALUES
+(1, 'Science'),
+(2, 'History'),
+(3, 'Mathematics'),
+(4, 'Literature'),
+(5, 'Art'),
+(6, 'Music'),
+(7, 'Sports'),
+(8, 'Technology'),
+(9, 'Geography'),
+(10, 'Language');
