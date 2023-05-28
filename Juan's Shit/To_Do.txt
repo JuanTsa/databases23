@@ -38,7 +38,6 @@ LEFT JOIN Book ON Book_Author.Book_ID = Book.Book_ID
 LEFT JOIN Borrowing ON Book.Book_ID = Borrowing.Book_ID
 WHERE Borrowing.Borrowing_ID IS NULL
 
-
 5) Which operators have loaned the same number of books in a year with more than 20 loans?
 
 6) Many books cover more than one category. Among field pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings.
