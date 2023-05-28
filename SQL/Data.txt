@@ -1,5 +1,5 @@
 INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed, Copies_Reserved, Max_Copies_Borrowed, Max_Copies_Reserved, User_Type)
-VALUES ('john123', 'password123', 'John', 'Doe', 'john.doe@example.com', 25, 2, 1, 5, 3, 'Student');
+VALUES ('john123', 'password123', 'John', 'Doe', 'john.doe@example.com', 25, 2, 1, 2, 2, 'Student');
 
 INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed, Copies_Reserved, Max_Copies_Borrowed, Max_Copies_Reserved, User_Type)
 VALUES ('admin', 'adminpass', 'Admin', 'User', 'admin@example.com', 30, 0, 0, 0, 0, 'Administrator');
@@ -8,10 +8,10 @@ INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed
 VALUES ('operator', 'operatorpass', 'Operator', 'Smith', 'operator@example.com', 35, 0, 0, 0, 0, 'Operator');
 
 INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed, Copies_Reserved, Max_Copies_Borrowed, Max_Copies_Reserved, User_Type)
-VALUES ('teacher1', 'teacherpass', 'Jane', 'Smith', 'jane.smith@example.com', 40, 1, 0, 3, 1, 'Teacher');
+VALUES ('teacher1', 'teacherpass', 'Jane', 'Smith', 'jane.smith@example.com', 40, 1, 0, 1, 1, 'Teacher');
 
 INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed, Copies_Reserved, Max_Copies_Borrowed, Max_Copies_Reserved, User_Type)
-VALUES ('student1', 'studentpass', 'Emma', 'Johnson', 'emma.johnson@example.com', 20, 0, 2, 2, 3, 'Student');
+VALUES ('student1', 'studentpass', 'Emma', 'Johnson', 'emma.johnson@example.com', 20, 0, 2, 2, 2, 'Student');
 
 INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
 VALUES ('ABC School', '123 Main St', 1234567890, 'school@example.com', 'John', 'Smith', 'Juan', 'Johnson');
