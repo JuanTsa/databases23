@@ -2,11 +2,12 @@ INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed
 VALUES
   ('john123', 'password123', 'John', 'Doe', 'john.doe@example.com', 25, 2, 1, 2, 2, 'Student'),
   ('admin', 'adminpass', 'Admin', 'User', 'admin@example.com', 30, 0, 0, 0, 0, 'Administrator'),
-  ('operator', 'operatorpass', 'Operator', 'Smith', 'operator@example.com', 35, 0, 0, 0, 0, 'Operator'),
+  ('operator1', 'operatorpass1', 'Juan', 'Smith', 'operator1@example.com', 35, 0, 0, 0, 0, 'Operator'),
+  ('operator2', 'operatorpass2', 'Alex', 'Skouras', 'operator2@example.com', 36, 0, 0, 0, 0, 'Operator'),
   ('teacher1', 'teacherpass', 'Jane', 'Smith', 'jane.smith@example.com', 40, 1, 0, 1, 1, 'Teacher'),
   ('student1', 'studentpass', 'Emma', 'Johnson', 'emma.johnson@example.com', 20, 0, 2, 2, 2, 'Student');
 
-INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
+INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname, User_ID)
 VALUES 
   ('ABC School', '123 Main St', 1234567890, 'school@example.com', 'John', 'Smith', 'Juan', 'Johnson'),
   ('XYZ School', '456 Elm St', 9876543210, 'school2@example.com', 'Jane', 'Doe', 'Marios', 'Anderson');
