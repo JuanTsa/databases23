@@ -53,13 +53,13 @@ INSERT INTO Book (ISBN, School_ID, Title, Publisher, Pages, Summary, Available_C
 VALUES ('9780439064873', 1, 'Harry Potter and the Chamber of Secrets', 'Scholastic', 341, 'Harry Potter and his friends, Ron and Hermione, return for their second year at Hogwarts School of Witchcraft and Wizardry as they investigate a series of mysterious attacks.', 5, 'https://example.com/cover2.jpg', 'English', 8, 15);
 
 INSERT INTO Book (ISBN, School_ID, Title, Publisher, Pages, Summary, Available_Copies, Cover, Language, Inventory, Total_Borrowings)
-VALUES ('9780062073488', 2, 'Murder on the Orient Express', 'HarperCollins', 265, 'A murder occurs on a train journey through Europe, and a famous detective must solve the case before the killer strikes again.', 2, 'https://example.com/cover3.jpg', 'English', 4, 20);
+VALUES ('9780062073488', 1, 'Murder on the Orient Express', 'HarperCollins', 265, 'A murder occurs on a train journey through Europe, and a famous detective must solve the case before the killer strikes again.', 2, 'https://example.com/cover3.jpg', 'English', 4, 20);
 
 INSERT INTO Book (ISBN, School_ID, Title, Publisher, Pages, Summary, Available_Copies, Cover, Language, Inventory, Total_Borrowings)
-VALUES ('9780684801223', 3, 'The Old Man and the Sea', 'Scribner', 127, 'An old fisherman engages in a battle of wills with a giant marlin, testing his strength, courage, and determination in this classic novella.', 1, 'https://example.com/cover4.jpg', 'English', 2, 5);
+VALUES ('9780684801223', 2, 'The Old Man and the Sea', 'Scribner', 127, 'An old fisherman engages in a battle of wills with a giant marlin, testing his strength, courage, and determination in this classic novella.', 1, 'https://example.com/cover4.jpg', 'English', 2, 5);
 
 INSERT INTO Book (ISBN, School_ID, Title, Publisher, Pages, Summary, Available_Copies, Cover, Language, Inventory, Total_Borrowings)
-VALUES ('9780141439518', 4, 'Pride and Prejudice', 'Penguin Classics', 432, 'A witty and romantic novel that follows the lives of the Bennet sisters as they navigate love, marriage, and societal expectations in 19th-century England.', 4, 'https://example.com/cover5.jpg', 'English', 6, 12);
+VALUES ('9780141439518', 2, 'Pride and Prejudice', 'Penguin Classics', 432, 'A witty and romantic novel that follows the lives of the Bennet sisters as they navigate love, marriage, and societal expectations in 19th-century England.', 4, 'https://example.com/cover5.jpg', 'English', 6, 12);
 
 INSERT INTO Reservation (Book_ID, User_ID, Request_Date, Status)
 VALUES (1, 2, '2023-05-20', 'Pending');
@@ -83,13 +83,13 @@ INSERT INTO Review (Review_Text, Book_ID, User_ID, Rating, Status)
 VALUES ('Magical and enchanting!', 2, 1, 4, 'Approved');
 
 INSERT INTO Review (Review_Text, Book_ID, User_ID, Rating, Status)
-VALUES ('Kept me guessing until the end.', 3, 3, 4, 'Approved');
+VALUES ('Kept me guessing until the end.', 3, 3, 4, 'Pending');
 
 INSERT INTO Review (Review_Text, Book_ID, User_ID, Rating, Status)
 VALUES ('A beautiful story of resilience.', 4, 4, 5, 'Approved');
 
 INSERT INTO Review (Review_Text, Book_ID, User_ID, Rating, Status)
-VALUES ('A timeless classic.', 5, 2, 5, 'Approved');
+VALUES ('A timeless classic.', 5, 2, 5, 'Pending');
 
 INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Returning_Date, Status)
 VALUES (1, 2, '2023-05-10', '2023-05-24', '2023-05-25', 'Returned');
@@ -98,7 +98,7 @@ INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Returning_Date, 
 VALUES (3, 4, '2023-05-12', '2023-05-26', '2023-05-28', 'Returned');
 
 INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Returning_Date, Status)
-VALUES (2, 1, '2023-05-15', '2023-05-29', '2023-05-30', 'Returned');
+VALUES (2, 1, '2023-05-15', '2023-05-29', '2023-05-30', 'Not Returned');
 
 INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Returning_Date, Status)
 VALUES (4, 3, '2023-05-18', '2023-06-01', '2023-06-02', 'Returned');
