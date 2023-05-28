@@ -59,14 +59,8 @@ CREATE TABLE `Book` (
   `Language` VARCHAR(50) NOT NULL,
   `Inventory` INT(50) NOT NULL,
   `Total_Borrowings` INT(50) NOT NULL,
-  `Category_ID` INT(50) NOT NULL,
-  `Author_ID` INT(50) NOT NULL,
-  `Keyword_ID` INT(50) NOT NULL,
   PRIMARY KEY (`Book_ID`),
-  CONSTRAINT `fk_book_school_id` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_book_author_id` FOREIGN KEY (`Author_ID`) REFERENCES `Author` (`Author_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_book_keyword_id` FOREIGN KEY (`Keyword_ID`) REFERENCES `Keyword` (`Keyword_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_book_category_id` FOREIGN KEY (`Category_ID`) REFERENCES `Category` (`Category_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_book_school_id` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `Reservation` (
