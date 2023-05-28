@@ -1,7 +1,7 @@
 -- copies_borrowed: 14
 -- copies_reserved: 18
 -- 5 schools, 1 administrator, 5 operators, 50 students, 30 teachers, 150 books, 100 borrowings, 80 reservations, 70 reviews
--- 10 categories, 
+-- 10 categories, 200 authors
 INSERT INTO `User` (`Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`)
 VALUES
     ('JohnDoe1', 'pass1', 'John', 'Doe', 'johndoe1@schoollib.com', 20, 0, 0, 2, 2, 'Student'),
