@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `Category` (
   PRIMARY KEY (`Keyword_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Author` (
+CREATE TABLE IF NOT EXISTS `Author` (
   `Author_ID` INT(50) NOT NULL AUTO_INCREMENT,
   `Author_Name` VARCHAR(50) NOT NULL,
   `Author_Surname` VARCHAR(50) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `Author` (
   PRIMARY KEY (`Author_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Book` (
+CREATE TABLE IF NOT EXISTS `Book` (
   `Book_ID` INT(50) NOT NULL AUTO_INCREMENT,
   `ISBN` VARCHAR(13) NOT NULL,
   `School_ID` INT(50) NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE `Book` (
   CONSTRAINT `fk_book_school_id` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Reservation` (
+CREATE TABLE IF NOT EXISTS `Reservation` (
   `Reservation_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE `Reservation` (
   CONSTRAINT `fk_reservation_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Review` (
+CREATE TABLE IF NOT EXISTS `Review` (
   `Review_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Review_Text` text NOT NULL,
   `Book_ID` int(50) NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE `Review` (
   CONSTRAINT `fk_review_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Borrowing` (
+CREATE TABLE IF NOT EXISTS `Borrowing` (
   `Borrowing_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
@@ -102,21 +102,21 @@ CREATE TABLE `Borrowing` (
   CONSTRAINT `fk_borrowing_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Book_Author` (
+CREATE TABLE IF NOT EXISTS `Book_Author` (
   `Author_ID` INT(50),
   `Book_ID` INT(50),
   CONSTRAINT `fk_book_author_author_id` FOREIGN KEY (`Author_ID`) REFERENCES `Author` (`Author_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_book_author_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Book_Category` (
+CREATE TABLE IF NOT EXISTS `Book_Category` (
   `Category_ID` INT(50),
   `Book_ID` INT(50),
   CONSTRAINT `fk_book_category_category_id` FOREIGN KEY (`Category_ID`) REFERENCES `Category` (`Category_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_book_category_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `Book_Keyword` (
+CREATE TABLE IF NOT EXISTS `Book_Keyword` (
   `Keyword_ID` INT(50),
   `Book_ID` INT(50),
   CONSTRAINT `fk_book_keyword_keyword_id` FOREIGN KEY (`Keyword_ID`) REFERENCES `Keyword` (`Keyword_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
