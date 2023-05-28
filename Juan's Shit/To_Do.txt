@@ -67,6 +67,23 @@ LIMIT 3;
 2) Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
 
 3) Average Ratings per borrower and category (Search criteria: user/category)
+SELECT
+    u.Username AS User,
+    c.Category_Name AS Category,
+    AVG(r.Rating) AS AverageRating
+FROM
+    User u
+    JOIN Borrowing br ON u.User_ID = br.User_ID
+    JOIN Book b ON br.Book_ID = b.Book_ID
+    JOIN Book_Category bc ON b.Book_ID = bc.Book_ID
+    JOIN Category c ON bc.Category_ID = c.Category_ID
+    JOIN Rating r ON br.Borrowing_ID = r.Borrowing_ID
+WHERE
+    u.Username = 'your_username' -- Replace with the desired username
+    AND c.Category_Name = 'your_category' -- Replace with the desired category name
+GROUP BY
+    u.Username,
+    c.Category_Name;
 
 ---- USER ----
 1) List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
