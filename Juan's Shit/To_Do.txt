@@ -19,6 +19,22 @@ user		views		book, borrowing, reservation, review
 1) List with the total loans per school (Search criteria: year, calendar month)
 
 2) For a given book category (user-selected), which authors belong to it and which teachers have borrowed books from that category in the last year?
+SELECT
+    a.Author_ID,
+    a.Author_Name,
+    t.User_ID,
+    t.Username
+FROM
+    Category c
+    JOIN Book_Category bc ON c.Category_ID = bc.Category_ID
+    JOIN Book b ON bc.Book_ID = b.Book_ID
+    JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+    JOIN Author a ON ba.Author_ID = a.Author_ID
+    JOIN Borrowing br ON b.Book_ID = br.Book_ID
+    JOIN User t ON br.User_ID = t.User_ID AND t.User_Type = 'Teacher'
+WHERE
+    c.Category_Name = 'user_selected_category' -- Replace with the user-selected category name
+    AND br.Borrow_Date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR);
 
 3) Find young teachers (age < 40 years) who have borrowed the most books and the number of books.
 SELECT U.User_ID, U.Name, U.Surname, U.Age, COUNT(*) AS NumOfBooksBorrowed
