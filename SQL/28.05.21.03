@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `Copies_Reserved` int(50) NOT NULL,
   `Max_Copies_Borrowed` int(50) NOT NULL,
   `Max_Copies_Reserved` int(50) NOT NULL,
+  `Status` enum('Approved', 'Rejected') NOT NULL,
   `User_Type` enum('Administrator', 'Operator', 'Teacher', 'Student') NOT NULL,
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -66,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `Reservation` (
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
   `Request_Date` date NOT NULL,
-  `Status` varchar(50) NOT NULL,
+  `Status` enum('Approved', 'Rejected') NOT NULL,
   PRIMARY KEY (`Reservation_ID`),
   CONSTRAINT `fk_reservation_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_reservation_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -78,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `Review` (
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
   `Rating` int(1) NOT NULL,
-  `Status` varchar(50) NOT NULL,
+  `Status` enum('Approved', 'Rejected') NOT NULL,
   PRIMARY KEY (`Review_ID`),
   CONSTRAINT `fk_review_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_review_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -91,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `Borrowing` (
   `Borrow_Date` date NOT NULL,
   `Due_Date` date NOT NULL,
   `Returning_Date` date NOT NULL,
-  `Status` varchar(50) NOT NULL,
+  `Status` enum('Approved', 'Rejected') NOT NULL,
   PRIMARY KEY (`Borrowing_ID`),
   CONSTRAINT `fk_borrowing_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_borrowing_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
