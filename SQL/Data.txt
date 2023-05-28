@@ -9,8 +9,8 @@ VALUES
 
 INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname, User_ID)
 VALUES 
-  ('ABC School', '123 Main St', 1234567890, 'school@example.com', 'John', 'Smith', 'Juan', 'Johnson'),
-  ('XYZ School', '456 Elm St', 9876543210, 'school2@example.com', 'Jane', 'Doe', 'Marios', 'Anderson');
+  ('ABC School', '123 Main St', 1234567890, 'school@example.com', 'John', 'Smith', 'Juan', 'Johnson', 3),
+  ('XYZ School', '456 Elm St', 9876543210, 'school2@example.com', 'Jane', 'Doe', 'Marios', 'Anderson', 4);
 
 INSERT INTO Category (Category_Name) 
 VALUES
