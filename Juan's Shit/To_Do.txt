@@ -69,6 +69,24 @@ LEFT JOIN Borrowing ON Book.Book_ID = Borrowing.Book_ID
 WHERE Borrowing.Borrowing_ID IS NULL
 
 5) Which operators have loaned the same number of books in a year with more than 20 loans?
+SELECT
+    u.Operator_Name,
+    u.Operator_Surname,
+    COUNT(*) AS Total_Borrowings
+FROM
+    User u
+    JOIN Borrowing b ON u.User_ID = b.User_ID
+    JOIN Book bk ON b.Book_ID = bk.Book_ID
+WHERE
+    u.User_Type = 'Operator'
+    AND YEAR(b.Borrow_Date) = YEAR(CURRENT_DATE())
+GROUP BY
+    u.Operator_Name,
+    u.Operator_Surname
+HAVING
+    COUNT(*) > 20
+ORDER BY
+    Total_Borrowings DESC;
 
 6) Many books cover more than one category. Among field pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings.
 SELECT
