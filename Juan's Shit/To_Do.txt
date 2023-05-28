@@ -16,7 +16,21 @@ user		views		book, borrowing, reservation, review
 ==== QUERIES ====
 =================
 ---- ADMIN ----
-1) List with the total loans per school (Search criteria: year, calendar month)
+1) List with the total borrowings per school (Search criteria: year, calendar month).
+SELECT
+    su.School_ID,
+    su.School_Name,
+    COUNT(*) AS Total_Borrowings
+FROM
+    School_Unit su
+    JOIN Book b ON su.School_ID = b.School_ID
+    JOIN Borrowing br ON b.Book_ID = br.Book_ID
+WHERE
+    YEAR(br.Borrow_Date) = 'year_value' -- Replace with the desired year
+    AND MONTH(br.Borrow_Date) = 'month_value' -- Replace with the desired calendar month
+GROUP BY
+    su.School_ID,
+    su.School_Name;
 
 2) For a given book category (user-selected), which authors belong to it and which teachers have borrowed books from that category in the last year?
 SELECT
