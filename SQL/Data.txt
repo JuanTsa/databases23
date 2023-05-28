@@ -14,19 +14,19 @@ INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed
 VALUES ('student1', 'studentpass', 'Emma', 'Johnson', 'emma.johnson@example.com', 20, 0, 2, 2, 3, 'Student');
 
 INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
-VALUES ('ABC School', '123 Main St', 1234567890, 'school@example.com', 'John', 'Smith', 'Operator', 'Johnson');
+VALUES ('ABC School', '123 Main St', 1234567890, 'school@example.com', 'John', 'Smith', 'Juan', 'Johnson');
 
 INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
-VALUES ('XYZ School', '456 Elm St', 9876543210, 'school2@example.com', 'Jane', 'Doe', 'Operator', 'Anderson');
+VALUES ('XYZ School', '456 Elm St', 9876543210, 'school2@example.com', 'Jane', 'Doe', 'Marios', 'Anderson');
 
 INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
-VALUES ('PQR School', '789 Oak St', 5678901234, 'school3@example.com', 'Robert', 'Williams', 'Operator', 'Brown');
+VALUES ('PQR School', '789 Oak St', 5678901234, 'school3@example.com', 'Robert', 'Williams', 'Chris', 'Brown');
 
 INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
-VALUES ('LMN School', '111 Pine St', 4321098765, 'school4@example.com', 'Michael', 'Johnson', 'Operator', 'Davis');
+VALUES ('LMN School', '111 Pine St', 4321098765, 'school4@example.com', 'Michael', 'Johnson', 'Alex', 'Davis');
 
 INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
-VALUES ('EFG School', '222 Maple St', 9012345678, 'school5@example.com', 'Jessica', 'Anderson', 'Operator', 'Martinez');
+VALUES ('EFG School', '222 Maple St', 9012345678, 'school5@example.com', 'Jessica', 'Anderson', 'Tser', 'Martinez');
 
 INSERT INTO Category (Category_Name) VALUES ('Fiction');
 INSERT INTO Category (Category_Name) VALUES ('Non-fiction');
