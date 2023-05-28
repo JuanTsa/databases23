@@ -89,3 +89,10 @@ VALUES
     ('ElijahCollins85', 'pass85', 'Elijah', 'Collins', 'elijahcollins85@schoollib.com', 69, 0, 0, 0, 0, 'Operator'),
     ('GodAllmighty86', 'pass86', 'God', 'Allmighty', 'godallmighty@schoollib.com', 77, 0, 0, 0, 0, 'Administrator');
 
+INSERT INTO `School_Unit` (`School_Name`, `Address`, `Phone`, `Email`, `Principal_Name`, `Principal_Surname`, `Operator_Name`, `Operator_Surname`, `User_ID`)
+VALUES
+('School A', 'Address A', 123456789, 'schoola1@school.com', 'John', 'Smith', 'Oliver', 'Gray', 81),
+('School B', 'Address B', 987654321, 'schoolb2@school.com', 'Emily', 'Johnson', 'Evelyn', 'Bailey', 82),
+('School C', 'Address C', 456789123, 'schoolc3@school.com', 'Daniel', 'Brown', 'Mia', 'Griffin', 83),
+('School D', 'Address D', 321654987, 'schoold4@school.com', 'Michael', 'Davis', 'Henry', 'Kennedy', 84),
+('School E', 'Address E', 789123456, 'schoole5@school.com', 'Emma', 'Miller', 'Elijah', 'Collins', 85);
