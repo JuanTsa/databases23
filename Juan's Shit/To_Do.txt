@@ -166,6 +166,16 @@ GROUP BY
 ------- USER -------
 --------------------
 1) List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
+SELECT b.Title, a.Author_Name, a.Author_Surname
+FROM Book AS b
+JOIN Book_Author AS ba ON b.Book_ID = ba.Book_ID
+JOIN Author AS a ON ba.Author_ID = a.Author_ID
+JOIN Book_Category AS bc ON b.Book_ID = bc.Book_ID
+JOIN Category AS c ON bc.Category_ID = c.Category_ID
+WHERE b.Title LIKE '%search_term%'
+   OR c.Category_Name LIKE '%search_term%'
+   OR CONCAT(a.Author_Name, ' ', a.Author_Surname) LIKE '%search_term%'
+   OR b.Available_Copies >= search_term;
 
 
 
