@@ -124,6 +124,11 @@ LIMIT 3;
 
 
 7) Find all authors who have written at least 5 books less than the author with the most books.
+SELECT a1.Author_ID, a1.Author_Name, a1.Author_Surname, a1.Books_Written
+FROM Author a1
+WHERE (SELECT COUNT(*) FROM Author a2 WHERE a2.Books_Written > a1.Books_Written) <= (SELECT MAX(Books_Written) - 5 FROM Author)
+
+
 
 ------------------------
 ------- OPERATOR -------
