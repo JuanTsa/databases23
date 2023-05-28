@@ -76,7 +76,7 @@ FROM Author
 LEFT JOIN Book_Author ON Author.Author_ID = Book_Author.Author_ID
 LEFT JOIN Book ON Book_Author.Book_ID = Book.Book_ID
 LEFT JOIN Borrowing ON Book.Book_ID = Borrowing.Book_ID
-WHERE Borrowing.Borrowing_ID IS NULL
+WHERE Borrowing.Borrowing_ID IS NULL;
 
 
 
