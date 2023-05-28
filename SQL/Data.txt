@@ -3,7 +3,7 @@
 -- 5 (3) schools, 1 administrator, 5 (3) operators, 50 (30) students, 30 (10) teachers, 150 (100) books, 60 (50) borrowings, 50 (40) reservations, 30 reviews
 -- 10 categories, 69 authors
 -- 179 book_author, 174 book_category
-INSERT INTO `User` (`Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`)
+INSERT INTO `User` (`Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`, `Status`)
 VALUES
 ('JohnDoe1', 'pass1', 'John', 'Doe', 'johndoe1@schoollib.com', 20, 0, 0, 2, 2, 'Student', 'Approved'),
 ('JaneSmith2', 'pass2', 'Jane', 'Smith', 'janesmith2@schoollib.com', 23, 1, 0, 2, 2, 'Student', 'Approved'),
