@@ -61,7 +61,7 @@ WHERE Borrowing.Borrowing_ID IS NULL;
 
 
 
-5) Which operators have loaned the same number of books in a year with more than 20 loans?
+5) Which operators have loaned the same number of books in a year with more than 20 loans? =================== ΛΑΘΟΣ ===================
 SELECT
     u.Operator_Name,
     u.Operator_Surname,
