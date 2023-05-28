@@ -185,6 +185,11 @@ GROUP BY
 
 
 2) List of all books borrowed by this user.
+SELECT b.Title
+FROM Book b
+JOIN Borrowing bor ON b.Book_ID = bor.Book_ID
+JOIN User u ON u.User_ID = bor.User_ID
+WHERE u.Username = 'logged-in-username';
 
 
 
