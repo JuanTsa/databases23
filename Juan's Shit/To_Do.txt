@@ -133,7 +133,7 @@ WHERE (SELECT COUNT(*) FROM Author a2 WHERE a2.Books_Written > a1.Books_Written)
 ------------------------
 ------- OPERATOR -------
 ------------------------
-1) All books by Title, Author (Search criteria: title/ category/ author/ copies).
+1) Find all books by Title, Author (Search criteria: title/ category/ author/ copies).
 SELECT b.Title, a.Author_Name, a.Author_Surname
 FROM Book AS b
 JOIN Book_Author AS ba ON b.Book_ID = ba.Book_ID
@@ -148,6 +148,10 @@ WHERE b.Title LIKE '%search_term%'
 
 
 2) Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
+SELECT U.Name, U.Surname, DATEDIFF(NOW(), B.Due_Date) AS Delay_Days
+FROM User U
+JOIN Borrowing B ON U.User_ID = B.User_ID
+WHERE B.Status = 'Delayed';
 
 
 
