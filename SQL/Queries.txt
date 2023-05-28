@@ -1,0 +1,181 @@
+---------------------
+------- ADMIN -------
+---------------------
+1) List with the total borrowings per school (Search criteria: year, calendar month).
+SELECT
+    su.School_ID,
+    su.School_Name,
+    COUNT(*) AS Total_Borrowings
+FROM
+    School_Unit su
+    JOIN Book b ON su.School_ID = b.School_ID
+    JOIN Borrowing br ON b.Book_ID = br.Book_ID
+WHERE
+    YEAR(br.Borrow_Date) = 'year_value' -- Replace with the desired year
+    AND MONTH(br.Borrow_Date) = 'month_value' -- Replace with the desired calendar month
+GROUP BY
+    su.School_ID,
+    su.School_Name;
+
+
+
+2) For a given book category (user-selected), which authors belong to it and which teachers have borrowed books from that category in the last year?
+SELECT
+    a.Author_ID,
+    a.Author_Name,
+    t.User_ID,
+    t.Username
+FROM
+    Category c
+    JOIN Book_Category bc ON c.Category_ID = bc.Category_ID
+    JOIN Book b ON bc.Book_ID = b.Book_ID
+    JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+    JOIN Author a ON ba.Author_ID = a.Author_ID
+    JOIN Borrowing br ON b.Book_ID = br.Book_ID
+    JOIN User t ON br.User_ID = t.User_ID AND t.User_Type = 'Teacher'
+WHERE
+    c.Category_Name = 'user_selected_category' -- Replace with the user-selected category name
+    AND br.Borrow_Date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR);
+
+
+
+3) Find young teachers (age < 40 years) who have borrowed the most books and the number of books.
+SELECT U.User_ID, U.Name, U.Surname, U.Age, COUNT(*) AS NumOfBooksBorrowed
+FROM User U
+JOIN Borrowing B ON U.User_ID = B.User_ID
+JOIN Book BK ON B.Book_ID = BK.Book_ID
+WHERE U.User_Type = 'Teacher' AND U.Age < 40
+GROUP BY U.User_ID
+ORDER BY NumOfBooksBorrowed DESC
+LIMIT 1;
+
+
+
+4) Find authors whose books have not been borrowed.
+SELECT Author.Author_ID, Author.Author_Name, Author.Author_Surname 
+FROM Author
+LEFT JOIN Book_Author ON Author.Author_ID = Book_Author.Author_ID
+LEFT JOIN Book ON Book_Author.Book_ID = Book.Book_ID
+LEFT JOIN Borrowing ON Book.Book_ID = Borrowing.Book_ID
+WHERE Borrowing.Borrowing_ID IS NULL;
+
+
+
+5) Which operators have loaned the same number of books in a year with more than 20 loans?
+SELECT
+    u.Operator_Name,
+    u.Operator_Surname,
+    COUNT(*) AS Total_Borrowings
+FROM
+    User u
+    JOIN Borrowing b ON u.User_ID = b.User_ID
+    JOIN Book bk ON b.Book_ID = bk.Book_ID
+WHERE
+    u.User_Type = 'Operator'
+    AND YEAR(b.Borrow_Date) = YEAR(CURRENT_DATE())
+GROUP BY
+    u.Operator_Name,
+    u.Operator_Surname
+HAVING
+    COUNT(*) > 20
+ORDER BY
+    Total_Borrowings DESC;
+
+
+
+6) Many books cover more than one category. Among field pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings.
+SELECT
+    c1.Category_Name AS Category1,
+    c2.Category_Name AS Category2,
+    COUNT(*) AS BorrowingCount
+FROM
+    Book_Category bc1
+    JOIN Book_Category bc2 ON bc1.Book_ID = bc2.Book_ID AND bc1.Category_ID < bc2.Category_ID
+    JOIN Category c1 ON bc1.Category_ID = c1.Category_ID
+    JOIN Category c2 ON bc2.Category_ID = c2.Category_ID
+    JOIN Book b ON bc1.Book_ID = b.Book_ID
+    JOIN Borrowing br ON b.Book_ID = br.Book_ID
+GROUP BY
+    c1.Category_Name,
+    c2.Category_Name
+ORDER BY
+    BorrowingCount DESC
+LIMIT 3;
+
+
+
+7) Find all authors who have written at least 5 books less than the author with the most books.
+SELECT a1.Author_ID, a1.Author_Name, a1.Author_Surname, a1.Books_Written
+FROM Author a1
+WHERE (SELECT COUNT(*) FROM Author a2 WHERE a2.Books_Written > a1.Books_Written) <= (SELECT MAX(Books_Written) - 5 FROM Author)
+
+
+
+------------------------
+------- OPERATOR -------
+------------------------
+1) Find all books by Title, Author (Search criteria: title/ category/ author/ copies).
+SELECT b.Title, a.Author_Name, a.Author_Surname
+FROM Book AS b
+JOIN Book_Author AS ba ON b.Book_ID = ba.Book_ID
+JOIN Author AS a ON ba.Author_ID = a.Author_ID
+JOIN Book_Category AS bc ON b.Book_ID = bc.Book_ID
+JOIN Category AS c ON bc.Category_ID = c.Category_ID
+WHERE b.Title LIKE '%search_term%'
+   OR c.Category_Name LIKE '%search_term%'
+   OR CONCAT(a.Author_Name, ' ', a.Author_Surname) LIKE '%search_term%'
+   OR b.Available_Copies >= search_term;
+   
+
+
+2) Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
+SELECT U.Name, U.Surname, DATEDIFF(NOW(), B.Due_Date) AS Delay_Days
+FROM User U
+JOIN Borrowing B ON U.User_ID = B.User_ID
+WHERE B.Status = 'Delayed';
+
+
+
+3) Average Ratings per borrower and category (Search criteria: user/category)
+SELECT
+    u.Username AS User,
+    c.Category_Name AS Category,
+    AVG(r.Rating) AS AverageRating
+FROM
+    User u
+    JOIN Borrowing br ON u.User_ID = br.User_ID
+    JOIN Book b ON br.Book_ID = b.Book_ID
+    JOIN Book_Category bc ON b.Book_ID = bc.Book_ID
+    JOIN Category c ON bc.Category_ID = c.Category_ID
+    JOIN Rating r ON br.Borrowing_ID = r.Borrowing_ID
+WHERE
+    u.Username = 'your_username' -- Replace with the desired username
+    AND c.Category_Name = 'your_category' -- Replace with the desired category name
+GROUP BY
+    u.Username,
+    c.Category_Name;
+
+
+ 
+--------------------
+------- USER -------
+--------------------
+1) List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
+SELECT b.Book_ID, b.Title, a.Author_Name, c.Category_Name
+FROM Book AS b
+LEFT JOIN Book_Author AS ba ON b.Book_ID = ba.Book_ID
+LEFT JOIN Author AS a ON ba.Author_ID = a.Author_ID
+LEFT JOIN Book_Category AS bc ON b.Book_ID = bc.Book_ID
+LEFT JOIN Category AS c ON bc.Category_ID = c.Category_ID
+WHERE b.Title LIKE '%search_term%'
+   OR a.Author_Name LIKE '%search_term%'
+   OR c.Category_Name LIKE '%search_term%';
+
+
+
+2) List of all books borrowed by this user.
+SELECT b.Title
+FROM Book b
+JOIN Borrowing bor ON b.Book_ID = bor.Book_ID
+JOIN User u ON u.User_ID = bor.User_ID
+WHERE u.Username = 'logged-in-username';
