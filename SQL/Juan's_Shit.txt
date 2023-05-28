@@ -12,6 +12,27 @@ operator	registers	book, borrowing, reservation, review
 
 user		views		book, borrowing, reservation, review
 
+=================
+==== QUERIES ====
+=================
+---- ADMIN ----
+1) List with the total loans per school (Search criteria: year, calendar month)
+2) For a given book category (user-selected), which authors belong to it and which teachers have borrowed books from that category in the last year?
+3) Find young teachers (age < 40 years) who have borrowed the most books and the number
+of books.
+4) Find authors whose books have not been borrowed.
+5) Which operators have loaned the same number of books in a year with more than 20 loans?
+6) Many books cover more than one category. Among field pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings.
+7) Find all authors who have written at least 5 books less than the author with the most books.
+
+---- OPERATOR ----
+1) All books by Title, Author (Search criteria: title/ category/ author/ copies).
+2) Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
+3) Average Ratings per borrower and category (Search criteria: user/category)
+
+---- USER ----
+1) List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
+2) List of all books borrowed by this user.
 
 ===============
 ==== EXTRA ====
