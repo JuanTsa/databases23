@@ -42,6 +42,23 @@ WHERE Borrowing.Borrowing_ID IS NULL
 5) Which operators have loaned the same number of books in a year with more than 20 loans?
 
 6) Many books cover more than one category. Among field pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings.
+SELECT
+    c1.Category_Name AS Category1,
+    c2.Category_Name AS Category2,
+    COUNT(*) AS BorrowingCount
+FROM
+    Book_Category bc1
+    JOIN Book_Category bc2 ON bc1.Book_ID = bc2.Book_ID AND bc1.Category_ID < bc2.Category_ID
+    JOIN Category c1 ON bc1.Category_ID = c1.Category_ID
+    JOIN Category c2 ON bc2.Category_ID = c2.Category_ID
+    JOIN Book b ON bc1.Book_ID = b.Book_ID
+    JOIN Borrowing br ON b.Book_ID = br.Book_ID
+GROUP BY
+    c1.Category_Name,
+    c2.Category_Name
+ORDER BY
+    BorrowingCount DESC
+LIMIT 3;
 
 7) Find all authors who have written at least 5 books less than the author with the most books.
 
