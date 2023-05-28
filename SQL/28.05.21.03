@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS `User` (
   `Copies_Reserved` int(50) NOT NULL,
   `Max_Copies_Borrowed` int(50) NOT NULL,
   `Max_Copies_Reserved` int(50) NOT NULL,
-  `Status` enum('Approved', 'Rejected') NOT NULL,
   `User_Type` enum('Administrator', 'Operator', 'Teacher', 'Student') NOT NULL,
+  `Status` enum('Approved', 'Rejected') NOT NULL,
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
