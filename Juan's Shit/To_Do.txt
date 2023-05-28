@@ -1,8 +1,8 @@
 //we could use as book_id: isbn + number_of_copy
 
-=======================
-==== RELATIONSHIPS ====
-=======================
+===============================
+======== RELATIONSHIPS ========
+===============================
 admin		registers	school_unit
 admin	 	approves	operator
 school_unit	has		book
@@ -12,9 +12,10 @@ operator	registers	book, borrowing, reservation, review
 
 user		views		book, borrowing, reservation, review
 
-=================
-==== QUERIES ====
-=================
+
+=========================
+======== QUERIES ========
+=========================
 ---- ADMIN ----
 1) List with the total borrowings per school (Search criteria: year, calendar month).
 SELECT
@@ -138,9 +139,9 @@ GROUP BY
 
 2) List of all books borrowed by this user.
 
-===============
-==== EXTRA ====
-===============
+=======================
+======== EXTRA ========
+=======================
 administrator: backup, restore
 
 In case a copy of the book is not available, the user's request (reservation) is put on hold and is served upon the return of a copy
@@ -151,9 +152,9 @@ Users have the option to cancel any current reservations.
 
 Reservations have a time frame of one week and are automatically canceled once it expires.
 
-================
-==== Lab 02 ====
-================
+========================
+======== Lab 02 ========
+========================
 Database Schema Design
 1. Start thinking about the entities you need
 	Identify entities, attributes and relationships from the problem description
@@ -162,9 +163,9 @@ Database Schema Design
 	Look for any issues that are apparent in the E/R diagram			
 
 
-====================
-==== Labs 03-08 ====
-====================
+============================
+======== Labs 03-08 ========
+============================
 Materialize Schema: DDL statements
 1. Create your tables
 	create a table for each entity							
@@ -173,7 +174,7 @@ Materialize Schema: DDL statements
 		a primary key and possibly some candidate keys				
 	include a foreign key (one-to-many relationships)					
 
-==== ^^^ DONE ^^^ ====
+======== ^^^ DONE ^^^ ========
 
 	add indexes & constraints to your tables
 
