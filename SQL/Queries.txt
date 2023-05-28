@@ -52,7 +52,7 @@ LIMIT 1;
 
 
 4) Find authors whose books have not been borrowed.
-SELECT Author.Author_ID, Author.Author_Name, Author.Author_Surname 
+SELECT DISTINCT Author.Author_ID, Author.Author_Name, Author.Author_Surname 
 FROM Author
 LEFT JOIN Book_Author ON Author.Author_ID = Book_Author.Author_ID
 LEFT JOIN Book ON Book_Author.Book_ID = Book.Book_ID
