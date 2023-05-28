@@ -16,7 +16,9 @@ user		views		book, borrowing, reservation, review
 =========================
 ======== QUERIES ========
 =========================
----- ADMIN ----
+---------------------
+------- ADMIN -------
+---------------------
 1) List with the total borrowings per school (Search criteria: year, calendar month).
 SELECT
     su.School_ID,
@@ -110,7 +112,9 @@ LIMIT 3;
 
 7) Find all authors who have written at least 5 books less than the author with the most books.
 
----- OPERATOR ----
+------------------------
+------- OPERATOR -------
+------------------------
 1) All books by Title, Author (Search criteria: title/ category/ author/ copies).
 
 2) Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
@@ -133,8 +137,11 @@ WHERE
 GROUP BY
     u.Username,
     c.Category_Name;
-
----- USER ----
+    
+ 
+--------------------
+------- USER -------
+--------------------
 1) List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
 
 2) List of all books borrowed by this user.
