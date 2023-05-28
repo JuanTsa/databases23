@@ -1,0 +1,152 @@
+INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed, Copies_Reserved, Max_Copies_Borrowed, Max_Copies_Reserved, User_Type)
+VALUES ('john123', 'password123', 'John', 'Doe', 'john.doe@example.com', 25, 2, 1, 5, 3, 'Student');
+
+INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed, Copies_Reserved, Max_Copies_Borrowed, Max_Copies_Reserved, User_Type)
+VALUES ('admin', 'adminpass', 'Admin', 'User', 'admin@example.com', 30, 0, 0, 0, 0, 'Administrator');
+
+INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed, Copies_Reserved, Max_Copies_Borrowed, Max_Copies_Reserved, User_Type)
+VALUES ('operator', 'operatorpass', 'Operator', 'Smith', 'operator@example.com', 35, 0, 0, 0, 0, 'Operator');
+
+INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed, Copies_Reserved, Max_Copies_Borrowed, Max_Copies_Reserved, User_Type)
+VALUES ('teacher1', 'teacherpass', 'Jane', 'Smith', 'jane.smith@example.com', 40, 1, 0, 3, 1, 'Teacher');
+
+INSERT INTO User (Username, Password, Name, Surname, Email, Age, Copies_Borrowed, Copies_Reserved, Max_Copies_Borrowed, Max_Copies_Reserved, User_Type)
+VALUES ('student1', 'studentpass', 'Emma', 'Johnson', 'emma.johnson@example.com', 20, 0, 2, 2, 3, 'Student');
+
+INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
+VALUES ('ABC School', '123 Main St', 1234567890, 'school@example.com', 'John', 'Smith', 'Operator', 'Johnson');
+
+INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
+VALUES ('XYZ School', '456 Elm St', 9876543210, 'school2@example.com', 'Jane', 'Doe', 'Operator', 'Anderson');
+
+INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
+VALUES ('PQR School', '789 Oak St', 5678901234, 'school3@example.com', 'Robert', 'Williams', 'Operator', 'Brown');
+
+INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
+VALUES ('LMN School', '111 Pine St', 4321098765, 'school4@example.com', 'Michael', 'Johnson', 'Operator', 'Davis');
+
+INSERT INTO School_Unit (School_Name, Address, Phone, Email, Principal_Name, Principal_Surname, Operator_Name, Operator_Surname)
+VALUES ('EFG School', '222 Maple St', 9012345678, 'school5@example.com', 'Jessica', 'Anderson', 'Operator', 'Martinez');
+
+INSERT INTO Category (Category_Name) VALUES ('Fiction');
+INSERT INTO Category (Category_Name) VALUES ('Non-fiction');
+INSERT INTO Category (Category_Name) VALUES ('Mystery');
+INSERT INTO Category (Category_Name) VALUES ('Science Fiction');
+INSERT INTO Category (Category_Name) VALUES ('Romance');
+
+INSERT INTO Keyword (Keyword_Name) VALUES ('Adventure');
+INSERT INTO Keyword (Keyword_Name) VALUES ('History');
+INSERT INTO Keyword (Keyword_Name) VALUES ('Biography');
+INSERT INTO Keyword (Keyword_Name) VALUES ('Thriller');
+INSERT INTO Keyword (Keyword_Name) VALUES ('Fantasy');
+
+INSERT INTO Author (Author_Name, Author_Surname, Books_Written) VALUES ('Stephen', 'King', 75);
+INSERT INTO Author (Author_Name, Author_Surname, Books_Written) VALUES ('J.K.', 'Rowling', 15);
+INSERT INTO Author (Author_Name, Author_Surname, Books_Written) VALUES ('Agatha', 'Christie', 66);
+INSERT INTO Author (Author_Name, Author_Surname, Books_Written) VALUES ('Ernest', 'Hemingway', 27);
+INSERT INTO Author (Author_Name, Author_Surname, Books_Written) VALUES ('Jane', 'Austen', 6);
+
+INSERT INTO Book (ISBN, School_ID, Title, Publisher, Pages, Summary, Available_Copies, Cover, Language, Inventory, Total_Borrowings)
+VALUES ('9781982110567', 1, 'The Shining', 'Anchor', 447, 'A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.', 3, 'https://example.com/cover1.jpg', 'English', 5, 10);
+
+INSERT INTO Book (ISBN, School_ID, Title, Publisher, Pages, Summary, Available_Copies, Cover, Language, Inventory, Total_Borrowings)
+VALUES ('9780439064873', 1, 'Harry Potter and the Chamber of Secrets', 'Scholastic', 341, 'Harry Potter and his friends, Ron and Hermione, return for their second year at Hogwarts School of Witchcraft and Wizardry as they investigate a series of mysterious attacks.', 5, 'https://example.com/cover2.jpg', 'English', 8, 15);
+
+INSERT INTO Book (ISBN, School_ID, Title, Publisher, Pages, Summary, Available_Copies, Cover, Language, Inventory, Total_Borrowings)
+VALUES ('9780062073488', 2, 'Murder on the Orient Express', 'HarperCollins', 265, 'A murder occurs on a train journey through Europe, and a famous detective must solve the case before the killer strikes again.', 2, 'https://example.com/cover3.jpg', 'English', 4, 20);
+
+INSERT INTO Book (ISBN, School_ID, Title, Publisher, Pages, Summary, Available_Copies, Cover, Language, Inventory, Total_Borrowings)
+VALUES ('9780684801223', 3, 'The Old Man and the Sea', 'Scribner', 127, 'An old fisherman engages in a battle of wills with a giant marlin, testing his strength, courage, and determination in this classic novella.', 1, 'https://example.com/cover4.jpg', 'English', 2, 5);
+
+INSERT INTO Book (ISBN, School_ID, Title, Publisher, Pages, Summary, Available_Copies, Cover, Language, Inventory, Total_Borrowings)
+VALUES ('9780141439518', 4, 'Pride and Prejudice', 'Penguin Classics', 432, 'A witty and romantic novel that follows the lives of the Bennet sisters as they navigate love, marriage, and societal expectations in 19th-century England.', 4, 'https://example.com/cover5.jpg', 'English', 6, 12);
+
+INSERT INTO Reservation (Book_ID, User_ID, Request_Date, Status)
+VALUES (1, 2, '2023-05-20', 'Pending');
+
+INSERT INTO Reservation (Book_ID, User_ID, Request_Date, Status)
+VALUES (3, 4, '2023-05-21', 'Approved');
+
+INSERT INTO Reservation (Book_ID, User_ID, Request_Date, Status)
+VALUES (2, 1, '2023-05-22', 'Pending');
+
+INSERT INTO Reservation (Book_ID, User_ID, Request_Date, Status)
+VALUES (4, 3, '2023-05-23', 'Approved');
+
+INSERT INTO Reservation (Book_ID, User_ID, Request_Date, Status)
+VALUES (5, 1, '2023-05-24', 'Pending');
+
+INSERT INTO Review (Review_Text, Book_ID, User_ID, Rating, Status)
+VALUES ('A thrilling and suspenseful read!', 1, 2, 5, 'Approved');
+
+INSERT INTO Review (Review_Text, Book_ID, User_ID, Rating, Status)
+VALUES ('Magical and enchanting!', 2, 1, 4, 'Approved');
+
+INSERT INTO Review (Review_Text, Book_ID, User_ID, Rating, Status)
+VALUES ('Kept me guessing until the end.', 3, 3, 4, 'Approved');
+
+INSERT INTO Review (Review_Text, Book_ID, User_ID, Rating, Status)
+VALUES ('A beautiful story of resilience.', 4, 4, 5, 'Approved');
+
+INSERT INTO Review (Review_Text, Book_ID, User_ID, Rating, Status)
+VALUES ('A timeless classic.', 5, 2, 5, 'Approved');
+
+INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Returning_Date, Status)
+VALUES (1, 2, '2023-05-10', '2023-05-24', '2023-05-25', 'Returned');
+
+INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Returning_Date, Status)
+VALUES (3, 4, '2023-05-12', '2023-05-26', '2023-05-28', 'Returned');
+
+INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Returning_Date, Status)
+VALUES (2, 1, '2023-05-15', '2023-05-29', '2023-05-30', 'Returned');
+
+INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Returning_Date, Status)
+VALUES (4, 3, '2023-05-18', '2023-06-01', '2023-06-02', 'Returned');
+
+INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Returning_Date, Status)
+VALUES (5, 1, '2023-05-20', '2023-06-03', '2023-06-05', 'Returned');
+
+INSERT INTO Book_Author (Author_ID, Book_ID)
+VALUES (1, 1);
+
+INSERT INTO Book_Author (Author_ID, Book_ID)
+VALUES (2, 2);
+
+INSERT INTO Book_Author (Author_ID, Book_ID)
+VALUES (3, 3);
+
+INSERT INTO Book_Author (Author_ID, Book_ID)
+VALUES (4, 4);
+
+INSERT INTO Book_Author (Author_ID, Book_ID)
+VALUES (5, 5);
+
+INSERT INTO Book_Category (Category_ID, Book_ID)
+VALUES (1, 1);
+
+INSERT INTO Book_Category (Category_ID, Book_ID)
+VALUES (2, 2);
+
+INSERT INTO Book_Category (Category_ID, Book_ID)
+VALUES (3, 3);
+
+INSERT INTO Book_Category (Category_ID, Book_ID)
+VALUES (4, 4);
+
+INSERT INTO Book_Category (Category_ID, Book_ID)
+VALUES (5, 5);
+
+INSERT INTO Book_Keyword (Keyword_ID, Book_ID)
+VALUES (1, 1);
+
+INSERT INTO Book_Keyword (Keyword_ID, Book_ID)
+VALUES (2, 2);
+
+INSERT INTO Book_Keyword (Keyword_ID, Book_ID)
+VALUES (3, 3);
+
+INSERT INTO Book_Keyword (Keyword_ID, Book_ID)
+VALUES (4, 4);
+
+INSERT INTO Book_Keyword (Keyword_ID, Book_ID)
+VALUES (5, 5);
