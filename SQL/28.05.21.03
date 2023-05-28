@@ -24,7 +24,9 @@ CREATE TABLE `School_Unit` (
   `Principal_Surname` varchar(50) NOT NULL,
   `Operator_Name` varchar(50) NOT NULL,
   `Operator_Surname` varchar(50) NOT NULL,
-  PRIMARY KEY (`School_ID`)
+  `User_ID' int(50) NOT NULL,
+  PRIMARY KEY (`School_ID`),
+  CONSTRAINT `fk_school_unit_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `Category` (
