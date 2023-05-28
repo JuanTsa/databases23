@@ -1,16 +1,5 @@
-//we could use as book_id: isbn + number_of_copy
-
--- At least 3 schools 100 books 50 loans 40 res 30 stud 10 teach
-1 admin
-5 schools (so 5 operators)
-150 books
-100 borrowings
-80 reservations
-70 reviews
-50 students
-30 teachers
-
-
+==== POPULATE ====
+book, reservation, review, borrowing
 
 ===============================
 ======== RELATIONSHIPS ========
