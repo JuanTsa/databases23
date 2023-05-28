@@ -1,3 +1,5 @@
+-- copies_borrowed: 14
+-- copies_reserved: 18
 INSERT INTO `User` (`Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`)
 VALUES
     ('JohnDoe1', 'pass1', 'John', 'Doe', 'johndoe1@schoollib.com', 20, 0, 0, 2, 2, 'Student'),
