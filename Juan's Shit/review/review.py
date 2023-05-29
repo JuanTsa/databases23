@@ -7,7 +7,7 @@ def generate_review_entry(i, j, id):
     review = "An awesome, page-turner, book. My review doesn't apply to my rating!"
     rating = generate_random_number(1, 5)
     status = "Approved"
-    return f"({i}, '{review}', {j}, {id}, {rating}, '{status}')"
+    return f"({i}, '{review}', {j}, {id}, {rating}, '{status}'),"
 
 # Main program
 for i in range(1, 201):
