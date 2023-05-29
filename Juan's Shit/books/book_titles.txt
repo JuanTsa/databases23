@@ -1,6 +1,6 @@
 Don Quixote 
 
-Alice's Adventures in Wonderland 
+Alices Adventures in Wonderland 
 
 The Adventures of Huckleberry Finn 
 
@@ -18,9 +18,9 @@ Moby Dick
 
 The Scarlet Letter 
 
-Gulliver's Travels 
+Gullivers Travels 
 
-The Pilgrim's Progress 
+The Pilgrims Progress 
 
 A Christmas Carol 
 
@@ -38,7 +38,7 @@ Frankenstein, or, the Modern Prometheus
 
 Oliver Twist 
 
-Uncle Tom's Cabin 
+Uncle Toms Cabin 
 
 Crime and Punishment 
 
@@ -86,7 +86,7 @@ The Last of the Mohicans
 
 Tess of the d'Urbervilles 
 
-Harry Potter and the Sorcerer's Stone 
+Harry Potter and the Sorcerers Stone 
 
 Heidi 
 
@@ -136,7 +136,7 @@ The Stranger
 
 The Trial 
 
-Lady Chatterley's Lover 
+Lady Chatterleys Lover 
 
 Kidnapped: The Adventures of David Balfour 
 
@@ -158,7 +158,7 @@ Of Mice and Men
 
 The Vicar of Wakefield 
 
-A Connecticut Yankee in King Arthur's Court 
+A Connecticut Yankee in King Arthurs Court 
 
 White Fang 
 
@@ -190,7 +190,7 @@ The Return of the Native
 
 Sons and Lovers 
 
-Charlotte's Web 
+Charlottes Web 
 
 The Swiss Family Robinson 
 
@@ -244,7 +244,7 @@ Mrs. Dalloway
 
 To the Lighthouse 
 
-The Magician's Nephew 
+The Magicians Nephew 
 
 Harry Potter and the Order of the Phoenix 
 
@@ -290,7 +290,7 @@ Hatchet
 
 The Kite Runner 
 
-One Flew Over the Cuckoo's Nest 
+One Flew Over the Cuckoos Nest 
 
 The Portrait of a Lady 
 
