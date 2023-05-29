@@ -6,6 +6,8 @@ reservation, review, borrowing
 -- 10 categories, 69 authors
 -- 179 book_author, 174 book_category
 
+I HAVE TO MAKE SURE THAT j AND id IN "RESERVATION.PY" ARE UNIQUE FOR EACH PARENTHESIS
+
 ===============================
 ======== RELATIONSHIPS ========
 ===============================
