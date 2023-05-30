@@ -1,3 +1,5 @@
+INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Request_Date`, `Status`)
+VALUES
 (1, 62, 60, '2022-07-11', 'Approved'),
 (2, 113, 36, '2022-10-25', 'Approved'),
 (3, 111, 70, '2022-08-15', 'Approved'),
