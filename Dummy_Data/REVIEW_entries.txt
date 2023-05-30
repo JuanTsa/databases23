@@ -1,3 +1,5 @@
+INSERT INTO `Review` (`Review_ID`, `Review_Text`, `Book_ID`, `User_ID`, `Rating`, `Status`)
+VALUES
 (1, 'An awesome, page-turner, book. My review doesn't apply to my rating!', 28, 22, 5, 'Approved'),
 (2, 'An awesome, page-turner, book. My review doesn't apply to my rating!', 9, 38, 1, 'Approved'),
 (3, 'An awesome, page-turner, book. My review doesn't apply to my rating!', 143, 78, 2, 'Approved'),
