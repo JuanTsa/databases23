@@ -1,3 +1,5 @@
+INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Due_Date`, `Returning_Date`, `Status`)
+VALUES
 (1, 104, 16, '2022-11-03', '2022-11-10', '2022-11-07', 'Approved'),
 (2, 87, 33, '2022-12-15', '2022-12-22', '2022-12-28', 'Approved'),
 (3, 29, 67, '2022-03-25', '2022-04-01', '2022-04-24', 'Approved'),
