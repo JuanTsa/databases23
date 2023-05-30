@@ -1,3 +1,5 @@
+INSERT INTO `Book` (`Book_ID`, `ISBN`, `School_ID`, `Title`, `Publisher`, `Pages`, `Summary`, `Available_Copies`, `Cover`, `Language`, `Keywords`, `Inventory`, `Total_Borrowings`)
+VALUES
 (1, 5553191371787, 3, 'Don Quixote', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13, 77),
 (2, 9464600644509, 3, 'Alice's Adventures in Wonderland', 'Grove Atlantic', 705, 'A unique and intriguing book, full of wonders and plot', 4, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'russian', 'History, Horror, Self-improvement', 16, 3),
 (3, 4643815722670, 2, 'The Adventures of Huckleberry Finn', 'Random House', 504, 'A unique and intriguing book, full of wonders and plot', 15, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'greek', 'Children's, Environmental, Crime', 16, 11),
