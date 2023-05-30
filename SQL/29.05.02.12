@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `User` (
   `User_ID` int(50) NOT NULL AUTO_INCREMENT,
   `School_ID` int(50) NOT NULL,
-  `Username` varchar(50) NOT NULL,
+  `Username` varchar(50) NOT NULL UNIQUE,
   `Password` varchar(50) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Surname` varchar(50) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `User` (
 
 CREATE TABLE IF NOT EXISTS `School_Unit` (
   `School_ID` int(50) NOT NULL AUTO_INCREMENT,
-  `School_Name` varchar(50) NOT NULL,
+  `School_Name` varchar(50) NOT NULL UNIQUE,
   `Address` varchar(50) NOT NULL,
   `Phone` int(11) NOT NULL,
   `Email` varchar(50) NOT NULL,
