@@ -78,9 +78,9 @@
 (3,'HunterGonzalez78', 'pass78', 'Hunter', 'Gonzalez', 'huntergonzalez78@schoollib.com', 53, 0, 1, 1, 1, 'Teacher', 'Approved'),
 (5,'PenelopeNelson79', 'pass79', 'Penelope', 'Nelson', 'penelopenelson79@schoollib.com', 54, 1, 0, 1, 1, 'Teacher', 'Approved'),
 (1,'VictoriaCarter80', 'pass80', 'Victoria', 'Carter', 'victoriacarter80@schoollib.com', 56, 0, 1, 1, 1, 'Teacher', 'Approved'),
-(5,'OliverGray81', 'pass81', 'Oliver', 'Gray', 'olivergray81@schoollib.com', 34, 0, 0, 0, 0, 'Operator', 'Approved'),
-(3,'EvelynBailey82', 'pass82', 'Evelyn', 'Bailey', 'evelynbailey82@schoollib.com', 48, 0, 0, 0, 0, 'Operator', 'Approved'),
+(1,'OliverGray81', 'pass81', 'Oliver', 'Gray', 'olivergray81@schoollib.com', 34, 0, 0, 0, 0, 'Operator', 'Approved'),
+(2,'EvelynBailey82', 'pass82', 'Evelyn', 'Bailey', 'evelynbailey82@schoollib.com', 48, 0, 0, 0, 0, 'Operator', 'Approved'),
 (3,'MiaGriffin83', 'pass83', 'Mia', 'Griffin', 'miagriffin83@schoollib.com', 57, 0, 0, 0, 0, 'Operator', 'Approved'),
-(2,'HenryKennedy84', 'pass84', 'Henry', 'Kennedy', 'henrykennedy84@schoollib.com', 61, 0, 0, 0, 0, 'Operator', 'Approved'),
+(4,'HenryKennedy84', 'pass84', 'Henry', 'Kennedy', 'henrykennedy84@schoollib.com', 61, 0, 0, 0, 0, 'Operator', 'Approved'),
 (5,'ElijahCollins85', 'pass85', 'Elijah', 'Collins', 'elijahcollins85@schoollib.com', 69, 0, 0, 0, 0, 'Operator', 'Approved'),
-(5,'GodAllmighty86', 'pass86', 'God', 'Allmighty', 'godallmighty@schoollib.com', 77, 0, 0, 0, 0, 'Administrator', 'Approved');
+(1,'GodAllmighty86', 'pass86', 'God', 'Allmighty', 'godallmighty@schoollib.com', 77, 0, 0, 0, 0, 'Administrator', 'Approved');
