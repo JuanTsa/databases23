@@ -1,3 +1,5 @@
+INSERT INTO `User` (`School_ID`, `Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`, `Status`)
+VALUES
 (2,'JohnDoe1', 'pass1', 'John', 'Doe', 'johndoe1@schoollib.com', 20, 0, 0, 2, 2, 'Student', 'Approved'),
 (3,'JaneSmith2', 'pass2', 'Jane', 'Smith', 'janesmith2@schoollib.com', 23, 1, 0, 2, 2, 'Student', 'Approved'),
 (5,'MarkJohnson3', 'pass3', 'Mark', 'Johnson', 'markjohnson3@schoollib.com', 19, 0, 1, 2, 2, 'Student', 'Approved'),
