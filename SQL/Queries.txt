@@ -104,28 +104,35 @@ LEFT JOIN Borrowing bor ON b.Book_ID = bor.Book_ID
 GROUP BY a.Author_ID, a.Author_Name, a.Author_Surname
 HAVING COUNT(DISTINCT bor.Borrowing_ID) = 0;
 
-=============================================
-=================== ΛΑΘΟΣ ===================
-=============================================
+---------------------------------------------------
+--------------------- CHECKED ---------------------
+---------------------------------------------------
 5) Which operators have loaned the same number of books in a year with more than 20 loans?
-SELECT
-    u.Operator_Name,
-    u.Operator_Surname,
-    COUNT(*) AS Total_Borrowings
+SELECT op.User_ID, op.Name, op.Surname, sb.Total_Borrowings
 FROM
-    User u
-    JOIN Borrowing b ON u.User_ID = b.User_ID
-    JOIN Book bk ON b.Book_ID = bk.Book_ID
-WHERE
-    u.User_Type = 'Operator'
-    AND YEAR(b.Borrow_Date) = YEAR(CURRENT_DATE())
-GROUP BY
-    u.Operator_Name,
-    u.Operator_Surname
-HAVING
-    COUNT(*) > 20
-ORDER BY
-    Total_Borrowings DESC;
+(
+  SELECT su.School_ID, COUNT(bor.Borrowing_ID) AS Total_Borrowings
+  FROM School_Unit su
+  JOIN User u ON su.School_ID = u.School_ID
+  JOIN Borrowing bor ON u.User_ID = bor.User_ID
+  WHERE YEAR(bor.Borrow_Date) = <year> 			-- Replace with the user-selected year
+  GROUP BY su.School_ID
+  HAVING COUNT(bor.Borrowing_ID) > 20
+) sb
+JOIN
+(
+  SELECT u.User_ID, u.Name, u.Surname, u.School_ID
+  FROM User u
+  WHERE u.User_Type = 'Operator'
+) op
+ON sb.School_ID = op.School_ID
+WHERE sb.Total_Borrowings = (
+  SELECT COUNT(bor.Borrowing_ID) AS Total_Borrowings
+  FROM Borrowing bor
+  WHERE bor.User_ID = op.User_ID
+  AND YEAR(bor.Borrow_Date) = <year> 			-- Replace with the user-selected year
+  GROUP BY bor.User_ID
+);
 
 -------------------------------------------------------
 --------------------- CHECKED ??? ---------------------
