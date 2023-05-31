@@ -190,6 +190,29 @@ GROUP BY u.User_ID, u.Name, u.Surname;
 ----------------------------
 --------- QUERY 11 --------- List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
 ----------------------------
+SELECT b.Book_ID, b.Title, GROUP_CONCAT(a.Author_Name, ' ', a.Author_Surname) AS Authors, b.Pages, b.Available_Copies, b.Inventory
+FROM Book b
+JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+JOIN Author a ON ba.Author_ID = a.Author_ID
+WHERE b.Title = '<title>'                                     -- Replace with the desired element
+GROUP BY b.Book_ID, b.Title, b.Pages, b.Available_Copies, b.Inventory;
+
+SELECT b.Book_ID, b.Title, GROUP_CONCAT(a.Author_Name, ' ', a.Author_Surname) AS Authors, b.Pages, b.Available_Copies, b.Inventory
+FROM Book b
+JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+JOIN Author a ON ba.Author_ID = a.Author_ID
+JOIN Book_Category bc ON b.Book_ID = bc.Book_ID
+JOIN Category c ON bc.Category_ID = c.Category_ID
+WHERE c.Category_Name = '<category_name>'                  -- Replace with the desired element
+GROUP BY b.Book_ID, b.Title, b.Pages, b.Available_Copies, b.Inventory;
+
+SELECT b.Book_ID, b.Title, GROUP_CONCAT(a.Author_Name, ' ', a.Author_Surname) AS Authors, b.Pages, b.Available_Copies, b.Inventory
+FROM Book b
+JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+JOIN Author a ON ba.Author_ID = a.Author_ID
+WHERE a.Author_Name = '<author_name>'                       -- Replace with the desired element
+AND a.Author_Surname = '<author_surname>'                  -- Replace with the desired element
+GROUP BY b.Book_ID, b.Title, b.Pages, b.Available_Copies, b.Inventory;
 
 ----------------------------
 --------- QUERY 12 --------- List of all books borrowed by this user.
