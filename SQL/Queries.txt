@@ -142,7 +142,36 @@ ORDER BY A.`Books_Written` DESC;
 ---------------------------
 --------- QUERY 8 --------- Find all books by Title, Author (Search criteria: title/ category/ author/ copies).
 ---------------------------
+SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
+FROM Book b
+JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+JOIN Author a ON ba.Author_ID = a.Author_ID
+WHERE b.Title = '<title>' 		-- Replace with the desired element
+GROUP BY b.Book_ID;
 
+SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
+FROM Book b
+JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+JOIN Author a ON ba.Author_ID = a.Author_ID
+WHERE a.Author_Name = '<author_name>' 		    -- Replace with the desired element
+   OR a.Author_Surname = '<author_surname>' 	-- Replace with the desired element
+GROUP BY b.Book_ID;
+
+SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
+FROM Book b
+JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+JOIN Author a ON ba.Author_ID = a.Author_ID
+JOIN Book_Category bc ON b.Book_ID = bc.Book_ID
+JOIN Category c ON bc.Category_ID = c.Category_ID
+WHERE c.Category_Name = 'category_name' 	-- Replace with the desired element
+GROUP BY b.Book_ID;
+
+SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
+FROM Book b
+JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+JOIN Author a ON ba.Author_ID = a.Author_ID
+WHERE b.Pages = <pages> 			-- Replace with the desired element
+GROUP BY b.Book_ID;
 
 ---------------------------
 --------- QUERY 9 --------- Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
