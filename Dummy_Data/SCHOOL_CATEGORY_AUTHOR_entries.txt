@@ -23,7 +23,7 @@ VALUES
 
 
 
-INSERT INTO `Author` (`Author_ID`, `Author_Name`, `Author_Surname`, `Books_Written`)
+INSERT INTO `Author` (`Author_ID`, `Author_Name`, `Author_Surname`)
 VALUES
 (1, 'John', 'Smith', 4),
 (2, 'Emma', 'Johnson', 5),
