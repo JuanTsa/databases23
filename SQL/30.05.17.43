@@ -9,8 +9,6 @@ CREATE TABLE IF NOT EXISTS `School_Unit` (
   PRIMARY KEY (`School_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
-
 CREATE TABLE IF NOT EXISTS `User` (
   `User_ID` int(50) NOT NULL AUTO_INCREMENT,
   `School_ID` int(50) NOT NULL,
@@ -29,8 +27,6 @@ CREATE TABLE IF NOT EXISTS `User` (
   PRIMARY KEY (`User_ID`),
   CONSTRAINT `fk_user_id_school_unit` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
 
 CREATE TABLE IF NOT EXISTS `Category` (
   `Category_ID` INT NOT NULL AUTO_INCREMENT,
