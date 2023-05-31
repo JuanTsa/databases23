@@ -17,7 +17,7 @@ end_date = datetime.date(2022, 12, 31)
 used_j = set()
 used_id = set()
 
-for i in range(1, 61):
+for i in range(1, 131):
     j = generate_unique_random_number(1, 150, used_j)
     id = generate_unique_random_number(1, 80, used_id)
     borrow_date = generate_random_date(start_date, end_date)
