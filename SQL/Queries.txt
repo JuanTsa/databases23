@@ -9,19 +9,12 @@ select * from book;
 select * from reservation;
 select * from borrowing;
 select * from review;
-
 select * from book_author;
 select * from book_category;
 
 ---------------------
----------------------
 ------- ADMIN ------- 
 ---------------------
----------------------
-
----------------------------------------------------
---------------------- CHECKED ---------------------
----------------------------------------------------
 1) List with the total borrowings per school (Search criteria: year, calendar month).
 SELECT
   s.School_Name,
@@ -42,9 +35,7 @@ GROUP BY
 ORDER BY
   s.School_Name;
 
----------------------------------------------------
---------------------- CHECKED ---------------------
----------------------------------------------------
+
 2) For a given book category (user-selected), which authors belong to it and which teachers have borrowed books from that category in the last year?
 
 //η τομή των 2
