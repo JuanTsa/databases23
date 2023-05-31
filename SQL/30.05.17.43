@@ -1,3 +1,18 @@
+CREATE TABLE IF NOT EXISTS `School_Unit` (
+  `School_ID` int(50) NOT NULL AUTO_INCREMENT,
+  `School_Name` varchar(50) NOT NULL UNIQUE,
+  `Address` varchar(50) NOT NULL,
+  `Phone` int(11) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Principal_Name` varchar(50) NOT NULL,
+  `Principal_Surname` varchar(50) NOT NULL,
+  `Operator_Name` varchar(50) NOT NULL,
+  `Operator_Surname` varchar(50) NOT NULL,
+  PRIMARY KEY (`School_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
 CREATE TABLE IF NOT EXISTS `User` (
   `User_ID` int(50) NOT NULL AUTO_INCREMENT,
   `School_ID` int(50) NOT NULL,
@@ -17,18 +32,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   CONSTRAINT `fk_user_id_school_unit` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `School_Unit` (
-  `School_ID` int(50) NOT NULL AUTO_INCREMENT,
-  `School_Name` varchar(50) NOT NULL UNIQUE,
-  `Address` varchar(50) NOT NULL,
-  `Phone` int(11) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Principal_Name` varchar(50) NOT NULL,
-  `Principal_Surname` varchar(50) NOT NULL,
-  `Operator_Name` varchar(50) NOT NULL,
-  `Operator_Surname` varchar(50) NOT NULL,
-  PRIMARY KEY (`School_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 CREATE TABLE IF NOT EXISTS `Category` (
   `Category_ID` INT NOT NULL AUTO_INCREMENT,
