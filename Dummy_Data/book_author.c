@@ -5,7 +5,7 @@ int main() {
    for(int i=1; i<151; i++){
        printf("(%d, %d),\n", j, i);
        j++;
-       if(j==48) j=1;
+       if(j==47) j=1;
    }
    
     return 0;
