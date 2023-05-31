@@ -61,14 +61,12 @@ WHERE bc.Category_Name = <category_name>			-- Replace with the desired category_
   AND u.User_Type = 'Teacher';
 
 // ξεχωριστά για το author
-
-SELECT DISTINCT au.author_id, au.Author_Name, au.Author_Surname
-FROM Book_Category bc
-JOIN Book b ON bc.Book_ID = b.Book_ID
-JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
-JOIN Author au ON ba.Author_ID = au.Author_ID
-WHERE bc.Category_ID = <category_name>			-- Replace with the desired category_name
-ORDER BY au.author_id;
+SELECT DISTINCT a.Author_Name, a.Author_Surname
+FROM Author a
+JOIN Book_Author ba ON a.Author_ID = ba.Author_ID
+JOIN Book_Category bc ON ba.Book_ID = bc.Book_ID
+JOIN Category c ON bc.Category_ID = c.Category_ID
+WHERE c.Category_Name = 'category_name';      -- Replace with the desired category_name
 
 //ξεχωριστά για το teachers
 
