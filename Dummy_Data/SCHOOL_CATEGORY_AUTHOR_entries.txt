@@ -66,7 +66,7 @@ VALUES
 (39, 'Jack', 'Martin', 3),
 (40, 'Amelia', 'Thompson', 3),
 (41, 'Carter', 'Hall', 3),
-(42, 'Scarlett', 'Clark', 3),
+(42, 'Scarlett', 'Clark', 10),
 (43, 'Daniel', 'Thomas', 3),
 (44, 'Madison', 'Allen', 3),
 (45, 'Gabriel', 'Walker', 3),
