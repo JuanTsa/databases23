@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `Borrowing` (
   `User_ID` int(50) NOT NULL,
   `Borrow_Date` date NOT NULL,
   `Due_Date` date NOT NULL,
-  `Returning_Date` date NOT NULL,
+  `Returning_Date` date,
   `Status` enum('Approved', 'Rejected') NOT NULL,
   PRIMARY KEY (`Borrowing_ID`),
   CONSTRAINT `fk_borrowing_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
