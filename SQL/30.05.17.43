@@ -6,8 +6,6 @@ CREATE TABLE IF NOT EXISTS `School_Unit` (
   `Email` varchar(50) NOT NULL,
   `Principal_Name` varchar(50) NOT NULL,
   `Principal_Surname` varchar(50) NOT NULL,
-  `Operator_Name` varchar(50) NOT NULL,
-  `Operator_Surname` varchar(50) NOT NULL,
   PRIMARY KEY (`School_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
