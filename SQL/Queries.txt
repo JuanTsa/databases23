@@ -170,6 +170,13 @@ WHERE DATEDIFF(CURDATE(), bor.Due_Date) > 0
   AND bor.Returning_Date IS NULL
 GROUP BY u.User_ID, u.Name, u.Surname;
 
+SELECT u.User_ID, u.Name, u.Surname, DATEDIFF(CURDATE(), bor.Due_Date) AS Delay_Days
+FROM User u
+JOIN Borrowing bor ON u.User_ID = bor.User_ID
+WHERE DATEDIFF(CURDATE(), bor.Due_Date) > 0
+  AND DATEDIFF(CURDATE(), bor.Due_Date) > <delay_days>                         -- Replace with the desired element
+  AND bor.Returning_Date IS NULL
+GROUP BY u.User_ID, u.Name, u.Surname;
 
 ----------------------------
 --------- QUERY 10 --------- Average Ratings per borrower and category (Search criteria: user/category)
