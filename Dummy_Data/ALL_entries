@@ -316,7 +316,12 @@ VALUES
 (147, 7998231322268, 5, 'One Flew Over the Cuckoos Nest', 'Wiley', 112, 'A unique and intriguing book, full of wonders and plot', 18, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'spanish', 'Science, Mythology, Cookbook', 19),
 (148, 4077997317891, 5, 'The Portrait of a Lady', 'Fantagraphics Books', 461, 'A unique and intriguing book, full of wonders and plot', 10, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'russian', 'Poetry, Self-help, Dystopian', 20),
 (149, 9505191997576, 5, 'The Outsiders', 'Springer Nature', 318, 'A unique and intriguing book, full of wonders and plot', 8, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'french', 'Mythology, Fiction, Nature', 10),
-(150, 6583076597204, 5, 'Ben-Hur', 'Scholastic Corporation', 970, 'A unique and intriguing book, full of wonders and plot', 16, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'spanish', 'Psychology, Suspense, Memoir', 19);
+(150, 6583076597204, 5, 'Ben-Hur', 'Scholastic Corporation', 970, 'A unique and intriguing book, full of wonders and plot', 16, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'spanish', 'Psychology, Suspense, Memoir', 19),
+(1111111111111, 5, 'title1', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13),
+(2222222222222, 5, 'title2', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13),
+(3333333333333, 5, 'title3', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13),
+(4444444444444, 5, 'title4', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13),
+(5555555555555, 5, 'title5', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13);
 
 
 
