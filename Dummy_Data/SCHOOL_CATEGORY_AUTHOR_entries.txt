@@ -25,10 +25,10 @@ VALUES
 
 INSERT INTO `Author` (`Author_ID`, `Author_Name`, `Author_Surname`, `Books_Written`)
 VALUES
-(1, 'John', 'Smith', 5),
-(2, 'Emma', 'Johnson', 3),
-(3, 'Michael', 'Williams', 2),
-(4, 'Sophia', 'Brown', 4),
+(1, 'John', 'Smith', 3),
+(2, 'Emma', 'Johnson', 1),
+(3, 'Michael', 'Williams', 3),
+(4, 'Sophia', 'Brown', 5),
 (5, 'William', 'Jones', 1),
 (6, 'Olivia', 'Miller', 5),
 (7, 'James', 'Davis', 3),
