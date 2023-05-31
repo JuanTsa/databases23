@@ -26,35 +26,20 @@ ORDER BY
 ---------------------------
 --------- QUERY 2 --------- For a given book category (user-selected), which authors belong to it and which teachers have borrowed books from that category in the last year?
 ---------------------------
-//η τομή των 2
-
-SELECT DISTINCT au.Author_Name, au.Author_Surname, u.Name, u.Surname
-FROM Book_Category bc
-JOIN Book b ON bc.Book_ID = b.Book_ID
-JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
-JOIN Author au ON ba.Author_ID = au.Author_ID
-JOIN Borrowing br ON b.Book_ID = br.Book_ID
-JOIN User u ON br.User_ID = u.User_ID
-WHERE bc.Category_Name = <category_name>			-- Replace with the desired category_name
-  AND br.Borrow_Date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
-  AND u.User_Type = 'Teacher';
-
-// ξεχωριστά για το author
 SELECT DISTINCT a.Author_Name, a.Author_Surname
 FROM Author a
 JOIN Book_Author ba ON a.Author_ID = ba.Author_ID
 JOIN Book_Category bc ON ba.Book_ID = bc.Book_ID
 JOIN Category c ON bc.Category_ID = c.Category_ID
-WHERE c.Category_Name = 'category_name';      -- Replace with the desired category_name
+WHERE c.Category_Name = 'category_name';               -- Replace with the desired category_name
 
-//ξεχωριστά για το teachers
 SELECT DISTINCT U.Name, U.Surname
 FROM User U
 JOIN Borrowing B ON U.User_ID = B.User_ID
 JOIN Book_Category BC ON B.Book_ID = BC.Book_ID
 JOIN Category C ON BC.Category_ID = C.Category_ID
 WHERE U.User_Type = 'Teacher'
-  AND C.Category_Name = 'category_name'     -- Replace with the desired category_name
+  AND C.Category_Name = 'category_name'                 -- Replace with the desired category_name
   AND B.Borrow_Date >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR);
 
 ---------------------------
@@ -91,7 +76,7 @@ FROM
   FROM School_Unit su
   JOIN User u ON su.School_ID = u.School_ID
   JOIN Borrowing bor ON u.User_ID = bor.User_ID
-  WHERE YEAR(bor.Borrow_Date) = <year> 			-- Replace with the user-selected year
+  WHERE YEAR(bor.Borrow_Date) = <year> 			        -- Replace with the user-selected year
   GROUP BY su.School_ID
   HAVING COUNT(bor.Borrowing_ID) > 20
 ) sb
@@ -106,7 +91,7 @@ WHERE sb.Total_Borrowings = (
   SELECT COUNT(bor.Borrowing_ID) AS Total_Borrowings
   FROM Borrowing bor
   WHERE bor.User_ID = op.User_ID
-  AND YEAR(bor.Borrow_Date) = <year> 			-- Replace with the user-selected year
+  AND YEAR(bor.Borrow_Date) = <year> 			          -- Replace with the user-selected year
   GROUP BY bor.User_ID
 );
 
@@ -146,15 +131,15 @@ SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surn
 FROM Book b
 JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
 JOIN Author a ON ba.Author_ID = a.Author_ID
-WHERE b.Title = '<title>' 		-- Replace with the desired element
+WHERE b.Title = '<title>' 		                       -- Replace with the desired element
 GROUP BY b.Book_ID;
 
 SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
 FROM Book b
 JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
 JOIN Author a ON ba.Author_ID = a.Author_ID
-WHERE a.Author_Name = '<author_name>' 		    -- Replace with the desired element
-   OR a.Author_Surname = '<author_surname>' 	-- Replace with the desired element
+WHERE a.Author_Name = '<author_name>' 		           -- Replace with the desired element
+   OR a.Author_Surname = '<author_surname>' 	       -- Replace with the desired element
 GROUP BY b.Book_ID;
 
 SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
@@ -163,14 +148,14 @@ JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
 JOIN Author a ON ba.Author_ID = a.Author_ID
 JOIN Book_Category bc ON b.Book_ID = bc.Book_ID
 JOIN Category c ON bc.Category_ID = c.Category_ID
-WHERE c.Category_Name = 'category_name' 	-- Replace with the desired element
+WHERE c.Category_Name = 'category_name' 	            -- Replace with the desired element
 GROUP BY b.Book_ID;
 
 SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
 FROM Book b
 JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
 JOIN Author a ON ba.Author_ID = a.Author_ID
-WHERE b.Pages = <pages> 			-- Replace with the desired element
+WHERE b.Pages = <pages> 			                        -- Replace with the desired element
 GROUP BY b.Book_ID;
 
 ---------------------------
@@ -181,7 +166,13 @@ GROUP BY b.Book_ID;
 ----------------------------
 --------- QUERY 10 --------- Average Ratings per borrower and category (Search criteria: user/category)
 ----------------------------
-
+SELECT u.User_ID, u.Name, u.Surname, AVG(r.Rating) AS Average_Rating
+FROM User u
+JOIN Review r ON u.User_ID = r.User_ID
+WHERE (u.User_Type = 'Student' OR u.User_Type = 'Teacher')
+AND u.Name = '<name>' 		                                -- Replace with the desired element
+AND u.Surname = '<surname>' 	                             -- Replace with the desired element
+GROUP BY u.User_ID, u.Name, u.Surname;
  
 --------------------
 ------- USER -------
