@@ -69,16 +69,14 @@ JOIN Category c ON bc.Category_ID = c.Category_ID
 WHERE c.Category_Name = 'category_name';      -- Replace with the desired category_name
 
 //ξεχωριστά για το teachers
-
-SELECT DISTINCT u.user_id, u.Name, u.Surname
-FROM Book_Category bc
-JOIN Book b ON bc.Book_ID = b.Book_ID
-JOIN Borrowing br ON b.Book_ID = br.Book_ID
-JOIN User u ON br.User_ID = u.User_ID
-WHERE bc.Category_ID = <category_name>			-- Replace with the desired category_name
-  AND br.Borrow_Date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
-  AND u.User_Type = 'Teacher'
-ORDER BY u.user_id;
+SELECT DISTINCT U.Name, U.Surname
+FROM User U
+JOIN Borrowing B ON U.User_ID = B.User_ID
+JOIN Book_Category BC ON B.Book_ID = BC.Book_ID
+JOIN Category C ON BC.Category_ID = C.Category_ID
+WHERE U.User_Type = 'Teacher'
+  AND C.Category_Name = 'category_name'     -- Replace with the desired category_name
+  AND B.Borrow_Date >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR);
 
 ---------------------------------------------------
 --------------------- CHECKED ---------------------
