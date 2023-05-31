@@ -110,7 +110,6 @@ WHERE sb.Total_Borrowings = (
   GROUP BY bor.User_ID
 );
 
-
 ---------------------------
 --------- QUERY 6 --------- Many books cover more than one category; among category pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings.
 ---------------------------
@@ -137,72 +136,31 @@ WHERE A.`Books_Written` < (
 ORDER BY A.`Books_Written` DESC;
 
 
-
 ------------------------
 ------- OPERATOR -------
 ------------------------
-1) Find all books by Title, Author (Search criteria: title/ category/ author/ copies).
-SELECT b.Title, a.Author_Name, a.Author_Surname
-FROM Book AS b
-JOIN Book_Author AS ba ON b.Book_ID = ba.Book_ID
-JOIN Author AS a ON ba.Author_ID = a.Author_ID
-JOIN Book_Category AS bc ON b.Book_ID = bc.Book_ID
-JOIN Category AS c ON bc.Category_ID = c.Category_ID
-WHERE b.Title LIKE '%search_term%'
-   OR c.Category_Name LIKE '%search_term%'
-   OR CONCAT(a.Author_Name, ' ', a.Author_Surname) LIKE '%search_term%'
-   OR b.Available_Copies >= search_term;
-   
+---------------------------
+--------- QUERY 8 --------- Find all books by Title, Author (Search criteria: title/ category/ author/ copies).
+---------------------------
 
 
-2) Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
-SELECT U.Name, U.Surname, DATEDIFF(NOW(), B.Due_Date) AS Delay_Days
-FROM User U
-JOIN Borrowing B ON U.User_ID = B.User_ID
-WHERE B.Status = 'Delayed';
+---------------------------
+--------- QUERY 9 --------- Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
+---------------------------
 
 
-
-3) Average Ratings per borrower and category (Search criteria: user/category)
-SELECT
-    u.Username AS User,
-    c.Category_Name AS Category,
-    AVG(r.Rating) AS AverageRating
-FROM
-    User u
-    JOIN Borrowing br ON u.User_ID = br.User_ID
-    JOIN Book b ON br.Book_ID = b.Book_ID
-    JOIN Book_Category bc ON b.Book_ID = bc.Book_ID
-    JOIN Category c ON bc.Category_ID = c.Category_ID
-    JOIN Rating r ON br.Borrowing_ID = r.Borrowing_ID
-WHERE
-    u.Username = 'your_username' -- Replace with the desired username
-    AND c.Category_Name = 'your_category' -- Replace with the desired category name
-GROUP BY
-    u.Username,
-    c.Category_Name;
-
+----------------------------
+--------- QUERY 10 --------- Average Ratings per borrower and category (Search criteria: user/category)
+----------------------------
 
  
 --------------------
 ------- USER -------
 --------------------
-1) List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
-SELECT b.Book_ID, b.Title, a.Author_Name, c.Category_Name
-FROM Book AS b
-LEFT JOIN Book_Author AS ba ON b.Book_ID = ba.Book_ID
-LEFT JOIN Author AS a ON ba.Author_ID = a.Author_ID
-LEFT JOIN Book_Category AS bc ON b.Book_ID = bc.Book_ID
-LEFT JOIN Category AS c ON bc.Category_ID = c.Category_ID
-WHERE b.Title LIKE '%search_term%'
-   OR a.Author_Name LIKE '%search_term%'
-   OR c.Category_Name LIKE '%search_term%';
+----------------------------
+--------- QUERY 11 --------- List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
+----------------------------
 
-
-
-2) List of all books borrowed by this user.
-SELECT b.Title
-FROM Book b
-JOIN Borrowing bor ON b.Book_ID = bor.Book_ID
-JOIN User u ON u.User_ID = bor.User_ID
-WHERE u.Username = 'logged-in-username';
+----------------------------
+--------- QUERY 12 --------- List of all books borrowed by this user.
+----------------------------
