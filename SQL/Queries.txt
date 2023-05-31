@@ -211,9 +211,16 @@ FROM Book b
 JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
 JOIN Author a ON ba.Author_ID = a.Author_ID
 WHERE a.Author_Name = '<author_name>'                       -- Replace with the desired element
-AND a.Author_Surname = '<author_surname>'                  -- Replace with the desired element
+AND a.Author_Surname = '<author_surname>'                   -- Replace with the desired element
 GROUP BY b.Book_ID, b.Title, b.Pages, b.Available_Copies, b.Inventory;
 
 ----------------------------
 --------- QUERY 12 --------- List of all books borrowed by this user.
 ----------------------------
+SELECT b.Book_ID, b.Title, GROUP_CONCAT(a.Author_Name, ' ', a.Author_Surname) AS Authors
+FROM Borrowing bor
+JOIN Book b ON bor.Book_ID = b.Book_ID
+JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
+JOIN Author a ON ba.Author_ID = a.Author_ID
+WHERE bor.User_ID = '<logged_in_user_id>'                    -- Replace with the desired element
+GROUP BY b.Book_ID, b.Title;
