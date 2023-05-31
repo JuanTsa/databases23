@@ -7,6 +7,12 @@ int main() {
        j++;
        if(j==47) j=1;
    }
+   j=1;
+   for(int i=1; i<151; i+=13){
+       printf("(%d, %d),\n", j, i);
+       j++;
+       if(j==47) j=1;
+   }
    
     return 0;
 }
