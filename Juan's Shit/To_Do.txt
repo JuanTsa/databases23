@@ -20,8 +20,6 @@ operator	registers	book, borrowing, reservation, review
 
 user		views		book, borrowing, reservation, review
 
-
-
 =======================
 ======== EXTRA ========
 =======================
@@ -34,8 +32,6 @@ A reservation cannot be made if a book has not been returned on time or if the s
 Users have the option to cancel any current reservations.
 
 Reservations have a time frame of one week and are automatically canceled once it expires.
-
-
 
 ============================
 ======== Labs To Do ========
