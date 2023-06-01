@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `Review` (
   `Review_Text` text NOT NULL,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
-  `Rating` int(1) NOT NULL,
+  `Rating` TINYINT(1) NOT NULL CHECK (Rating >= 1 AND Rating <= 5),
   `Status` enum('Approved', 'Rejected') NOT NULL,
   PRIMARY KEY (`Review_ID`),
   CONSTRAINT `fk_review_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
