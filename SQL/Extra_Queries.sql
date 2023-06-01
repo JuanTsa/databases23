@@ -29,6 +29,8 @@ INSERT INTO `User` (`School_ID`, `Username`, `Password`, `Name`, `Surname`, `Ema
 VALUES (<school_id>, '<username>', '<password>', '<name>', '<surname>', '<email>', <age>, 0, 0, <max_copies_borrowed>, <max_copies_reserved>, '<user_type>', 'Approved');
 
 ---- list with all users that have not been approved
+
+---- adds a new book
 -- school_id should be the same as the logged_in operator's school_id
 -- available_copies should automatically take the same value as inventory
 -- cover should not be a necessary field
