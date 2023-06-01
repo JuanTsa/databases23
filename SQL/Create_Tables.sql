@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `Reservation` (
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
   `Request_Date` date NOT NULL,
-  `Status` enum('Approved', 'On Hold') NOT NULL,
+  `Status` enum('Approved', 'On Hold', 'Completed') NOT NULL,
   PRIMARY KEY (`Reservation_ID`),
   CONSTRAINT `fk_reservation_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_reservation_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `Borrowing` (
   `Borrow_Date` date NOT NULL,
   `Due_Date` date NOT NULL,
   `Returning_Date` date,
-  `Status` enum('Approved', 'On Hold') NOT NULL,
+  `Status` enum('Approved', 'On Hold', 'Completed') NOT NULL,
   PRIMARY KEY (`Borrowing_ID`),
   CONSTRAINT `fk_borrowing_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_borrowing_user_id` FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
