@@ -23,12 +23,15 @@ INSERT INTO `Category` (`Category_Name`) VALUES ('<category_name>');
 INSERT INTO `Author` (`Author_Name`, `Author_Surname`) VALUES ('<author_name>', '<author_surname>');
 
 ---- adds a new user
+-- school_id should be the same as the logged_in operator's school_id
+-- max_copies should automatically select, depending on the user
 INSERT INTO `User` (`School_ID`, `Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`, `Status`)
-VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<email>', <age>, 0, 0, 0, 0, 'Operator', 'Approved');
+VALUES (<school_id>, '<username>', '<password>', '<name>', '<surname>', '<email>', <age>, 0, 0, <max_copies_borrowed>, <max_copies_reserved>, '<user_type>', 'Approved');
 
+---- list with all users that have not been approved
 
-INSERT INTO `Book` (`Book_ID`, `ISBN`, `School_ID`, `Title`, `Publisher`, `Pages`, `Summary`, `Available_Copies`, `Cover`, `Language`, `Keywords`, `Inventory`)
-VALUES
+INSERT INTO `Book` (`ISBN`, `School_ID`, `Title`, `Publisher`, `Pages`, `Summary`, `Available_Copies`, `Cover`, `Language`, `Keywords`, `Inventory`)
+VALUES (<isbn>, 
 
 INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`) VALUES (1, 1);
 
