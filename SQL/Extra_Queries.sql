@@ -24,14 +24,16 @@ INSERT INTO `Author` (`Author_Name`, `Author_Surname`) VALUES ('<author_name>', 
 
 ---- adds a new user
 -- school_id should be the same as the logged_in operator's school_id
--- max_copies should automatically select, depending on the user
+-- max_copies should automatically take a value, depending on the user
 INSERT INTO `User` (`School_ID`, `Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`, `Status`)
 VALUES (<school_id>, '<username>', '<password>', '<name>', '<surname>', '<email>', <age>, 0, 0, <max_copies_borrowed>, <max_copies_reserved>, '<user_type>', 'Approved');
 
 ---- list with all users that have not been approved
-
+-- school_id should be the same as the logged_in operator's school_id
+-- available_copies should automatically take the same value as inventory
+-- cover should not be a necessary field
 INSERT INTO `Book` (`ISBN`, `School_ID`, `Title`, `Publisher`, `Pages`, `Summary`, `Available_Copies`, `Cover`, `Language`, `Keywords`, `Inventory`)
-VALUES (<isbn>, 
+VALUES (<isbn>, <school_id>, '<title>', '<publisher', <pages>, '<summary>', <available_copies>, '<cover>', '<language>', '<keywords>', <inventory>);
 
 INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`) VALUES (1, 1);
 
