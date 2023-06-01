@@ -71,7 +71,8 @@ VALUES
 (44, 'Madison', 'Allen'),
 (45, 'Gabriel', 'Walker'),
 (46, 'Layla', 'Perez'),
-('Malakas', 'Malakistiri');
+(47, 'Malakas', 'Malakistiri'),
+(48, 'Juan', 'Tsa');
 
 
 
@@ -322,8 +323,9 @@ VALUES
 (2222222222222, 5, 'title2', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13),
 (3333333333333, 5, 'title3', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13),
 (4444444444444, 5, 'title4', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13),
-(5555555555555, 5, 'title5', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13);
-
+(5555555555555, 5, 'title5', 'Tor Books', 250, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'chinese', 'Philosophy, Psychology, Adventure', 13),
+(6666666666666, 1, '64_Reserved', 'Tor Books', 666, 'A unique and intriguing book, full of wonders and plot', 0, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'english', 'Philosophy, Psychology, Adventure', 64),
+(7777777777777, 1, '64_Borrowed', 'Tor Books', 777, 'A unique and intriguing book, full of wonders and plot', 3, 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png', 'english', 'Philosophy, Psychology, Adventure', 67);
 
 
 INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`)
@@ -508,7 +510,14 @@ VALUES
 (42, 150),
 (42, 149),
 (42, 148),
-(42, 147);
+(42, 147),
+(47, 151),
+(47, 152),
+(47, 153),
+(47, 154),
+(47, 155),
+(48, 156),
+(48, 157);
 
 
 
@@ -688,11 +697,13 @@ VALUES
 (3, 132),
 (3, 144),
 (4, 145),
-(47, 151),
-(47, 152),
-(47, 153),
-(47, 154),
-(47, 155);
+(1, 151),
+(2, 152),
+(3, 153),
+(4, 154),
+(5, 155),
+(6, 156),
+(7, 157);
 
 
 
