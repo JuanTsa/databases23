@@ -1,4 +1,4 @@
--- I put here some extra queries for the website (mostly are supposed to be only for the operator).
+-- I put here some extra queries for the website
 -- You'd change only the <...> with the desired variable. If something is in this format: '<...>' DO NOT DELETE the single quotes ''.
 
 -- -------------
