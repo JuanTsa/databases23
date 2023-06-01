@@ -2,8 +2,7 @@
 Problems To Solve:
 -> If the text input has an ' in it, the query doesn't work
 -> What if 2 different schools have the same book, just different copies?
--> I should add some books/borrowings/reservations so to be on par with the users' copies_borrowed/reserved.
--> Current copies_borrowed/reserved = 64
+-> I should add some books/borrowings/reservations so to be on par with the users' copies_borrowed/reserved (Current copies_borrowed/reserved = 64)
 =========================================================================
 
 ===============================
