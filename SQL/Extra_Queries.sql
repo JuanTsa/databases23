@@ -5,3 +5,5 @@ INSERT INTO `Category` (`Category_Name`) VALUES ('<category_name>');
 
 INSERT INTO `Author` (`Author_Name`, `Author_Surname`) VALUES ('<author_name>', '<author_surname>');
 
+INSERT INTO `Book` (
+
