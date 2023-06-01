@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `Name` varchar(50) NOT NULL,
   `Surname` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Birth_Date` date NOT NULL,
+  `Age` int(3) NOT NULL,
   `Copies_Borrowed` int(50) NOT NULL,
   `Copies_Reserved` int(50) NOT NULL,
   `Max_Copies_Borrowed` int(50) NOT NULL,
