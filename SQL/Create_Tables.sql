@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `Name` varchar(50) NOT NULL,
   `Surname` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Age` int(3) NOT NULL,
+  `Birth_Date` date NOT NULL,
   `Copies_Borrowed` int(50) NOT NULL,
   `Copies_Reserved` int(50) NOT NULL,
   `Max_Copies_Borrowed` int(50) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `Author` (
 
 CREATE TABLE IF NOT EXISTS `Book` (
   `Book_ID` INT(50) NOT NULL AUTO_INCREMENT,
-  `ISBN` VARCHAR(13) NOT NULL,
+  `ISBN` VARCHAR(13) NOT NULL UNIQUE,
   `School_ID` INT(50) NOT NULL,
   `Title` VARCHAR(50) NOT NULL,
   `Publisher` VARCHAR(50) NOT NULL,
