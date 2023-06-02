@@ -59,7 +59,23 @@ WHERE u.School_ID = (SELECT School_ID FROM User WHERE User_ID = <operator_user_i
 
 ---- (-) New_Reservation
 ---- Approve_Reservation
----- Show_Reservations_Per_User (-history and active)
+
+---- Show_Reservations_Per_User (history)
+SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.Request_Date, r.Status
+FROM Reservation r
+INNER JOIN User u ON r.User_ID = u.User_ID
+INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
+WHERE u.School_ID = (SELECT School_ID FROM User WHERE User_ID = <operator_user_id>)
+  AND r.Status = 'Approved';
+  
+---- Show_Reservations_Per_User (active)
+SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.Request_Date, r.Status
+FROM Reservation r
+INNER JOIN User u ON r.User_ID = u.User_ID
+INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
+WHERE u.School_ID = (SELECT School_ID FROM User WHERE User_ID = <operator_user_id>)
+  AND r.Status = 'Approved'
+  AND r.Returning_Date IS NULL;
 
 ---- Approve_Review
 ---- Show_Reviews_Per_User
