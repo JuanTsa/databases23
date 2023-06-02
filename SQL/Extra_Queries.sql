@@ -1,7 +1,8 @@
 -- You'd change only the <...> with the desired variable. If something is in this format: '<...>' DO NOT DELETE the single quotes ''.
-
+-- ----------------
 -- ----------------
 -- ADMINISTRATOR
+-- ----------------
 -- ----------------
 ---- New_School
 INSERT INTO `School_Unit` (`School_Name`, `Address`, `Phone`, `Email`, `Principal_Name`, `Principal_Surname`)
@@ -24,9 +25,10 @@ VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<emai
 
 
 
-
+-- ----------------
 -- ----------------
 -- OPERATOR (only for their school)
+-- ----------------
 -- ----------------
 ---- (-) New_User
 --    \>>max_copies should automatically take a value, depending on the user
@@ -91,19 +93,16 @@ INNER JOIN Book bk ON rv.Book_ID = bk.Book_ID
 WHERE u.School_ID = <operator_school_id>			-- Replace with the desired element
   AND rv.Status = 'Approved';
 
-
 ---- New_Category
 INSERT INTO `Category` (`Category_Name`) VALUES ('<category_name>');
 
 ---- New_Author
 INSERT INTO `Author` (`Author_Name`, `Author_Surname`) VALUES ('<author_name>', '<author_surname>');
 
-
-
-
-
+-- ----------------
 -- ----------------
 -- STUDENTS AND TEACHERS
+-- ----------------
 -- ----------------
 ---- Show_My_Loans (History)
 SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, b.Borrow_Date, b.Due_Date, b.Returning_Date
@@ -142,7 +141,9 @@ WHERE u.User_ID = <logged_in_user_id> 					-- Replace with the desired element
 ---- (-) Cancel_Reservation
 
 -- ----------------
+-- ----------------
 -- ALL_USERS
+-- ----------------
 -- ----------------
 ---- View_Books_In_My_School
 	---- \>> admin can see all schools
