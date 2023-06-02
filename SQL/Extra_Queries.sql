@@ -107,7 +107,7 @@ INNER JOIN Book bk ON b.Book_ID = bk.Book_ID
 WHERE u.User_ID = <logged_in_user_id>					-- Replace with the desired element
    AND b.Returning_Date is NULL;
 
----- Show_My_Reservations (history)
+---- Show_My_Reservations (active)
 SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, u.User_Type, r.Request_Date, r.Status
 FROM Reservation r
 INNER JOIN User u ON r.User_ID = u.User_ID
