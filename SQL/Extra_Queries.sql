@@ -137,7 +137,7 @@ WHERE u.User_ID = <logged_in_user_id> 					-- Replace with the desired element
 
 ---- New_Loan
 INSERT INTO `Borrowing` (`Book_ID`, `User_ID`, `Borrow_Date`, `Due_Date`, `Returning_Date`, `Status`)
-VALUES (<book_id>, <logged_in_user_id>, <todays_date>, <todays_date>+7, '', 'On Hold');
+VALUES (<book_id>, <logged_in_user_id>, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 7 DAY), '', 'On Hold');
 
 ---- New_Reservation
 ---- New_Review
