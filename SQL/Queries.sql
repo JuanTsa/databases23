@@ -185,8 +185,7 @@ SELECT u.User_ID, u.Name, u.Surname, AVG(r.Rating) AS Average_Rating
 FROM User u
 JOIN Review r ON u.User_ID = r.User_ID
 WHERE (u.User_Type = 'Student' OR u.User_Type = 'Teacher')
-AND u.Name = '<name>' 		                                -- Replace with the desired element
-AND u.Surname = '<surname>' 	                            -- Replace with the desired element
+AND u.username = '<username>' 		                                -- Replace with the desired element
 GROUP BY u.User_ID, u.Name, u.Surname;
 
 SELECT u.User_ID, u.Name, u.Surname, AVG(r.Rating) AS Average_Rating
