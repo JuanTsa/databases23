@@ -10,7 +10,7 @@ BEGIN
 END$$
 
 DELIMITER $$
-CREATE TRIGGER update_user_borrowing
+CREATE TRIGGER update_user_reserved
 AFTER INSERT ON `Reservation`
 FOR EACH ROW
 BEGIN
