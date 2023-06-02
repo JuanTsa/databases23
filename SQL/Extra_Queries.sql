@@ -23,6 +23,8 @@ VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<emai
 
 
 
+
+
 -- ----------------
 -- OPERATOR (only for their school)
 -- ----------------
@@ -73,13 +75,31 @@ WHERE u.School_ID =  <operator_school_id>			-- Replace with the desired element
   AND r.Status = 'Approved';
 
 ---- Approve_Review
+SELECT rv.Review_ID, rv.Book_ID, bk.Title, u.Username, u.Name, u.Surname, rv.Rating, rv.Review_Text
+FROM Review rv
+INNER JOIN User u ON rv.User_ID = u.User_ID
+INNER JOIN Book bk ON rv.Book_ID = bk.Book_ID
+WHERE u.School_ID = <operator_school_id>			-- Replace with the desired element
+  AND rv.Status = 'On Hold';
+
 ---- Show_Reviews_Per_User
+SELECT rv.Review_ID, rv.Book_ID, bk.Title, u.Username, u.Name, u.Surname, rv.Rating, rv.Review_Text
+FROM Review rv
+INNER JOIN User u ON rv.User_ID = u.User_ID
+INNER JOIN Book bk ON rv.Book_ID = bk.Book_ID
+WHERE u.School_ID = <operator_school_id>			-- Replace with the desired element
+  AND rv.Status = 'Approved';
+
 
 ---- New_Category
 INSERT INTO `Category` (`Category_Name`) VALUES ('<category_name>');
 
 ---- New_Author
 INSERT INTO `Author` (`Author_Name`, `Author_Surname`) VALUES ('<author_name>', '<author_surname>');
+
+
+
+
 
 -- ----------------
 -- STUDENTS AND TEACHERS
@@ -104,10 +124,16 @@ SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.R
 FROM Reservation r
 INNER JOIN User u ON r.User_ID = u.User_ID
 INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
-WHERE u.User_ID =  <logged_in_user_id>			-- Replace with the desired element
+WHERE u.User_ID =  <logged_in_user_id>					-- Replace with the desired element
   AND r.Status = 'Approved';
   
 ---- Show_My_Reviews
+SELECT rv.Review_ID, bk.Book_ID, bk.Title, u.Username, u.Name, u.Surname, rv.Rating, rv.Review_Text
+FROM Review rv
+INNER JOIN User u ON rv.User_ID = u.User_ID
+INNER JOIN Book bk ON rv.Book_ID = bk.Book_ID
+WHERE u.User_ID = <logged_in_user_id> 					-- Replace with the desired element
+   AND rv.Status = 'Approved';
 
 ---- New_Loan
 ---- New_Reservation
