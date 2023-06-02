@@ -1,4 +1,6 @@
 -- You'd change only the <...> with the desired variable. If something is in this format: '<...>' DO NOT DELETE the single quotes ''.
+-- This symbol (-) means that Chris' team haven't included it in their database
+
 -- ----------------
 -- ----------------
 -- ADMINISTRATOR
