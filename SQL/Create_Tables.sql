@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `User` (
 
 CREATE TABLE IF NOT EXISTS `Category` (
   `Category_ID` INT NOT NULL AUTO_INCREMENT,
-  `Category_Name` VARCHAR(50) NOT NULL,
+  `Category_Name` VARCHAR(50) NOT NULL UNIQUE,
    PRIMARY KEY (`Category_ID`)
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
