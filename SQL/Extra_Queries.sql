@@ -118,7 +118,7 @@ FROM Borrowing b
 INNER JOIN User u ON b.User_ID = u.User_ID
 INNER JOIN Book bk ON b.Book_ID = bk.Book_ID
 WHERE u.User_ID = <logged_in_user_id>					-- Replace with the desired element
-   AND b.Returning_Date is NULL;
+   AND (b.Returning_Date IS NULL OR b.Returning_Date = '');
 
 ---- Show_My_Reservations (Active)
 SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.Request_Date, r.Status
