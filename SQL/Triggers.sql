@@ -101,8 +101,6 @@ END$$
 
 ---- NOT NEW BORROW IF DELAYED
 
----- NOT TWO SAME BOOKS
-
 ---- New_Book to School_Unit with != ISBN
 ---- Το ισβν δεν χρειάζεται να είναι unique, αρκεί να μην βάλει στο ίδιο σχολείο το ίδιο βιβλίο
 ---- σε διαφορετικά σχολεία το ίδιο βιβλίο είναι κομπλέ
