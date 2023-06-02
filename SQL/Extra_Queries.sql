@@ -27,11 +27,14 @@ VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<emai
 -- OPERATOR (only for their school)
 -- ----------------
 ---- (-) New_User
+--    \>>max_copies should automatically take a value, depending on the user
 ---- (-) Alter_User
 ---- Approve_User
 ---- Delete_User
 
 ---- New_Book
+-- 	\>> available_copies should automatically take the same value as inventory
+-- 	\>> cover should not be a necessary field
 ---- Alter_Book
 ---- (-) Delete_Book
 
@@ -85,19 +88,6 @@ INSERT INTO `Category` (`Category_Name`) VALUES ('<category_name>');
 
 ---- New_Author
 INSERT INTO `Author` (`Author_Name`, `Author_Surname`) VALUES ('<author_name>', '<author_surname>');
-
----- adds a new user
--- school_id should be the same as the logged_in operator's school_id
--- max_copies should automatically take a value, depending on the user
-INSERT INTO `User` (`School_ID`, `Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`, `Status`)
-VALUES (<school_id>, '<username>', '<password>', '<name>', '<surname>', '<email>', <age>, 0, 0, <max_copies_borrowed>, <max_copies_reserved>, '<user_type>', 'Approved');
-
----- list with all users that have not been approved
-
----- adds a new book
--- school_id should be the same as the logged_in operator's school_id
--- available_copies should automatically take the same value as inventory
--- cover should not be a necessary field
 
 -- ----------------
 -- STUDENTS AND TEACHERS
