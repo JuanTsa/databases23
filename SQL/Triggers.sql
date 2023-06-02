@@ -88,3 +88,15 @@ BEGIN
 END$$
 
 
+---- DELETE Reservation WHEN 7 days are past
+DELIMITER $$
+
+CREATE TRIGGER delete_expired_reservation
+BEFORE INSERT ON `Reservation`
+FOR EACH ROW
+BEGIN
+    IF NEW.`request_date` < DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN
+        DELETE FROM `Reservation` WHERE `Reservation_ID` = NEW.`Reservation_ID`;
+    END IF;
+END$$
+
