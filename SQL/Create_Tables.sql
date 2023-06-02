@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `Cover` VARCHAR(1000) NOT NULL DEFAULT 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png',
   `Language` VARCHAR(50) NOT NULL,
   `Keywords` VARCHAR(100) NOT NULL,
-  `Inventory` INT(50) NOT NULL,
+  `Inventory` INT(50) NOT NULL CHECK (Inventory > 0),
   PRIMARY KEY (`Book_ID`),
   CONSTRAINT `fk_book_school_id` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
