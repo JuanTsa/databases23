@@ -44,7 +44,15 @@ SELECT * FROM User WHERE User_Type = 'Operator' AND Status = 'On Hold';
 ---- (-) Delete_Book
 
 ---- (-) New_Loan
+
+
 ---- Approve_Loan
+SELECT br.Borrowing_ID, br.Book_ID, bk.Title, u.Username, u.Name, u.Surname, br.Borrow_Date, br.Due_Date, br.Returning_Date
+FROM Borrowing br
+INNER JOIN User u ON br.User_ID = u.User_ID
+INNER JOIN Book bk ON br.Book_ID = bk.Book_ID
+WHERE u.School_ID = <operator_school_id>		-- Replace with the desired element
+AND br.Status = 'On Hold';
 
 ---- Show_Loans_Per_User (history)
 SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, u.User_Type, b.Borrow_Date, b.Due_Date, b.Returning_Date
@@ -69,6 +77,12 @@ WHERE u.School_ID = <operator_school_id>		-- Replace with the desired element
 
 ---- (-) New_Reservation
 ---- Approve_Reservation
+SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.Request_Date
+FROM Reservation r
+INNER JOIN User u ON r.User_ID = u.User_ID
+INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
+WHERE u.School_ID = <operator_school_id>		-- Replace with the desired element
+AND r.Status = 'On Hold';
 
 ---- Show_Reservations_Per_User (active)
 SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, u.User_Type, r.Request_Date, r.Status
