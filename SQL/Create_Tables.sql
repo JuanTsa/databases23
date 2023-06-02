@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `Borrowing` (
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
   `Borrow_Date` date NOT NULL DEFAULT CURRENT_DATE,
-  `Due_Date` date NOT NULL DEFAULT DATE_ADD(borrowing_date, INTERVAL 1 WEEK),
+  `Due_Date` date NOT NULL DEFAULT DATE_ADD(borrow_date, INTERVAL 1 WEEK),
   `Returning_Date` date,
   `Status` enum('Approved', 'On Hold') NOT NULL,
   PRIMARY KEY (`Borrowing_ID`),
