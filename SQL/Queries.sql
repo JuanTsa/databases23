@@ -166,7 +166,8 @@ FROM User u
 JOIN Borrowing bor ON u.User_ID = bor.User_ID
 WHERE DATEDIFF(CURDATE(), bor.Due_Date) > 0
   AND u.Name = '<name>'                                         -- Replace with the desired element
-  AND u.Surname = '<surname>'                                         -- Replace with the desired element
+  AND u.Surname = '<surname>'                                   -- Replace with the desired element
+  AND u.School_ID = <operator_school_id>                        -- Replace with the desired element
   AND bor.Returning_Date IS NULL
 GROUP BY u.User_ID, u.Name, u.Surname;
 
@@ -175,6 +176,7 @@ FROM User u
 JOIN Borrowing bor ON u.User_ID = bor.User_ID
 WHERE DATEDIFF(CURDATE(), bor.Due_Date) > 0
   AND DATEDIFF(CURDATE(), bor.Due_Date) > <delay_days>                         -- Replace with the desired element
+  AND u.School_ID = <operator_school_id>                        -- Replace with the desired element
   AND bor.Returning_Date IS NULL
 GROUP BY u.User_ID, u.Name, u.Surname;
 
