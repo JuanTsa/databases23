@@ -91,3 +91,12 @@ INSERT INTO `Review` (`Review_ID`, `Review_Text`, `Book_ID`, `User_ID`, `Rating`
 ---- New_Reservation
 ---- New_Review
 ---- (-) Cancel_Reservation
+
+-- ----------------
+-- ALL_USERS
+-- ----------------
+---- View_Books_In_My_School
+	---- \>> admin can see all schools
+---- My_Profile
+	---- \>> all users except students can change all info
+	---- |>> students can change only pwd
