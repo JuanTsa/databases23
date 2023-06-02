@@ -65,7 +65,7 @@ SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.R
 FROM Reservation r
 INNER JOIN User u ON r.User_ID = u.User_ID
 INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
-WHERE u.School_ID = (SELECT School_ID FROM User WHERE User_ID = <operator_user_id>)
+WHERE u.School_ID = (SELECT School_ID FROM User WHERE User_ID = <operator_user_id>)			-- Replace with the desired element
   AND r.Status = 'Approved';
   
 ---- Show_Reservations_Per_User (active)
@@ -73,7 +73,7 @@ SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.R
 FROM Reservation r
 INNER JOIN User u ON r.User_ID = u.User_ID
 INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
-WHERE u.School_ID = (SELECT School_ID FROM User WHERE User_ID = <operator_user_id>)
+WHERE u.School_ID = (SELECT School_ID FROM User WHERE User_ID = <operator_user_id>)			-- Replace with the desired element
   AND r.Status = 'Approved'
   AND r.Returning_Date IS NULL;
 
