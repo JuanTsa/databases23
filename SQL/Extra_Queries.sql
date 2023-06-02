@@ -38,7 +38,13 @@ VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<emai
 
 ---- (-) New_Loan
 ---- Approve_Loan
----- Show_Loans_Per_User (-history and active)
+---- Show_Loans_Per_User ((-)history and active)
+SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, b.Borrow_Date, b.Due_Date, b.Returning_Date
+FROM Borrowing b
+INNER JOIN User u ON b.User_ID = u.User_ID
+INNER JOIN Book bk ON b.Book_ID = bk.Book_ID
+WHERE u.School_ID = (SELECT School_ID FROM User WHERE User_ID = <operator_user_id>);			-- Replace with the desired element
+
 ---- New_Return
 ---- Delayed_Loans
 
