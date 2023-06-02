@@ -1,0 +1,27 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<div class="card-body" id="card">
+    <table class="table table-striped table-sm table-borderless">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Delay Days</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td> {{ result.User_ID }} </td>
+                <td> {{ result.Username }} </td>
+                <td> {{ result.Name }} </td>
+                <td> {{ result.Surname }} </td>
+                <td> {{ result.Delay_Days }} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
