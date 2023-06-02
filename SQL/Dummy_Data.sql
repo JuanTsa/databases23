@@ -70,7 +70,9 @@ VALUES
 (43, 'Daniel', 'Thomas'),
 (44, 'Madison', 'Allen'),
 (45, 'Gabriel', 'Walker'),
-(46, 'Layla', 'Perez');
+(46, 'Layla', 'Perez'),
+(47, 'Mister', 'Nimbus'),
+(48, 'HP', 'Lovecraft');
 
 
 
