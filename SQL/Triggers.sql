@@ -41,12 +41,14 @@ END$$
 ---- CHANGE Available_Copies WHEN Completed_Borrowing
 DELIMITER $$
 CREATE TRIGGER update_book_returning
-AFTER DELETE ON `Borrowing`
+AFTER UPDATE ON `Borrowing`
 FOR EACH ROW
 BEGIN
-    UPDATE `Book`
-    SET `Available_Copies` = `Available_Copies` + 1
-    WHERE `Book_ID` = OLD.`Book_ID`;
+    IF NEW.`Returning_Date` IS NOT NULL AND NEW.`Returning_Date` != '' THEN
+        UPDATE `Book`
+        SET `Available_Copies` = `Available_Copies` + 1
+        WHERE `Book_ID` = OLD.`Book_ID`;
+    END IF;
 END$$
 
 
