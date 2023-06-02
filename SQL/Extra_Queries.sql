@@ -17,7 +17,7 @@ VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<emai
 ---- Alter_Operator
 
 ---- Approve_Operator
-
+SELECT 
 ---- Backup
 
 ---- Restore
@@ -40,14 +40,14 @@ VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<emai
 ---- Approve_Loan
 
 ---- Show_Loans_Per_User (history)
-SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, b.Borrow_Date, b.Due_Date, b.Returning_Date
+SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, u.User_Type, b.Borrow_Date, b.Due_Date, b.Returning_Date
 FROM Borrowing b
 INNER JOIN User u ON b.User_ID = u.User_ID
 INNER JOIN Book bk ON b.Book_ID = bk.Book_ID
 WHERE u.School_ID =  <operator_school_id>;			-- Replace with the desired element
 
 ---- Show_Loans_Per_User (active)
-SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, b.Borrow_Date, b.Due_Date, b.Returning_Date
+SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, u.User_Type, b.Borrow_Date, b.Due_Date, b.Returning_Date
 FROM Borrowing b
 INNER JOIN User u ON b.User_ID = u.User_ID
 INNER JOIN Book bk ON b.Book_ID = bk.Book_ID
@@ -61,7 +61,7 @@ WHERE u.School_ID =  <operator_school_id>			-- Replace with the desired element
 ---- Approve_Reservation
 
 ---- Show_Reservations_Per_User (history)
-SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.Request_Date, r.Status
+SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, u.User_Type, r.Request_Date, r.Status
 FROM Reservation r
 INNER JOIN User u ON r.User_ID = u.User_ID
 INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
@@ -69,7 +69,7 @@ WHERE u.School_ID =  <operator_school_id>			-- Replace with the desired element
   AND r.Status = 'Approved';
   
 ---- Show_Reservations_Per_User (active)
-SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.Request_Date, r.Status
+SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, u.User_Type, r.Request_Date, r.Status
 FROM Reservation r
 INNER JOIN User u ON r.User_ID = u.User_ID
 INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
