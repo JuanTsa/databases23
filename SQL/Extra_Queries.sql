@@ -7,11 +7,19 @@
 ---- adds a new school unit
 INSERT INTO `School_Unit` (`School_Name`, `Address`, `Phone`, `Email`, `Principal_Name`, `Principal_Surname`) VALUES ('<school_name>', '<address>', <phone>, '<email>', '<principal_name>', '<principal_surname>');
 
+---- alters a school unit
+
 ---- adds a new operator (so by default some values)
 INSERT INTO `User` (`School_ID`, `Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`, `Status`) 
 VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<email>', <age>, 0, 0, 0, 0, 'Operator', 'Approved');
 
----- list with all operators that have not been approved
+---- alters a operator
+
+---- lists with all un-approved operators
+
+---- backups
+
+---- restores
 
 -- --------
 -- OPERATOR
