@@ -115,7 +115,7 @@ INSERT INTO `Review` (`Review_ID`, `Review_Text`, `Book_ID`, `User_ID`, `Rating`
 -- STUDENTS AND TEACHERS
 -- ----------------
 ---- Show_My_Loans
----- Show_My_Reservatiosn
+---- Show_My_Reservations
 ---- Show_My_Reviews
 
 ---- New_Loan
