@@ -136,7 +136,9 @@ WHERE u.User_ID = <logged_in_user_id> 					-- Replace with the desired element
    AND rv.Status = 'Approved';
 
 ---- New_Loan
-INSERT INTO `Borrowing` (
+INSERT INTO `Borrowing` (`Book_ID`, `User_ID`, `Borrow_Date`, `Due_Date`, `Returning_Date`, `Status`)
+VALUES (<book_id>, <logged_in_user_id>, <todays_date>, <todays_date>+7, '', 'On Hold');
+
 ---- New_Reservation
 ---- New_Review
 ---- (-) Cancel_Reservation
