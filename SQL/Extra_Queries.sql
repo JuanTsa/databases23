@@ -137,13 +137,16 @@ WHERE u.User_ID = <logged_in_user_id> 					-- Replace with the desired element
 
 ---- New_Loan
 INSERT INTO `Borrowing` (`Book_ID`, `User_ID`, `Borrow_Date`, `Due_Date`, `Returning_Date`, `Status`)
-VALUES (<book_id>, <logged_in_user_id>, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 7 DAY), '', 'On Hold');
+VALUES (<book_id>, <logged_in_user_id>, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 7 DAY), '', 'On Hold');			-- Replace with the desired elements
 
 ---- New_Reservation
 INSERT INTO `Reservation` (`Book_ID`, `User_ID`, `Request_Date`, `Status`)
-VALUES (<book_id>, <logged_in_user_id>, CURDATE(), 'On Hold');
+VALUES (<book_id>, <logged_in_user_id>, CURDATE(), 'On Hold');					-- Replace with the desired elements
 
 ---- New_Review
+INSERT INTO `Review` (`Review_Text`, `Book_ID`, `User_ID`, `Rating`, `Status`) 
+VALUES ('<review_text>', <book_id>, <logged_in_user_id>, <rating>, 'On Hold'); 			-- Replace with the desired elements
+
 ---- (-) Cancel_Reservation
 
 -- ----------------
