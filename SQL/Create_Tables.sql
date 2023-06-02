@@ -49,11 +49,12 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `Publisher` VARCHAR(50) NOT NULL,
   `Pages` INT(50) NOT NULL,
   `Summary` TEXT NOT NULL,
-  `Available_Copies` INT(50) NOT NULL,
+  `Available_Copies` INT(50) NOT NULL CHECK (Available_Copies >= 0),
   `Cover` VARCHAR(1000) NOT NULL DEFAULT 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png',
   `Language` VARCHAR(50) NOT NULL,
   `Keywords` VARCHAR(100) NOT NULL,
-  `Inventory` INT(50) NOT NULL CHECK (Inventory > 0),
+  `Inventory` INT(50) NOT NULL CHECK (Inventory >= 0),
+  CONSTRAINT `chk_available_copies` CHECK (`Available_Copies` <= `Inventory`),
   PRIMARY KEY (`Book_ID`),
   CONSTRAINT `fk_book_school_id` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
