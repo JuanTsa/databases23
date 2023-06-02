@@ -136,6 +136,7 @@ WHERE u.User_ID = <logged_in_user_id> 					-- Replace with the desired element
    AND rv.Status = 'Approved';
 
 ---- New_Loan
+INSERT INTO `Borrowing` (
 ---- New_Reservation
 ---- New_Review
 ---- (-) Cancel_Reservation
