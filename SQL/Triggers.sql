@@ -60,34 +60,6 @@ BEGIN
 END$$
 
 
----- ENFORCE max_copies_borrowed WHEN New_Borrowing
-DELIMITER $$
-CREATE TRIGGER enforce_max_borrowed_copies
-BEFORE INSERT ON `Borrowing`
-FOR EACH ROW
-BEGIN
-    DECLARE borrowed_count INT;
-    SET borrowed_count = (SELECT COUNT(*) FROM `Borrowing` WHERE `User_ID` = NEW.`User_ID` AND `Status` = 'Approved');
-    IF borrowed_count >= (SELECT `Max_Copies_Borrowed` FROM `User` WHERE `User_ID` = NEW.`User_ID`) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Maximum borrowed copies reached.';
-    END IF;
-END$$
-
-
----- ENFORCE max_copies_reserved WHEN New_Reservation
-DELIMITER $$
-CREATE TRIGGER enforce_max_reserved_copies
-BEFORE INSERT ON `Reservation`
-FOR EACH ROW
-BEGIN
-    DECLARE reserved_count INT;
-    SET reserved_count = (SELECT COUNT(*) FROM `Reservation` WHERE `User_ID` = NEW.`User_ID` AND `Status` = 'Approved');
-    IF reserved_count >= (SELECT `Max_Copies_Reserved` FROM `User` WHERE `User_ID` = NEW.`User_ID`) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Maximum reserved copies reached.';
-    END IF;
-END$$
-
-
 ---- DELETE Reservation WHEN 7 days are past
 DELIMITER $$
 CREATE TRIGGER delete_expired_reservation
@@ -101,12 +73,9 @@ END$$
 
 ---- NOT NEW BORROW IF DELAYED
 
-
 ---- reservation/borrowing cannot be done if you have the same copy
 ---- reservation/borrowing cannot be done from another school
 ---- reservation/borrowing cannot be done if available_copies = 0
-
----- TA MAX ΜΠΟΡΩ ΝΑ ΤΑ ΒΑΛΩ ΣΤΑ CREATE
 
 ---- New_Book to School_Unit with != ISBN
 ---- Το ισβν δεν χρειάζεται να είναι unique, αρκεί να μην βάλει στο ίδιο σχολείο το ίδιο βιβλίο
