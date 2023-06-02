@@ -90,7 +90,6 @@ END$$
 
 ---- DELETE Reservation WHEN 7 days are past
 DELIMITER $$
-
 CREATE TRIGGER delete_expired_reservation
 BEFORE INSERT ON `Reservation`
 FOR EACH ROW
