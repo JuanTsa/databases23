@@ -101,6 +101,8 @@ END$$
 
 ---- NOT NEW BORROW IF DELAYED
 
+---- reservation/borrowing cannot be done if you have the same copy
+
 ---- TA MAX ΜΠΟΡΩ ΝΑ ΤΑ ΒΑΛΩ ΣΤΑ CREATE
 
 ---- New_Book to School_Unit with != ISBN
