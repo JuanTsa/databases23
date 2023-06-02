@@ -56,9 +56,10 @@ SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, u.Use
 FROM Borrowing b
 INNER JOIN User u ON b.User_ID = u.User_ID
 INNER JOIN Book bk ON b.Book_ID = bk.Book_ID
-WHERE u.School_ID =  <operator_school_id>			-- Replace with the desired element
-  AND b.Status = 'Approved',
-  AND b.Returning_Date IS NULL;
+WHERE u.School_ID = <operator_school_id>		-- Replace with the desired element
+  AND b.Status = 'Approved'
+  AND (b.Returning_Date IS NULL OR b.Returning_Date = '');
+
 
 ---- New_Return
 ---- Delayed_Loans
