@@ -20,11 +20,11 @@ CREATE TABLE IF NOT EXISTS `User` (
   `Age` int(3) NOT NULL,
   `Copies_Borrowed` int(50) NOT NULL,
   `Copies_Reserved` int(50) NOT NULL,
-  `Max_Copies_Borrowed` int(50) NOT NULL,
-  `Max_Copies_Reserved` int(50) NOT NULL,
+  `Max_Copies` int(50) NOT NULL,
   `User_Type` enum('Administrator', 'Operator', 'Teacher', 'Student') NOT NULL,
   `Status` enum('Approved', 'On Hold') NOT NULL,
   PRIMARY KEY (`User_ID`),
+  CHECK (`Max_Copies` >= `Copies_Borrowed` AND `Max_Copies` >= `Copies_Reserved`)
   CONSTRAINT `fk_user_id_school_unit` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
