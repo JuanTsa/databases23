@@ -101,6 +101,7 @@ END$$
 
 ---- NOT NEW BORROW IF DELAYED
 
+
 ---- reservation/borrowing cannot be done if you have the same copy
 ---- reservation/borrowing cannot be done from another school
 ---- reservation/borrowing cannot be done if available_copies = 0
