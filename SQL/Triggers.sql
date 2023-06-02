@@ -3,6 +3,17 @@ SELECT TRIGGER_SCHEMA, TRIGGER_NAME, EVENT_OBJECT_TABLE, ACTION_TIMING, ACTION_S
 FROM information_schema.TRIGGERS
 WHERE TRIGGER_SCHEMA = 'asd';
 
+-- ENFORCE available_copies <= inventory WHEN New_Book, Alter_Book
+DELIMITER $$
+CREATE TRIGGER enforce_available_copies_limit
+BEFORE INSERT OR UPDATE ON `Book`
+FOR EACH ROW
+BEGIN
+    IF NEW.`Available_Copies` > NEW.`Inventory` THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Available copies cannot exceed inventory.';
+    END IF;
+END$$
+
 
 ---- CHANGE Copies_Borrowed/Reserved WHEN New_Borrowing/Reservation
 DELIMITER $$
