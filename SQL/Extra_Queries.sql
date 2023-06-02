@@ -1,9 +1,10 @@
 -- I put here some extra queries for the website
 -- You'd change only the <...> with the desired variable. If something is in this format: '<...>' DO NOT DELETE the single quotes ''.
 
--- -------------
+
+-- ----------------
 -- ADMINISTRATOR
--- -------------
+-- ----------------
 ---- adds a new school unit
 INSERT INTO `School_Unit` (`School_Name`, `Address`, `Phone`, `Email`, `Principal_Name`, `Principal_Surname`) VALUES ('<school_name>', '<address>', <phone>, '<email>', '<principal_name>', '<principal_surname>');
 
@@ -21,9 +22,15 @@ VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<emai
 
 ---- restores
 
--- --------
--- OPERATOR
--- --------
+
+
+-- ----------------
+-- OPERATOR (only for their school)
+-- ----------------
+---- adds a new user
+
+---- alters a user
+
 ---- adds a new category 
 INSERT INTO `Category` (`Category_Name`) VALUES ('<category_name>');
 
