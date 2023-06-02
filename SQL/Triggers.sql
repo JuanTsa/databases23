@@ -1,8 +1,3 @@
----- View triggers
-SELECT TRIGGER_SCHEMA, TRIGGER_NAME, EVENT_OBJECT_TABLE, ACTION_TIMING, ACTION_STATEMENT
-FROM information_schema.TRIGGERS
-WHERE TRIGGER_SCHEMA = 'asd';
-
 ---- CHANGE Copies_Borrowed/Reserved WHEN New_Borrowing/Reservation
 DELIMITER $$
 CREATE TRIGGER update_user_borrowing
