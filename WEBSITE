@@ -1,0 +1,59 @@
+WEBSITE STUFF (APART FROM THEIR RESPECTIVE QUERIES)
+======================
+ALL_USERS
+======================
+View_Books_In_My_School
+	\>> admin can see all schools
+My_Profile
+	\>> all users except students can change all info
+	|>> students can change only pwd
+
+======================
+ADMIN
+======================
+New_School
+Alter_School
+
+New_Operator
+Alter_Operator
+Approve_Operators
+
+Backup
+Restore
+
+======================
+OPERATOR (only for their school)
+======================
+New_User
+Alter_User
+Approve_User
+Delete_User
+
+New_Book
+Alter_Book
+Delete_Book
+
+New_Loan
+Approve_Loan
+Show_Loans_Per_User
+New_Return
+Delayed_Loans
+
+New_Reservation
+Approve_Reservation
+Show_Reservations_Per_User
+
+Approve_Review
+Show_Reviews_Per_User
+
+======================
+STUDENTS AND TEACHERS
+======================
+Show_My_Loans
+Show_My_Reservatiosn
+Show_My_Reviews
+
+New_Loan
+New_Reservation
+New_Review
+Cancel_Reservation
