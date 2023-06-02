@@ -24,24 +24,24 @@ Restore
 ======================
 OPERATOR (only for their school)
 ======================
-New_User
-Alter_User
+-New_User
+-Alter_User
 Approve_User
 Delete_User
 
 New_Book
 Alter_Book
-Delete_Book
+-Delete_Book
 
-New_Loan
+-New_Loan
 Approve_Loan
-Show_Loans_Per_User
+Show_Loans_Per_User (-history and active)
 New_Return
 Delayed_Loans
 
-New_Reservation
+-New_Reservation
 Approve_Reservation
-Show_Reservations_Per_User
+Show_Reservations_Per_User (-history and active)
 
 Approve_Review
 Show_Reviews_Per_User
@@ -56,4 +56,4 @@ Show_My_Reviews
 New_Loan
 New_Reservation
 New_Review
-Cancel_Reservation
+-Cancel_Reservation
