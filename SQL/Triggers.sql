@@ -3,6 +3,19 @@ SELECT TRIGGER_SCHEMA, TRIGGER_NAME, EVENT_OBJECT_TABLE, ACTION_TIMING, ACTION_S
 FROM information_schema.TRIGGERS
 WHERE TRIGGER_SCHEMA = 'asd';
 
+-- ENFORCE Inventory > 0 WHEN New_Book, Alter_Book
+DELIMITER $$
+CREATE TRIGGER prevent_zero_inventory
+BEFORE INSERT OR UPDATE ON `Book`
+FOR EACH ROW
+BEGIN
+    IF NEW.`Inventory` = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Inventory cannot be zero.';
+    END IF;
+END$$
+DELIMITER ;
+
+
 -- ENFORCE available_copies <= inventory WHEN New_Book, Alter_Book
 DELIMITER $$
 CREATE TRIGGER enforce_available_copies_limit
