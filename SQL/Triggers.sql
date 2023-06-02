@@ -113,4 +113,5 @@ END$$
 ---- βγάλε το unique
 
 ---- trigger review, check for status=approved?
+---- check isbn if it is 13-digit
 
