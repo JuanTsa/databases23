@@ -44,7 +44,8 @@ SELECT * FROM User WHERE User_Type = 'Operator' AND Status = 'On Hold';
 ---- (-) Delete_Book
 
 ---- (-) New_Loan
-
+---- New_Return
+---- (-) New_Reservation
 
 ---- Approve_Loan
 SELECT br.Borrowing_ID, br.Book_ID, bk.Title, u.Username, u.Name, u.Surname, br.Borrow_Date, br.Due_Date, br.Returning_Date
@@ -71,11 +72,16 @@ WHERE u.School_ID = <operator_school_id>		-- Replace with the desired element
   AND b.Status = 'Approved'
   AND (b.Returning_Date IS NULL OR b.Returning_Date = '');
 
-
----- New_Return
 ---- Delayed_Loans
+SELECT br.Borrowing_ID, br.Book_ID, bk.Title, u.Username, u.Name, u.Surname, br.Borrow_Date, br.Due_Date, br.Returning_Date
+FROM Borrowing br
+INNER JOIN User u ON br.User_ID = u.User_ID
+INNER JOIN Book bk ON br.Book_ID = bk.Book_ID
+WHERE u.School_ID = <operator_school_id>		-- Replace with the desired element
+AND br.Status = 'Approved'
+AND br.Returning_Date IS NULL
+AND CURDATE() > br.Due_Date;
 
----- (-) New_Reservation
 ---- Approve_Reservation
 SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.Request_Date
 FROM Reservation r
