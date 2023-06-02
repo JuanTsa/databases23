@@ -70,9 +70,7 @@ VALUES
 (43, 'Daniel', 'Thomas'),
 (44, 'Madison', 'Allen'),
 (45, 'Gabriel', 'Walker'),
-(46, 'Layla', 'Perez'),
-(47, 'Malakas', 'Malakistiri'),
-(48, 'Juan', 'Tsa');
+(46, 'Layla', 'Perez');
 
 
 
