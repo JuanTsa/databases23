@@ -16,7 +16,7 @@ VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<emai
 ---- Alter_Operator
 
 ---- Approve_Operator
-SELECT 
+
 ---- Backup
 
 ---- Restore
@@ -101,8 +101,26 @@ VALUES (<school_id>, '<username>', '<password>', '<name>', '<surname>', '<email>
 -- ----------------
 -- STUDENTS AND TEACHERS
 -- ----------------
----- Show_My_Loans
----- Show_My_Reservations
+---- Show_My_Loans (history)
+SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, b.Borrow_Date, b.Due_Date, b.Returning_Date
+FROM Borrowing b
+INNER JOIN User u ON b.User_ID = u.User_ID
+INNER JOIN Book bk ON b.Book_ID = bk.Book_ID
+WHERE u.User_ID = <logged_in_user_id>;					-- Replace with the desired element
+
+---- Show_My_Loans (active)
+SELECT b.Borrowing_ID, b.Book_ID, bk.Title, u.Username, u.Name, u.Surname, b.Borrow_Date, b.Due_Date, b.Returning_Date
+FROM Borrowing b
+INNER JOIN User u ON b.User_ID = u.User_ID
+INNER JOIN Book bk ON b.Book_ID = bk.Book_ID
+WHERE u.User_ID = <logged_in_user_id>					-- Replace with the desired element
+   AND b.Returning_Date is NULL;
+
+---- Show_My_Reservations (history)
+
+
+---- Show_My_Reservations (active)
+
 ---- Show_My_Reviews
 
 ---- New_Loan
