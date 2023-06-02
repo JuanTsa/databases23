@@ -17,6 +17,7 @@ VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<emai
 ---- Alter_Operator
 
 ---- Approve_Operator
+SELECT * FROM User WHERE User_Type = 'Operator' AND Status = 'On Hold';
 
 ---- Backup
 
