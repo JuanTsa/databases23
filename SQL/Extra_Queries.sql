@@ -64,21 +64,13 @@ WHERE u.School_ID =  <operator_school_id>			-- Replace with the desired element
 ---- (-) New_Reservation
 ---- Approve_Reservation
 
----- Show_Reservations_Per_User (history)
-SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, r.Request_Date
-FROM Reservation r
-INNER JOIN User u ON r.User_ID = u.User_ID
-INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
-WHERE u.School_ID = <operator_school_id>;			-- Replace with the desired element
-  
 ---- Show_Reservations_Per_User (active)
 SELECT r.Reservation_ID, r.Book_ID, bk.Title, u.Username, u.Name, u.Surname, u.User_Type, r.Request_Date, r.Status
 FROM Reservation r
 INNER JOIN User u ON r.User_ID = u.User_ID
 INNER JOIN Book bk ON r.Book_ID = bk.Book_ID
 WHERE u.School_ID =  <operator_school_id>			-- Replace with the desired element
-  AND r.Status = 'Approved'
-  AND r.Returning_Date IS NULL;
+  AND r.Status = 'Approved';
 
 ---- Approve_Review
 ---- Show_Reviews_Per_User
