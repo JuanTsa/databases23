@@ -131,6 +131,29 @@ BEGIN
   -- Check if the available_copies is zero
   IF (available = 0) THEN
     -- Raise an error and prevent the new borrowing from being inserted
-    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No available copies for this book. You should go and make a reservation.';
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No available copies for this book. You should request a reservation.';
+  END IF;
+END //
+
+-- ----------
+-- TRIGGER 6
+-- ----------
+-- Check whether there are any available_copies before making a new reservation
+DELIMITER //
+CREATE TRIGGER check_available_copies
+BEFORE INSERT ON Reservation
+FOR EACH ROW
+BEGIN
+  DECLARE available INT;
+  
+  -- Get the available_copies of the book being reserved
+  SELECT Available_Copies INTO available
+  FROM Book
+  WHERE Book_ID = NEW.Book_ID;
+  
+  -- Check if the available_copies is not zero
+  IF (available <> 0) THEN
+    -- Raise an error and prevent the new reservation from being inserted
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Available copies exist for this book. You should request a borrowing.';
   END IF;
 END //
