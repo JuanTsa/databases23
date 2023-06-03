@@ -97,6 +97,66 @@ BEGIN
     END IF;
 END$$
 
+---- ENFORCE not new_borrow WHEN borrowing the same book
+DELIMITER $$
+CREATE TRIGGER prevent_duplicate_borrowing
+BEFORE INSERT ON Borrowing
+FOR EACH ROW
+BEGIN
+  DECLARE existing_count INT;
+
+  -- Check if the user already has a borrowing entry for the book
+  SELECT COUNT(*) INTO existing_count
+  FROM Borrowing
+  WHERE Book_ID = NEW.Book_ID AND User_ID = NEW.User_ID AND Returning_Date IS NULL;
+
+  -- If the count is greater than 0, it means the user already has the book on borrowing
+  IF existing_count > 0 THEN
+    SIGNAL SQLSTATE '45000' -- Raise an error
+      SET MESSAGE_TEXT = 'User already has the book on borrowing.';
+  END IF;
+END$$
+
+---- ENFORCE not new_reservation WHEN having borrowed the same book
+DELIMITER //
+CREATE TRIGGER prevent_duplicate_reservation
+BEFORE INSERT ON Reservation
+FOR EACH ROW
+BEGIN
+  DECLARE borrowing_count INT;
+
+  -- Check if the user already has an active borrowing for the book
+  SELECT COUNT(*) INTO borrowing_count
+  FROM Borrowing
+  WHERE Book_ID = NEW.Book_ID AND User_ID = NEW.User_ID AND Returning_Date IS NULL;
+
+  -- If the count is greater than 0, it means the user already has the book on borrowing
+  IF borrowing_count > 0 THEN
+    SIGNAL SQLSTATE '45000' -- Raise an error
+      SET MESSAGE_TEXT = 'User already has the book on borrowing and cannot reserve it.';
+  END IF;
+END //
+
+---- ENFORCE not new_reservation WHEN reserving the same book
+DELIMITER //
+CREATE TRIGGER prevent_duplicate_reservation
+BEFORE INSERT ON Reservation
+FOR EACH ROW
+BEGIN
+  DECLARE existing_count INT;
+
+  -- Check if the user already has a reservation for the book
+  SELECT COUNT(*) INTO existing_count
+  FROM Reservation
+  WHERE Book_ID = NEW.Book_ID AND User_ID = NEW.User_ID AND Status = 'On Hold';
+
+  -- If the count is greater than 0, it means the user already has a reservation for the book
+  IF existing_count > 0 THEN
+    SIGNAL SQLSTATE '45000' -- Raise an error
+      SET MESSAGE_TEXT = 'User already has a reservation for the book.';
+  END IF;
+END //
+
 
 ---- reservation/borrowing cannot be done if you have the same copy
 ---- reservation/borrowing cannot be done from another school
