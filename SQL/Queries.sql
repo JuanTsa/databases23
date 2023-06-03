@@ -67,14 +67,13 @@ HAVING COUNT(DISTINCT bor.Borrowing_ID) = 0;
 
 -- -------------------------
 -- ------- QUERY 5 --------- Which operators have loaned the same number of books in a year with more than 20 loans?
--- -------------------------
-SELECT sq.School_ID, sq.School_Name, sq.Total_Borrowings
+SELECT sq.School_ID, sq.School_Name, u.Name AS Operator_Name, u.Surname AS Operator_Surname, sq.Total_Borrowings
 FROM (
   SELECT su.School_ID, su.School_Name, COUNT(*) AS Total_Borrowings
   FROM School_Unit su
   INNER JOIN User u ON su.School_ID = u.School_ID
   INNER JOIN Borrowing b ON u.User_ID = b.User_ID
-  WHERE YEAR(b.Borrow_Date) = <user_selected_year>		-- Replace with the desired year
+  WHERE YEAR(b.Borrow_Date) = <user_selected_year>		-- Replace it!
   GROUP BY su.School_ID
   HAVING COUNT(*) >= 20
 ) AS sq
@@ -85,13 +84,16 @@ INNER JOIN (
     FROM School_Unit su
     INNER JOIN User u ON su.School_ID = u.School_ID
     INNER JOIN Borrowing b ON u.User_ID = b.User_ID
-    WHERE YEAR(b.Borrow_Date) = <user_selected_year>		-- Replace with the desired year
+    WHERE YEAR(b.Borrow_Date) = <user_selected_year>		-- Replace it!
     GROUP BY su.School_ID
     HAVING COUNT(*) >= 20
   ) AS t
   GROUP BY Total_Borrowings
   HAVING COUNT(*) > 1
-) AS t2 ON sq.Total_Borrowings = t2.Total_Borrowings;
+) AS t2 ON sq.Total_Borrowings = t2.Total_Borrowings
+INNER JOIN User u ON sq.School_ID = u.School_ID
+WHERE u.User_Type = 'Operator'
+ORDER BY sq.Total_Borrowings DESC;
 
 -- -------------------------
 -- ------- QUERY 6 --------- Many books cover more than one category; among category pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings.
