@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `Reservation` (
   `Reservation_ID` int(50) NOT NULL AUTO_INCREMENT,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
-  `Request_Date` date NOT NULL,
+  `Request_Date` date NOT NULL DEFAULT CURRENT_DATE(),
   `Status` enum('Approved', 'On Hold') NOT NULL DEFAULT 'On Hold',
   PRIMARY KEY (`Reservation_ID`),
   CONSTRAINT `fk_reservation_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
