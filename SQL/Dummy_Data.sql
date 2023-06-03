@@ -7,7 +7,7 @@ VALUES
 (5, 'School E', 'Address E', 567891234, 'schoole5@school.com', 'Emma', 'Miller'),
 (6, 'School F', 'Address F', 678912345, 'schoolf6@school.com', 'Jose', 'Garcia'),
 (7, 'School G', 'Address G', 789456123, 'schoolg7@school.com', 'Jonathan', 'Venezuela'),
-(8, 'School H', 'Address H', 891234567, 'schoolh8@school.com', 'Mario', 'Ruiz'),
+(8, 'School H', 'Address H', 891234567, 'schoolh8@school.com', 'Mario', 'Ruiz');
 
 
 
