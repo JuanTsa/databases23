@@ -138,7 +138,7 @@ def generate_book_tuples():
         cop = random.randint(10, 20)
         language = random.choice(languages)
         keywords_selected = random.sample(keywords, 3)
-        book_tuples.append((i, isbn, school, publisher, pages, 'A great and intriguing book, essential for any databases project!', cop, language, keywords_selected, cop))
+        book_tuples.append((i, isbn, school, title, publisher, pages, 'A great and intriguing book, essential for any databases project!', cop, language, keywords_selected, cop))
     return book_tuples
 
 book_tuples = generate_book_tuples()
