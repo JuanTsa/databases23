@@ -1848,7 +1848,6 @@ VALUES
 
 
 
--- THESE ARE PAST BORROWINGS, COMPLETED AND RETURNED
 INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Returning_Date`, `Status`)
 VALUES
 (1, 22, 114, '2023-04-03', '2023-04-10', 'Approved'),
@@ -2054,7 +2053,6 @@ VALUES
 
 
 
--- THESE ARE ALL ACTIVE BORROWINGS
 INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Status`)
 VALUES
 /tmp/dppeYchECd.o
@@ -2101,7 +2099,6 @@ VALUES
 
 
 
--- THESE ARE ALL ACTIVE RESERVATIONS
 INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Status`)
 VALUES
 (1, 14, 10, '2023-06-03', 'Approved'),
