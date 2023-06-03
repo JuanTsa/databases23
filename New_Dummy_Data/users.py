@@ -24,7 +24,7 @@ for tup in tuples:
 import random
 def generate_tuples():
     tuples = []
-    for i in range(10, 111):
+    for i in range(10, 350):
         j = random.randint(1, 8)
         name = f"name{i}"
         surname = f"surname{i}"
@@ -44,7 +44,7 @@ for tup in tuples:
 import random
 def generate_tuples():
     tuples = []
-    for i in range(111, 172):
+    for i in range(351, 452):
         j = random.randint(1, 8)
         name = f"name{i}"
         surname = f"surname{i}"
