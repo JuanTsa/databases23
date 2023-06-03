@@ -278,3 +278,18 @@ BEGIN
     WHERE Book_ID = NEW.Book_ID;
   END IF;
 END //
+
+-- ----------
+-- TRIGGER 13
+-- ----------
+-- Increase the available copies of a book whenever a borrowing is completed
+CREATE TRIGGER update_available_copies_vol2
+AFTER UPDATE ON Borrowing
+FOR EACH ROW
+BEGIN
+  IF (NEW.Returning_Date <> OLD.Returning_Date) THEN
+    UPDATE Book
+    SET available_copies = available_copies + 1
+    WHERE Book_ID = NEW.Book_ID;
+  END IF;
+END //
