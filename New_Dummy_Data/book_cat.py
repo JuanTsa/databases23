@@ -16,7 +16,7 @@ for tup in tuples:
 
 # Generate 200 more tuples with random 'i' values
 for _ in range(200):
-    i = random.randint(1, 30)
+    i = random.randint(1, 20)
     j = random.randint(1, 300)
     new_tuple = (i, j)
     if new_tuple not in tuples:
