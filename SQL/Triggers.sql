@@ -71,7 +71,32 @@ BEGIN
     END IF;
 END$$
 
----- NOT NEW BORROW IF DELAYED
+---- ENFORCE not new_borrow WHEN delayed_book
+DELIMITER $$
+CREATE TRIGGER prevent_borrowing_due_to_delay
+BEFORE INSERT ON `Borrowing`
+FOR EACH ROW
+BEGIN
+    DECLARE user_id INT;
+    DECLARE delayed_count INT;
+    
+    -- Get the user ID of the borrower
+    SET user_id = NEW.`User_ID`;
+    
+    -- Check if the user has any delayed borrowings (including empty returning_date)
+    SELECT COUNT(*) INTO delayed_count
+    FROM `Borrowing`
+    WHERE `User_ID` = user_id
+        AND (`Returning_Date` < CURDATE() OR `Returning_Date` = '')
+        AND `Status` = 'Approved';
+    
+    -- If there are any delayed borrowings, prevent the insertion
+    IF delayed_count > 0 THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Cannot borrow the book. User has overdue borrowings.';
+    END IF;
+END$$
+
 
 ---- reservation/borrowing cannot be done if you have the same copy
 ---- reservation/borrowing cannot be done from another school
@@ -80,8 +105,5 @@ END$$
 ---- New_Book to School_Unit with != ISBN
 ---- Το ισβν δεν χρειάζεται να είναι unique, αρκεί να μην βάλει στο ίδιο σχολείο το ίδιο βιβλίο
 ---- σε διαφορετικά σχολεία το ίδιο βιβλίο είναι κομπλέ
----- βγάλε το unique
 
 ---- trigger review, check for status=approved?
----- check isbn if it is 13-digit
-
