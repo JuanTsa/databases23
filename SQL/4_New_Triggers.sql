@@ -263,3 +263,18 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'The book already has a reservation requested. New reservation not allowed.';
   END IF;
 END //
+
+-- ----------
+-- TRIGGER 12
+-- ----------
+-- Decrease the available copies of a book whenever a borrowing is approved
+CREATE TRIGGER update_available_copies
+AFTER UPDATE ON Borrowing
+FOR EACH ROW
+BEGIN
+  IF (NEW.Status = 'Approved' AND OLD.Status = 'On Hold') THEN
+    UPDATE Book
+    SET available_copies = available_copies - 1
+    WHERE Book_ID = NEW.Book_ID;
+  END IF;
+END //
