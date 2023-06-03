@@ -107,7 +107,7 @@ BEGIN
 
   -- Check if the user already has a borrowing entry for the book
   SELECT COUNT(*) INTO existing_count
-  FROM Borrowing
+  FROM Borrowinge
   WHERE Book_ID = NEW.Book_ID AND User_ID = NEW.User_ID AND Returning_Date IS NULL;
 
   -- If the count is greater than 0, it means the user already has the book on borrowing
@@ -158,9 +158,48 @@ BEGIN
 END //
 
 
----- reservation/borrowing cannot be done if you have the same copy
----- reservation/borrowing cannot be done from another school
----- reservation/borrowing cannot be done if available_copies = 0
+---- ENFORCE not new_borrow WHEN borrowing from another school
+DELIMITER //
+CREATE TRIGGER prevent_borrowing_from_other_school
+BEFORE INSERT ON Borrowing
+FOR EACH ROW
+BEGIN
+  DECLARE book_school_id INT;
+
+  -- Get the school ID of the book being borrowed
+  SELECT School_ID INTO book_school_id
+  FROM Book
+  WHERE Book_ID = NEW.Book_ID;
+
+  -- Check if the book belongs to a different school
+  IF book_school_id <> NEW.User_ID THEN
+    SIGNAL SQLSTATE '45000' -- Raise an error
+      SET MESSAGE_TEXT = 'Cannot borrow a book from another school.';
+  END IF;
+END //
+
+
+---- ENFORCE not new_reservation WHEN reserving from another school
+DELIMITER //
+CREATE TRIGGER prevent_reservation_for_other_school
+BEFORE INSERT ON Reservation
+FOR EACH ROW
+BEGIN
+  DECLARE book_school_id INT;
+
+  -- Get the school ID of the book being reserved
+  SELECT School_ID INTO book_school_id
+  FROM Book
+  WHERE Book_ID = NEW.Book_ID;
+
+  -- Check if the book belongs to a different school
+  IF book_school_id <> NEW.User_ID THEN
+    SIGNAL SQLSTATE '45000' -- Raise an error
+      SET MESSAGE_TEXT = 'Cannot reserve a book from another school.';
+  END IF;
+END //
+
+
 
 ---- New_Book to School_Unit with != ISBN
 ---- Το ισβν δεν χρειάζεται να είναι unique, αρκεί να μην βάλει στο ίδιο σχολείο το ίδιο βιβλίο
