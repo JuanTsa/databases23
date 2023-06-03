@@ -6,7 +6,7 @@ def generate_tuples():
     for j in range(1, 301):
         tuples.append((i, j),)
         i += 1
-        if i > 30:
+        if i > 20:
             i = 1
     return tuples
 
