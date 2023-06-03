@@ -1,3 +1,5 @@
+---- TRIGGER FOR WHEN RETURNING_DATE TAKES A VALUE!!
+
 ---- CHANGE Copies_Borrowed/Reserved WHEN New_Borrowing/Reservation
 DELIMITER $$
 CREATE TRIGGER update_user_borrowing
