@@ -842,23 +842,23 @@ VALUES
 (281, 1503396643298, 5, 'Breaking Dawn', 'Little, Brown and Company', 701, 'A great and intriguing book, essential for any databases project!', 18, 'english', 'Health, Sports, Poetry', 18),
 (282, 4673497646934, 8, 'As I Lay Dying', 'Forge Books', 594, 'A great and intriguing book, essential for any databases project!', 16, 'japanese', 'Thriller, Fantasy, Design', 16),
 (283, 5023694152103, 8, 'The Girl Who Played With Fire', 'University of California Press', 842, 'A great and intriguing book, essential for any databases project!', 12, 'french', 'Suspense, Classic, Parenting', 12),
-(284, 2299418692283, 5, 'Where the Red Fern Grows', 'Pocket Books', 581, 'A great and intriguing book, essential for any databases project!', 10, 'japanese', 'Contemporary, Gardening, Poetry', 10),
+(284, 2299418692283, 5, 'Where the Red Fern Grows', 'Pocket Books', 581, 'A great and intriguing book, essential for any databases project!', 5, 'japanese', 'Contemporary, Gardening, Poetry', 10),
 (285, 1252246763475, 7, "Le Morte D'Arthur", 'Workman Publishing', 587, 'A great and intriguing book, essential for any databases project!', 15, 'english', 'Biography, Mystery, Self-help', 15),
 (286, 5787759970338, 6, 'Mockingjay', 'Harvard University Press', 592, 'A great and intriguing book, essential for any databases project!', 12, 'russian', 'History, Suspense, Autobiography', 12),
-(287, 3179192709895, 4, 'The Pillars of the Earth', 'Da Capo Press', 614, 'A great and intriguing book, essential for any databases project!', 16, 'vietnamese', 'Biography, Cooking, Design', 16),
+(287, 3179192709895, 4, 'The Pillars of the Earth', 'Da Capo Press', 614, 'A great and intriguing book, essential for any databases project!', 11, 'vietnamese', 'Biography, Cooking, Design', 16),
 (288, 6584869894371, 3, 'Persian Letters', 'University of California Press', 233, 'A great and intriguing book, essential for any databases project!', 18, 'french', 'Business, Nature, Fantasy', 18),
 (289, 4518221823730, 3, 'The Client', 'Alfred A. Knopf', 558, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Health, Gardening, Cooking', 10),
 (290, 6803584575884, 1, 'Sula', 'Melville House', 594, 'A great and intriguing book, essential for any databases project!', 19, 'german', 'Science, Horror, Religion', 19),
 (291, 6805155994238, 8, 'Tales of a Fourth Grade Nothing', 'HarperCollins', 128, 'A great and intriguing book, essential for any databases project!', 13, 'albanian', 'Nonfiction, Thriller, Crime', 13),
 (292, 4266353006665, 7, 'The Merry Adventures of Robin Hood of Great Renown In Nottinghamshire', 'Viking Press', 255, 'A great and intriguing book, essential for any databases project!', 16, 'german', 'Young Adult, Biography, Art', 16),
-(293, 6764962326151, 2, 'Tortilla Flat', 'Da Capo Press', 193, 'A great and intriguing book, essential for any databases project!', 11, 'spanish', 'Suspense, Contemporary, Nonfiction', 11),
-(294, 8704238406953, 6, 'Look Homeward, Angel', 'Grove Atlantic', 279, 'A great and intriguing book, essential for any databases project!', 18, 'russian', 'Thriller, Psychology, Gardening', 18),
+(293, 6764962326151, 2, 'Tortilla Flat', 'Da Capo Press', 193, 'A great and intriguing book, essential for any databases project!', 6, 'spanish', 'Suspense, Contemporary, Nonfiction', 11),
+(294, 8704238406953, 6, 'Look Homeward, Angel', 'Grove Atlantic', 279, 'A great and intriguing book, essential for any databases project!', 13, 'russian', 'Thriller, Psychology, Gardening', 18),
 (295, 4810542886297, 3, 'The Mystery of Edwin Drood', "G.P.Putnam's Sons", 783, 'A great and intriguing book, essential for any databases project!', 18, 'greek', 'Memoir, Self-help, Horror', 18),
-(296, 5794945560312, 7, 'Brideshead Revisited', 'Penguin Books', 606, 'A great and intriguing book, essential for any databases project!', 20, 'german', 'Memoir, Religion, Nature', 20),
+(296, 5794945560312, 7, 'Brideshead Revisited', 'Penguin Books', 606, 'A great and intriguing book, essential for any databases project!', 15, 'german', 'Memoir, Religion, Nature', 20),
 (297, 8298262954533, 8, 'The Pelican Brief', 'Picador', 807, 'A great and intriguing book, essential for any databases project!', 10, 'russian', 'Nonfiction, Biography, Romance', 10),
-(298, 4356258922087, 8, 'Atonement', 'Harlequin', 626, 'A great and intriguing book, essential for any databases project!', 11, 'english', 'Adventure, Thriller, Fantasy', 11),
-(299, 2475142403050, 1, 'Washington Square', 'Candlewick Press', 517, 'A great and intriguing book, essential for any databases project!', 10, 'spanish', 'Nonfiction, Cooking, Philosophy', 10),
-(300, 5163680935887, 3, 'Don Quixote Vol.2', 'Scholastic Corporation', 524, 'A great and intriguing book, essential for any databases project!', 19, 'vietnamese', 'Self-help, Poetry, Crime', 19);
+(298, 4356258922087, 8, 'Atonement', 'Harlequin', 626, 'A great and intriguing book, essential for any databases project!', 6, 'english', 'Adventure, Thriller, Fantasy', 11),
+(299, 2475142403050, 1, 'Washington Square', 'Candlewick Press', 517, 'A great and intriguing book, essential for any databases project!', 5, 'spanish', 'Nonfiction, Cooking, Philosophy', 10),
+(300, 5163680935887, 3, 'Don Quixote Vol.2', 'Scholastic Corporation', 524, 'A great and intriguing book, essential for any databases project!', 14, 'vietnamese', 'Self-help, Poetry, Crime', 19);
 
 
 INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`)
