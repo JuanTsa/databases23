@@ -122,7 +122,7 @@ HAVING Books_Written <= (
     ORDER BY COUNT(*) DESC
     LIMIT 1
 )
-ORDER BY TotalBooks ASC;
+ORDER BY Books_Written ASC;
 
 -- ----------------------
 -- ----- OPERATOR -------
