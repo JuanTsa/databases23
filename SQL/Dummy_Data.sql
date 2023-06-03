@@ -277,7 +277,7 @@ VALUES
 
 
 
-INSERT INTO `Book` (`Book_ID`, `ISBN`, `School_ID`, `Title`, `Publisher`, `Pages`, `Summary`, `Available_Copies`, `Cover`, `Language`, `Keywords`, `Inventory`)
+INSERT INTO `Book` (`Book_ID`, `ISBN`, `School_ID`, `Title`, `Publisher`, `Pages`, `Summary`, `Available_Copies`, `Language`, `Keywords`, `Inventory`)
 VALUES
 
 
