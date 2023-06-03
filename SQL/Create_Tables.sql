@@ -78,9 +78,9 @@ CREATE TABLE IF NOT EXISTS `Reservation` (
 
 CREATE TABLE IF NOT EXISTS `Review` (
   `Review_ID` int(50) NOT NULL AUTO_INCREMENT,
-  `Review_Text` text NOT NULL,
   `Book_ID` int(50) NOT NULL,
   `User_ID` int(50) NOT NULL,
+  `Review_Text` text NOT NULL,
   `Rating` TINYINT(1) NOT NULL CHECK (Rating >= 1 AND Rating <= 5),
   `Status` enum('Approved', 'On Hold') NOT NULL DEFAULT 'On Hold',
   PRIMARY KEY (`Review_ID`),
