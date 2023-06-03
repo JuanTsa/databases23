@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `Author` (
 
 CREATE TABLE IF NOT EXISTS `Book` (
   `Book_ID` INT(50) NOT NULL AUTO_INCREMENT,
-  `ISBN` VARCHAR(13) NOT NULL UNIQUE,
+  `ISBN` INT(13) NOT NULL,
   `School_ID` INT(50) NOT NULL,
   `Title` VARCHAR(50) NOT NULL,
   `Publisher` VARCHAR(50) NOT NULL,
@@ -56,7 +56,8 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `Inventory` INT(50) NOT NULL CHECK (Inventory >= 0),
   CONSTRAINT `chk_available_copies` CHECK (`Available_Copies` <= `Inventory`),
   PRIMARY KEY (`Book_ID`),
-  CONSTRAINT `fk_book_school_id` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_book_school_id` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CHECK (ISBN REGEXP '^[0-9]{13}$')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `Reservation` (
