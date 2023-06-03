@@ -10,6 +10,7 @@ VALUES
 (8, 'School H', 'Address H', 891234567, 'schoolh8@school.com', 'Mario', 'Ruiz'),
 
 
+
 INSERT INTO `Category` (`Category_ID`, `Category_Name`)
 VALUES
     (1, 'Fiction'),
@@ -32,6 +33,7 @@ VALUES
     (18, 'Philosophy'),
     (19, 'Art and photography'),
     (20, 'Business and finance');
+
 
 
 INSERT INTO `Author` (`Author_ID`, `Author_Name`, `Author_Surname`)
@@ -96,6 +98,7 @@ VALUES
     (58, 'Donna', 'Tartt'),
     (59, 'Kazuo', 'Ishiguro'),
     (60, 'David', 'Mitchell');
+
 
 
 INSERT INTO `User` (`User_ID`, `School_ID`, `Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `User_Type`, `Status`)
@@ -274,20 +277,28 @@ VALUES
 
 
 
+INSERT INTO `Book` (`Book_ID`, `ISBN`, `School_ID`, `Title`, `Publisher`, `Pages`, `Summary`, `Available_Copies`, `Cover`, `Language`, `Keywords`, `Inventory`)
+VALUES
 
 
 
-
-ADD BOOK, BOOK_AUTHOR, BOOK_CATEGORY, BORR, RESERV 
-
-
+INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`)
+VALUES
 
 
 
+INSERT INTO `Book_Category` (`Category_ID`, `Book_ID`)
+VALUES
 
 
 
+INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Due_Date`, `Returning_Date`, `Status`)
+VALUES
 
+
+
+INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Request_Date`, `Status`)
+VALUES
 
 
 
