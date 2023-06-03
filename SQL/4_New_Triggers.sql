@@ -1,7 +1,3 @@
-constraint για αλλαγή available στον δανεισμό/επιστροφή
-
-constraint για παλαιότερο reservation μόλις υπάρξει available να γίνει on hold borrow
-
 -- ----------
 -- TRIGGER 1
 -- ----------
@@ -291,5 +287,19 @@ BEGIN
     UPDATE Book
     SET available_copies = available_copies + 1
     WHERE Book_ID = NEW.Book_ID;
+  END IF;
+END //
+
+-- ----------
+-- TRIGGER 14
+-- ----------
+-- Change the borrow_date and due_date whenever a borrowing is approved
+CREATE TRIGGER update_borrow_date
+AFTER UPDATE ON Borrowing
+FOR EACH ROW
+BEGIN
+  IF (NEW.Status = 'approved' AND OLD.Status = 'on hold') THEN
+    SET NEW.Borrow_Date = CURRENT_DATE();
+    SET NEW.Due_Date = DATE_ADD(NEW.Borrow_Date, INTERVAL 7 DAY);
   END IF;
 END //
