@@ -328,3 +328,25 @@ BEGIN
     LIMIT 1;
   END IF;
 END //
+
+-- ----------
+-- TRIGGER 15
+-- ----------
+-- Check whether the user posts a review on a book that they've already reviewed
+CREATE TRIGGER prevent_duplicate_reviews
+BEFORE INSERT ON Review
+FOR EACH ROW
+BEGIN
+  DECLARE existing_reviews INT;
+  
+  -- Check if the user has already posted a review on the same book
+  SELECT COUNT(*) INTO existing_reviews
+  FROM Review
+  WHERE User_ID = NEW.User_ID AND Book_ID = NEW.Book_ID;
+  
+  IF (existing_reviews > 0) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User has already posted a review on the same book.';
+  END IF;
+END //
+
+DELIMITER ;
