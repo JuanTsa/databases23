@@ -2286,21 +2286,3 @@ VALUES
 (998, 205, 118, 'An amazing book, despite my rating indicating otherwise!', 2, 'Approved'),
 (999, 236, 114, 'An amazing book, despite my rating indicating otherwise!', 1, 'Approved'),
 (1000, 164, 81, 'An amazing book, despite my rating indicating otherwise!', 3, 'Approved');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
