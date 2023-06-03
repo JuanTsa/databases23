@@ -1775,8 +1775,8 @@ VALUES
 
 
 -- THESE ARE ALL ACTIVE AND APPROVED RESERVATIONS
-INSERT INTO `Reservation` (`Reservation_ID`, 
-
+INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Status`)
+VALUES
 
 INSERT INTO `Review` (`Review_ID`, `Book_ID`, `User_ID`, `Review_Text`, `Rating`, `Status`) 
 VALUES 
