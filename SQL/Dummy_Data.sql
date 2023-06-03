@@ -103,6 +103,15 @@ VALUES
 
 INSERT INTO `User` (`User_ID`, `School_ID`, `Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `User_Type`, `Status`)
 VALUES
+(1, 1, 'God', '777', 'God', 'Creator', 'godcreator1@gmail.com', 77, 'administrator', 'Approved'),
+(2, 1, 'user2', 'pass2', 'name2', 'surname2', 'name2surname2@gmail.com', 37, 'operator', 'Approved'),
+(3, 2, 'user3', 'pass3', 'name3', 'surname3', 'name3surname3@gmail.com', 28, 'operator', 'Approved'),
+(4, 3, 'user4', 'pass4', 'name4', 'surname4', 'name4surname4@gmail.com', 36, 'operator', 'Approved'),
+(5, 4, 'user5', 'pass5', 'name5', 'surname5', 'name5surname5@gmail.com', 36, 'operator', 'Approved'),
+(6, 5, 'user6', 'pass6', 'name6', 'surname6', 'name6surname6@gmail.com', 34, 'operator', 'Approved'),
+(7, 6, 'user7', 'pass7', 'name7', 'surname7', 'name7surname7@gmail.com', 34, 'operator', 'Approved'),
+(8, 7, 'user8', 'pass8', 'name8', 'surname8', 'name8surname8@gmail.com', 36, 'operator', 'Approved'),
+(9, 8, 'user9', 'pass9', 'name9', 'surname9', 'name9surname9@gmail.com', 38, 'operator', 'Approved'),
 (10, 1, 'user10', 'pass10', 'name10', 'surname10', 'name10surname10@gmail.com', 18, 'student', 'Approved'),
 (11, 5, 'user11', 'pass11', 'name11', 'surname11', 'name11surname11@gmail.com', 26, 'student', 'Approved'),
 (12, 7, 'user12', 'pass12', 'name12', 'surname12', 'name12surname12@gmail.com', 26, 'student', 'Approved'),
