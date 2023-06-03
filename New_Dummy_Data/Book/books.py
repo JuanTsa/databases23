@@ -130,9 +130,9 @@ def generate_book_tuples():
     used_isbns = set()
     book_tuples = []
     for i in range(1, 301):
-        title = random.choice(titles)
         isbn = generate_isbn(used_isbns)
-	school = random.randint(1, 8)
+        school = random.randint(1, 8)
+        title = random.choice(titles)
         publisher = random.choice(publishers)
         pages = random.randint(100, 1000)
         cop = random.randint(10, 20)
@@ -145,5 +145,4 @@ book_tuples = generate_book_tuples()
 
 for book_tuple in book_tuples:
     print(book_tuple, end=",\n")
-
 
