@@ -119,7 +119,7 @@ END$$
 
 ---- ENFORCE not new_reservation WHEN having borrowed the same book
 DELIMITER //
-CREATE TRIGGER prevent_duplicate_reservation
+CREATE TRIGGER prevent_reservation_when_same_borrowed
 BEFORE INSERT ON Reservation
 FOR EACH ROW
 BEGIN
