@@ -111,14 +111,18 @@ LIMIT 3;
 -- -------------------------
 -- ------- QUERY 7 --------- Find all authors who have written at least 5 books less than the author with the most books.
 -- -------------------------
-SELECT A.`Author_ID`, A.`Author_Name`, A.`Author_Surname`, A.`Books_Written`
-FROM `Author` A
-WHERE A.`Books_Written` < (
-  SELECT MAX(`Books_Written`) - 4
-  FROM `Author`
+SELECT A.Author_ID, A.Author_Name, A.Author_Surname, COUNT(*) AS Books_Written
+FROM Author A
+JOIN Book_Author BA ON A.Author_ID = BA.Author_ID
+GROUP BY A.Author_ID, A.Author_Name, A.Author_Surname
+HAVING Books_Written <= (
+    SELECT COUNT(*) - 5
+    FROM Book_Author
+    GROUP BY Author_ID
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
 )
-ORDER BY A.`Books_Written` DESC;
-
+ORDER BY TotalBooks ASC;
 
 -- ----------------------
 -- ----- OPERATOR -------
@@ -131,6 +135,7 @@ FROM Book b
 JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
 JOIN Author a ON ba.Author_ID = a.Author_ID
 WHERE b.Title = '<title>' 		                       -- Replace with the desired element
+	AND b.School_ID = <operator_school_id>		       -- Replace with the desired element
 GROUP BY b.Book_ID;
 
 SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
@@ -139,6 +144,7 @@ JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
 JOIN Author a ON ba.Author_ID = a.Author_ID
 WHERE a.Author_Name = '<author_name>' 		           -- Replace with the desired element
    OR a.Author_Surname = '<author_surname>' 	       -- Replace with the desired element
+	AND b.School_ID = <operator_school_id>		       -- Replace with the desired element
 GROUP BY b.Book_ID;
 
 SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
@@ -148,13 +154,15 @@ JOIN Author a ON ba.Author_ID = a.Author_ID
 JOIN Book_Category bc ON b.Book_ID = bc.Book_ID
 JOIN Category c ON bc.Category_ID = c.Category_ID
 WHERE c.Category_Name = 'category_name' 	            -- Replace with the desired element
+	AND b.School_ID = <operator_school_id>		       -- Replace with the desired element
 GROUP BY b.Book_ID;
 
 SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
 FROM Book b
 JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
 JOIN Author a ON ba.Author_ID = a.Author_ID
-WHERE b.Pages = <pages> 			                        -- Replace with the desired element
+WHERE b.Available_Copies = <available_copies> 			                        -- Replace with the desired element
+	AND b.School_ID = <operator_school_id>		       -- Replace with the desired element
 GROUP BY b.Book_ID;
 
 -- -------------------------
@@ -187,6 +195,7 @@ FROM User u
 JOIN Review r ON u.User_ID = r.User_ID
 WHERE (u.User_Type = 'Student' OR u.User_Type = 'Teacher')
 AND u.username = '<username>' 		                                -- Replace with the desired element
+AND u.School_ID = <operator_school_id>		       -- Replace with the desired element
 GROUP BY u.User_ID, u.Name, u.Surname;
 
 SELECT u.User_ID, u.Name, u.Surname, AVG(r.Rating) AS Average_Rating
@@ -197,6 +206,7 @@ JOIN Book_Category bc ON b.Book_ID = bc.Book_ID
 JOIN Category c ON bc.Category_ID = c.Category_ID
 WHERE (u.User_Type = 'Student' OR u.User_Type = 'Teacher')
 AND c.Category_Name = '<category_name>'                   -- Replace with the desired element
+AND b.School_ID = <operator_school_id>		       -- Replace with the desired element
 GROUP BY u.User_ID, u.Name, u.Surname;
  
 -- ------------------
