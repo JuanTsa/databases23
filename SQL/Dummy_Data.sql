@@ -1574,6 +1574,7 @@ VALUES
 
 
 
+-- THESE ARE PAST BORROWINGS, COMPLETED AND RETURNED
 INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Returning_Date`, `Status`)
 VALUES
 (1, 22, 114, '2023-04-03', '2023-04-10', 'Approved'),
@@ -1776,10 +1777,6 @@ VALUES
 (198, 55, 17, '2022-11-05', '2022-11-12', 'Approved'),
 (199, 207, 57, '2022-12-03', '2022-12-06', 'Approved'),
 (200, 236, 163, '2022-08-28', '2022-09-02', 'Approved');
-
-
-INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Request_Date`, `Status`)
-VALUES
 
 
 
