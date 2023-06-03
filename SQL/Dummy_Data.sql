@@ -2098,7 +2098,7 @@ VALUES
 
 
 
-INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Status`)
+INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Request_Date`, `Status`)
 VALUES
 (1, 14, 10, '2023-06-03', 'Approved'),
 (2, 14, 11, '2023-06-03', 'Approved'),
