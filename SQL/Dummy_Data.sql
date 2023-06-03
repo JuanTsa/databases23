@@ -2241,7 +2241,7 @@ VALUES
 
 INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Status`)
 VALUES
-(368, XOYAN
+
 
 
 INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Request_Date`, `Status`)
