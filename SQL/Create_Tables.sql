@@ -20,7 +20,10 @@ CREATE TABLE IF NOT EXISTS `User` (
   `Age` int(3) NOT NULL,
   `Copies_Borrowed` int(50) NOT NULL DEFAULT 0,
   `Copies_Reserved` int(50) NOT NULL DEFAULT 0,
-  `Max_Copies` int(50) NOT NULL,
+  `Max_Copies` INT(50) NOT NULL DEFAULT (CASE WHEN `User_Type` = 'Student' THEN 2
+                                                       WHEN `User_Type` = 'Teacher' THEN 1
+                                                       ELSE 0
+                                                  END),
   `User_Type` enum('Administrator', 'Operator', 'Teacher', 'Student') NOT NULL,
   `Status` enum('Approved', 'On Hold') NOT NULL,
   PRIMARY KEY (`User_ID`),
