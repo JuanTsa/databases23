@@ -463,7 +463,7 @@ VALUES
 (358, 1, 'user358', 'pass358', 'name358', 'surname358', 'name358surname358@gmail.com', 53, 'teacher', 'Approved'),
 (359, 1, 'user359', 'pass359', 'name359', 'surname359', 'name359surname359@gmail.com', 40, 'teacher', 'Approved'),
 (360, 1, 'user360', 'pass360', 'name360', 'surname360', 'name360surname360@gmail.com', 36, 'teacher', 'Approved'),
-(361, 7, 'user361', 'pass361', 'name361', 'surname361', 'name361surname361@gmail.com', 60, 'teacher', 'Approved'),
+(361, 1, 'user361', 'pass361', 'name361', 'surname361', 'name361surname361@gmail.com', 60, 'teacher', 'Approved'),
 (362, 1, 'user362', 'pass362', 'name362', 'surname362', 'name362surname362@gmail.com', 40, 'teacher', 'Approved'),
 (363, 1, 'user363', 'pass363', 'name363', 'surname363', 'name363surname363@gmail.com', 65, 'teacher', 'Approved'),
 (364, 1, 'user364', 'pass364', 'name364', 'surname364', 'name364surname364@gmail.com', 31, 'teacher', 'Approved'),
