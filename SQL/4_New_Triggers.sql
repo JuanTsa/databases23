@@ -1,5 +1,3 @@
-constraint για νέο δανεισμό/κράτηση ενώ έχω εκπρόθεσμο
-
 constraint για νέο δανεισμό/κράτηση ενώ έχω ίδιο βιβλίο
 
 constraint για νέα κράτηση ενώ έχω ίδια κράτηση
@@ -180,5 +178,30 @@ BEGIN
   IF (delayed_count > 0) THEN
     -- Raise an error and prevent the new borrowing from being inserted
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User has delayed borrowings. New borrowing not allowed.';
+  END IF;
+END //
+
+-- ----------
+-- TRIGGER 8
+-- ----------
+-- Check whether the user has a delayed borrowing before making a new reservation
+DELIMITER //
+CREATE TRIGGER check_delayed_borrowing
+BEFORE INSERT ON Reservation
+FOR EACH ROW
+BEGIN
+  DECLARE delayed_count INT;
+  
+  -- Count the number of delayed borrowings for the user
+  SELECT COUNT(*) INTO delayed_count
+  FROM Borrowing
+  WHERE User_ID = NEW.User_ID
+    AND Returning_Date < CURDATE()
+    AND Status = 'Approved';
+  
+  -- Check if there are any delayed borrowings
+  IF (delayed_count > 0) THEN
+    -- Raise an error and prevent the new reservation from being inserted
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User has delayed borrowings. New reservation not allowed.';
   END IF;
 END //
