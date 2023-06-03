@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `Borrowing` (
   `User_ID` int(50) NOT NULL,
   `Borrow_Date` date NOT NULL DEFAULT CURRENT_DATE(),
   `Due_Date` date NOT NULL DEFAULT DATE_ADD(CURRENT_DATE(), INTERVAL 7 DAY),
-  `Returning_Date` date DEFAULT '',
+  `Returning_Date` date DEFAULT NULL,
   `Status` enum('Approved', 'On Hold') NOT NULL DEFAULT 'On Hold',
   PRIMARY KEY (`Borrowing_ID`),
   CONSTRAINT `fk_borrowing_book_id` FOREIGN KEY (`Book_ID`) REFERENCES `Book` (`Book_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
