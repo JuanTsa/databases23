@@ -13,8 +13,8 @@ VALUES ('<school_name>', '<address>', <phone>, '<email>', '<principal_name>', '<
 ---- Alter_School
 
 ---- New_Operator (so by default some values)
-INSERT INTO `User` (`School_ID`, `Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `Copies_Borrowed`, `Copies_Reserved`, `Max_Copies_Borrowed`, `Max_Copies_Reserved`, `User_Type`, `Status`) 
-VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<email>', <age>, 0, 0, 0, 0, 'Operator', 'Approved'); -- Replace with the desired elements
+INSERT INTO `User` (`School_ID`, `Username`, `Password`, `Name`, `Surname`, `Email`, `Age`, `User_Type`, `Status`) 
+VALUES ('<school_id>', '<username>', '<password>', '<name>', '<surname>', '<email>', <age>, 'Operator', 'Approved'); -- Replace with the desired elements
 
 ---- Alter_Operator
 
@@ -159,16 +159,16 @@ WHERE u.User_ID = <logged_in_user_id> 					-- Replace with the desired element
    AND rv.Status = 'Approved';
 
 ---- New_Loan
-INSERT INTO `Borrowing` (`Book_ID`, `User_ID`, `Borrow_Date`, `Due_Date`, `Returning_Date`, `Status`)
-VALUES (<book_id>, <logged_in_user_id>, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 7 DAY), '', 'On Hold');			-- Replace with the desired elements
+INSERT INTO `Borrowing` (`Book_ID`, `User_ID`)
+VALUES (<book_id>, <logged_in_user_id>);			-- Replace with the desired elements
 
 ---- New_Reservation
-INSERT INTO `Reservation` (`Book_ID`, `User_ID`, `Request_Date`, `Status`)
-VALUES (<book_id>, <logged_in_user_id>, CURDATE(), 'On Hold');					-- Replace with the desired elements
+INSERT INTO `Reservation` (`Book_ID`, `User_ID`)
+VALUES (<book_id>, <logged_in_user_id>);					-- Replace with the desired elements
 
 ---- New_Review
-INSERT INTO `Review` (`Review_Text`, `Book_ID`, `User_ID`, `Rating`, `Status`) 
-VALUES ('<review_text>', <book_id>, <logged_in_user_id>, <rating>, 'On Hold'); 			-- Replace with the desired elements
+INSERT INTO `Review` (`Review_Text`, `Book_ID`, `User_ID`, `Rating`) 
+VALUES ('<review_text>', <book_id>, <logged_in_user_id>, <rating>); 			-- Replace with the desired elements
 
 ---- (-) Cancel_Reservation
 
