@@ -18,13 +18,15 @@ CREATE TABLE IF NOT EXISTS `User` (
   `Surname` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL UNIQUE,
   `Age` int(3) NOT NULL,
-  `Copies_Borrowed` int(50) NOT NULL,
-  `Copies_Reserved` int(50) NOT NULL,
+  `Copies_Borrowed` int(50) NOT NULL DEFAULT 0,
+  `Copies_Reserved` int(50) NOT NULL DEFAULT 0,
   `Max_Copies` int(50) NOT NULL,
   `User_Type` enum('Administrator', 'Operator', 'Teacher', 'Student') NOT NULL,
   `Status` enum('Approved', 'On Hold') NOT NULL,
   PRIMARY KEY (`User_ID`),
-  CHECK (`Max_Copies` >= `Copies_Borrowed` AND `Max_Copies` >= `Copies_Reserved`)
+  CHECK (`Max_Copies` >= `Copies_Borrowed` AND `Max_Copies` >= `Copies_Reserved`),
+  CHECK (`Copies_Borrowed` >= 0),
+  CHECK (`Copies_Reserved` >= 0),
   CONSTRAINT `fk_user_id_school_unit` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
