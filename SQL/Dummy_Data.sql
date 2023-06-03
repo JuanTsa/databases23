@@ -2055,7 +2055,6 @@ VALUES
 
 INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Status`)
 VALUES
-/tmp/dppeYchECd.o
 (201, 14, 25, '2023-06-02', 'Approved'),
 (202, 14, 26, '2023-06-02', 'Approved'),
 (203, 14, 27, '2023-06-02', 'Approved'),
