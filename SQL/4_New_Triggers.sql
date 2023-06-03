@@ -111,3 +111,26 @@ BEGIN
     WHERE User_ID = user_id;
   END IF;
 END //
+
+-- ----------
+-- TRIGGER 5
+-- ----------
+-- Check whether there are any available_copies before making a new borrowing
+DELIMITER //
+CREATE TRIGGER check_available_copies
+BEFORE INSERT ON Borrowing
+FOR EACH ROW
+BEGIN
+  DECLARE available INT;
+  
+  -- Get the available_copies of the book being borrowed
+  SELECT Available_Copies INTO available
+  FROM Book
+  WHERE Book_ID = NEW.Book_ID;
+  
+  -- Check if the available_copies is zero
+  IF (available = 0) THEN
+    -- Raise an error and prevent the new borrowing from being inserted
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No available copies for this book. You should go and make a reservation.';
+  END IF;
+END //
