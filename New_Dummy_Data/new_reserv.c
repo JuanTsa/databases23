@@ -20,10 +20,10 @@ int main(){
 	for(int i=0; i<5; i++) printf("(%i, 35, %i, '2023-06-02', 'Approved'),\n", id++, user++);
 
 	user=351;
-	//5 copies of book_id = 32 reserved for user_id = 351-356
+	//5 copies of book_id = 32 reserved for user_id = 351-355
 	for(int i=0; i<5; i++) printf("(%i, 32, %i, '2023-06-02', 'Approved'),\n", id++, user++);
 
-	user=357;
-	//5 copies of book_id = 35 reserved for user_id = 357-367
+	user=356;
+	//5 copies of book_id = 35 reserved for user_id = 356-360
 	for(int i=0; i<5; i++) printf("(%i, 35, %i, '2023-06-02', 'Approved'),\n", id++, user++);
 }	
