@@ -1,7 +1,3 @@
-constraint για νέο δανεισμό/κράτηση ενώ έχω ίδιο βιβλίο
-
-constraint για νέα κράτηση ενώ έχω ίδια κράτηση
-
 constraint για αλλαγή available στον δανεισμό/επιστροφή
 
 constraint για παλαιότερο reservation μόλις υπάρξει available να γίνει on hold borrow
@@ -133,7 +129,7 @@ END //
 -- TRIGGER 6
 -- ----------
 -- Check whether there are any available_copies before making a new reservation
-CREATE TRIGGER check_available_copies
+CREATE TRIGGER check_available_copies_vol2
 BEFORE INSERT ON Reservation
 FOR EACH ROW
 BEGIN
@@ -179,7 +175,7 @@ END //
 -- TRIGGER 8
 -- ----------
 -- Check whether the user has a delayed borrowing before making a new reservation
-CREATE TRIGGER check_delayed_borrowing
+CREATE TRIGGER check_delayed_borrowing_vol2
 BEFORE INSERT ON Reservation
 FOR EACH ROW
 BEGIN
@@ -242,5 +238,28 @@ BEGIN
   IF (borrowing_count > 0) THEN
     -- Raise an error and prevent the new reservation from being inserted
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'The book is already borrowed. Reservation not allowed.';
+  END IF;
+END //
+
+-- ----------
+-- TRIGGER 11
+-- ----------
+-- Check whether the user tries to make a new reservation on a already reserved book
+CREATE TRIGGER check_duplicate_reservation_vol2
+BEFORE INSERT ON Reservation
+FOR EACH ROW
+BEGIN
+  DECLARE reservation_count INT;
+  
+  -- Count the number of existing reservations for the book
+  SELECT COUNT(*) INTO reservation_count
+  FROM Reservation
+  WHERE Book_ID = NEW.Book_ID
+    AND Status = 'On Hold';
+  
+  -- Check if the book already has a reservation
+  IF (reservation_count > 0) THEN
+    -- Raise an error and prevent the new reservation from being inserted
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'The book already has a reservation requested. New reservation not allowed.';
   END IF;
 END //
