@@ -11,7 +11,9 @@ constraint για αλλαγή available στον δανεισμό/επιστρ�
 
 constraint για παλαιότερο reservation μόλις υπάρξει available να γίνει on hold borrow
 
-
+-- ----------
+-- TRIGGER 1
+-- ----------
 -- Check whenever a user makes a new borrowing request, if they have the right do so (without actually increasing the value of copies_borrowed)
 DELIMITER //
 CREATE TRIGGER before_borrowing_insert
@@ -38,6 +40,9 @@ BEGIN
   END IF;
 END //
 
+-- ----------
+-- TRIGGER 2
+-- ----------
 -- Check whenever a user makes a new reservation request, if they have the right do so (without actually increasing the value of copies_reserved)
 DELIMITER //
 CREATE TRIGGER before_reservation_insert
@@ -64,6 +69,9 @@ BEGIN
   END IF;
 END //
 
+-- ----------
+-- TRIGGER 3
+-- ----------
 -- Increase the copies_borrowed whenever a borrowing is approved
 DELIMITER //
 CREATE TRIGGER increase_copies_borrowed
@@ -84,3 +92,25 @@ BEGIN
   END IF;
 END //
 
+-- ----------
+-- TRIGGER 4
+-- ----------
+-- Increase the copies_borrowed whenever a reservation is approved
+DELIMITER //
+CREATE TRIGGER increase_copies_reserved
+AFTER UPDATE ON Reservation
+FOR EACH ROW
+BEGIN
+  DECLARE user_id INT;
+  
+  -- Check if the status has changed from 'On Hold' to 'Approved'
+  IF (OLD.Status = 'On Hold' AND NEW.Status = 'Approved') THEN
+    -- Get the user ID who made the reservation request
+    SET user_id = NEW.User_ID;
+  
+    -- Update the copies_borrowed for the user
+    UPDATE User
+    SET Copies_Reserved = Copies_Reserved + 1
+    WHERE User_ID = user_id;
+  END IF;
+END //
