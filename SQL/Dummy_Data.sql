@@ -1849,7 +1849,7 @@ VALUES
 
 
 -- THESE ARE PAST BORROWINGS, COMPLETED AND RETURNED
-INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Status`)
+INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Returning_Date`, `Status`)
 VALUES
 (1, 22, 114, '2023-04-03', '2023-04-10', 'Approved'),
 (2, 206, 161, '2023-03-09', '2023-03-16', 'Approved'),
@@ -2055,7 +2055,7 @@ VALUES
 
 
 -- THESE ARE ALL ACTIVE BORROWINGS
-INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Returning_Date`, `Status`)
+INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Status`)
 VALUES
 (1, 14, 25, '2023-06-02', 'Approved'),
 (2, 14, 26, '2023-06-02', 'Approved'),
