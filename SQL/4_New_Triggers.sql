@@ -303,3 +303,28 @@ BEGIN
     SET NEW.Due_Date = DATE_ADD(NEW.Borrow_Date, INTERVAL 7 DAY);
   END IF;
 END //
+
+-- ----------
+-- TRIGGER 15
+-- ----------
+--  Check whether the available_copies changes from 0 to 1. Then, delete the oldest reservation of the same book (if one exists) and make a new borrowing, with the same data and status 'on hold'
+CREATE TRIGGER update_book_available_copies
+AFTER UPDATE ON Book
+FOR EACH ROW
+BEGIN
+  IF (NEW.Available_Copies = 1 AND OLD.Available_Copies = 0) THEN
+    -- Delete the oldest reservation for the book (if exists)
+    DELETE FROM Reservation
+    WHERE Book_ID = NEW.Book_ID
+    ORDER BY Request_Date ASC
+    LIMIT 1;
+    
+    -- Insert a new borrowing with the same data and status 'on hold'
+    INSERT INTO Borrowing (Book_ID, User_ID, Borrow_Date, Due_Date, Status)
+    SELECT NEW.Book_ID, User_ID, CURRENT_DATE(), DATE_ADD(CURRENT_DATE(), INTERVAL 7 DAY), 'on hold'
+    FROM Reservation
+    WHERE Book_ID = NEW.Book_ID
+    ORDER BY Request_Date ASC
+    LIMIT 1;
+  END IF;
+END //
