@@ -12,4 +12,4 @@ for bor in range(241, 342):
     counter += 1
     if(counter%5==0): 
         bordat += 1;
-    user += 1
+        user += 1
