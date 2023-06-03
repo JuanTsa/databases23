@@ -200,9 +200,22 @@ BEGIN
 END //
 
 
+---- ENFORCE not new_book WHEN new_book already exists in the school (doesn't have a problem with the same book existing in another school)
+DELIMITER //
+CREATE TRIGGER prevent_duplicate_book
+BEFORE INSERT ON Book
+FOR EACH ROW
+BEGIN
+  DECLARE existing_count INT;
 
----- New_Book to School_Unit with != ISBN
----- Το ισβν δεν χρειάζεται να είναι unique, αρκεί να μην βάλει στο ίδιο σχολείο το ίδιο βιβλίο
----- σε διαφορετικά σχολεία το ίδιο βιβλίο είναι κομπλέ
+  -- Check if the book already exists in the same school
+  SELECT COUNT(*) INTO existing_count
+  FROM Book
+  WHERE School_ID = NEW.School_ID AND Title = NEW.Title;
 
----- trigger review, check for status=approved?
+  -- If the count is greater than 0, it means the book already exists in the same school
+  IF existing_count > 0 THEN
+    SIGNAL SQLSTATE '45000' -- Raise an error
+      SET MESSAGE_TEXT = 'The book already exists in the school.';
+  END IF;
+END //
