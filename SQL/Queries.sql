@@ -1,9 +1,9 @@
----------------------
-------- ADMIN ------- 
----------------------
----------------------------
---------- QUERY 1 --------- List with the total borrowings per school (Search criteria: year, calendar month).
----------------------------
+-- -------------------
+-- ----- ADMIN ------- 
+-- -------------------
+-- -------------------------
+-- ------- QUERY 1 --------- List with the total borrowings per school (Search criteria: year, calendar month).
+-- -------------------------
 SELECT
   s.School_Name,
   YEAR(b.Borrow_Date) AS Borrow_Year,
@@ -23,9 +23,9 @@ GROUP BY
 ORDER BY
   s.School_Name;
 
----------------------------
---------- QUERY 2 --------- For a given book category (user-selected), which authors belong to it and which teachers have borrowed books from that category in the last year?
----------------------------
+-- -------------------------
+-- ------- QUERY 2 --------- For a given book category (user-selected), which authors belong to it and which teachers have borrowed books from that category in the last year?
+-- -------------------------
 SELECT DISTINCT a.Author_Name, a.Author_Surname
 FROM Author a
 JOIN Book_Author ba ON a.Author_ID = ba.Author_ID
@@ -42,21 +42,20 @@ WHERE U.User_Type = 'Teacher'
   AND C.Category_Name = 'category_name'                 -- Replace with the desired category_name
   AND B.Borrow_Date >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR);
 
----------------------------
---------- QUERY 3 --------- Find young teachers (age < 40 years) who have borrowed the most books and the number of books.
----------------------------
+-- -------------------------
+-- ------- QUERY 3 --------- Find young teachers (age < 40 years) who have borrowed the most books and the number of books.
+-- -------------------------
 SELECT U.User_ID, U.Name, U.Surname, U.Age, COUNT(*) AS NumOfBooksBorrowed
 FROM User U
 JOIN Borrowing B ON U.User_ID = B.User_ID
 JOIN Book BK ON B.Book_ID = BK.Book_ID
 WHERE U.User_Type = 'Teacher' AND U.Age < 40
 GROUP BY U.User_ID
-ORDER BY NumOfBooksBorrowed DESC
-LIMIT 1;
+ORDER BY NumOfBooksBorrowed DESC;
 
----------------------------
---------- QUERY 4 --------- Find authors whose books have not been borrowed.
----------------------------
+-- -------------------------
+-- ------- QUERY 4 --------- Find authors whose books have not been borrowed.
+-- -------------------------
 SELECT a.Author_ID, a.Author_Name, a.Author_Surname
 FROM Author a
 JOIN Book_Author ba ON a.Author_ID = ba.Author_ID
@@ -66,9 +65,9 @@ GROUP BY a.Author_ID, a.Author_Name, a.Author_Surname
 HAVING COUNT(DISTINCT bor.Borrowing_ID) = 0;
 
 
----------------------------
---------- QUERY 5 --------- Which operators have loaned the same number of books in a year with more than 20 loans?
----------------------------
+-- -------------------------
+-- ------- QUERY 5 --------- Which operators have loaned the same number of books in a year with more than 20 loans?
+-- -------------------------
 SELECT op.User_ID, op.Name, op.Surname, sb.Total_Borrowings
 FROM
 (
@@ -95,9 +94,9 @@ WHERE sb.Total_Borrowings = (
   GROUP BY bor.User_ID
 );
 
----------------------------
---------- QUERY 6 --------- Many books cover more than one category; among category pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings.
----------------------------
+-- -------------------------
+-- ------- QUERY 6 --------- Many books cover more than one category; among category pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings.
+-- -------------------------
 SELECT C1.Category_Name AS Category1, C2.Category_Name AS Category2, COUNT(*) AS BorrowingCount
 FROM Book_Category BC1
 JOIN Book_Category BC2 ON BC1.Book_ID = BC2.Book_ID AND BC1.Category_ID < BC2.Category_ID
@@ -109,9 +108,9 @@ GROUP BY C1.Category_Name, C2.Category_Name
 ORDER BY BorrowingCount DESC
 LIMIT 3;
 
----------------------------
---------- QUERY 7 --------- Find all authors who have written at least 5 books less than the author with the most books.
----------------------------
+-- -------------------------
+-- ------- QUERY 7 --------- Find all authors who have written at least 5 books less than the author with the most books.
+-- -------------------------
 SELECT A.`Author_ID`, A.`Author_Name`, A.`Author_Surname`, A.`Books_Written`
 FROM `Author` A
 WHERE A.`Books_Written` < (
@@ -121,12 +120,12 @@ WHERE A.`Books_Written` < (
 ORDER BY A.`Books_Written` DESC;
 
 
-------------------------
-------- OPERATOR -------
-------------------------
----------------------------
---------- QUERY 8 --------- Find all books by Title, Author (Search criteria: title/ category/ author/ copies).
----------------------------
+-- ----------------------
+-- ----- OPERATOR -------
+-- ----------------------
+-- -------------------------
+-- ------- QUERY 8 --------- Find all books by Title, Author (Search criteria: title/ category/ author/ copies).
+-- -------------------------
 SELECT b.Book_ID, b.Title, GROUP_CONCAT(CONCAT(a.Author_Name, ' ', a.Author_Surname) SEPARATOR ', ') AS Authors, b.Pages, b.Available_Copies, b.Inventory
 FROM Book b
 JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
@@ -158,9 +157,9 @@ JOIN Author a ON ba.Author_ID = a.Author_ID
 WHERE b.Pages = <pages> 			                        -- Replace with the desired element
 GROUP BY b.Book_ID;
 
----------------------------
---------- QUERY 9 --------- Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
----------------------------
+-- -------------------------
+-- ------- QUERY 9 --------- Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
+-- -------------------------
 SELECT u.User_ID, u.Name, u.Surname, DATEDIFF(CURDATE(), bor.Due_Date) AS Delay_Days
 FROM User u
 JOIN Borrowing bor ON u.User_ID = bor.User_ID
@@ -180,9 +179,9 @@ WHERE DATEDIFF(CURDATE(), bor.Due_Date) > 0
   AND bor.Returning_Date IS NULL
 GROUP BY u.User_ID, u.Name, u.Surname;
 
-----------------------------
---------- QUERY 10 --------- Average Ratings per borrower and category (Search criteria: user/category)
-----------------------------
+-- --------------------------
+-- ------- QUERY 10 --------- Average Ratings per borrower and category (Search criteria: user/category)
+-- --------------------------
 SELECT u.User_ID, u.Name, u.Surname, AVG(r.Rating) AS Average_Rating
 FROM User u
 JOIN Review r ON u.User_ID = r.User_ID
@@ -200,12 +199,12 @@ WHERE (u.User_Type = 'Student' OR u.User_Type = 'Teacher')
 AND c.Category_Name = '<category_name>'                   -- Replace with the desired element
 GROUP BY u.User_ID, u.Name, u.Surname;
  
---------------------
-------- USER -------
---------------------
-----------------------------
---------- QUERY 11 --------- List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
-----------------------------
+-- ------------------
+-- ----- USER -------
+-- ------------------
+-- --------------------------
+-- ------- QUERY 11 --------- List with all books (Search criteria: title/category/author), ability to select a book and create a reservation request.
+-- --------------------------
 SELECT b.Book_ID, b.Title, GROUP_CONCAT(a.Author_Name, ' ', a.Author_Surname) AS Authors, b.Pages, b.Available_Copies, b.Inventory
 FROM Book b
 JOIN Book_Author ba ON b.Book_ID = ba.Book_ID
@@ -230,9 +229,9 @@ WHERE a.Author_Name = '<author_name>'                       -- Replace with the 
 AND a.Author_Surname = '<author_surname>'                   -- Replace with the desired element
 GROUP BY b.Book_ID, b.Title, b.Pages, b.Available_Copies, b.Inventory;
 
-----------------------------
---------- QUERY 12 --------- List of all books borrowed by this user.
-----------------------------
+-- --------------------------
+-- ------- QUERY 12 --------- List of all books borrowed by this user.
+-- --------------------------
 SELECT b.Book_ID, b.Title, GROUP_CONCAT(a.Author_Name, ' ', a.Author_Surname) AS Authors
 FROM Borrowing bor
 JOIN Book b ON bor.Book_ID = b.Book_ID
