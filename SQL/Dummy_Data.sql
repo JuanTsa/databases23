@@ -1774,6 +1774,10 @@ VALUES
 
 
 
+-- THESE ARE ALL ACTIVE AND APPROVED RESERVATIONS
+INSERT INTO `Reservation` (`Reservation_ID`, 
+
+
 INSERT INTO `Review` (`Review_ID`, `Book_ID`, `User_ID`, `Review_Text`, `Rating`, `Status`) 
 VALUES 
 (1, 267, 147, 'An amazing book, despite my rating indicating otherwise!', 2, 'Approved'),
