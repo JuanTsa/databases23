@@ -97,7 +97,12 @@ VALUES
     (57, 'Margaret', 'Atwood'),
     (58, 'Donna', 'Tartt'),
     (59, 'Kazuo', 'Ishiguro'),
-    (60, 'David', 'Mitchell');
+    (60, 'David', 'Mitchell'),
+    (61, 'Lilith', 'Brown'),
+    (62, 'Logan', 'Black'),
+    (63, 'Leo', 'Valdez'),
+    (64, 'Lucas', 'Jackson'),
+    (65, 'Lola', 'Chase');
 
 
 
@@ -858,7 +863,8 @@ VALUES
 (297, 8298262954533, 8, 'The Pelican Brief', 'Picador', 807, 'A great and intriguing book, essential for any databases project!', 10, 'russian', 'Nonfiction, Biography, Romance', 10),
 (298, 4356258922087, 8, 'Atonement', 'Harlequin', 626, 'A great and intriguing book, essential for any databases project!', 6, 'english', 'Adventure, Thriller, Fantasy', 11),
 (299, 2475142403050, 1, 'Washington Square', 'Candlewick Press', 517, 'A great and intriguing book, essential for any databases project!', 5, 'spanish', 'Nonfiction, Cooking, Philosophy', 10),
-(300, 5163680935887, 3, 'Don Quixote Vol.2', 'Scholastic Corporation', 524, 'A great and intriguing book, essential for any databases project!', 14, 'vietnamese', 'Self-help, Poetry, Crime', 19);
+(300, 5163680935887, 3, 'Don Quixote Vol.2', 'Scholastic Corporation', 524, 'A great and intriguing book, essential for any databases project!', 14, 'vietnamese', 'Self-help, Poetry, Crime', 19),
+(301, 1212121212121, 1, 'Blood of Olympus', 'Da Capo Press' XOYAN
 
 
 INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`)
