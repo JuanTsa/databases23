@@ -1574,7 +1574,7 @@ VALUES
 
 
 
-INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Due_Date`, `Returning_Date`, `Status`)
+INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Returning_Date`, `Status`)
 VALUES
 
 
