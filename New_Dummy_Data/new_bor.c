@@ -2,7 +2,7 @@
 
 int main(){
   	int user=25;
-	int id=1;
+	int id=201;
 
 	//10 copies of book_id = 14 borrowed for user_id = 25-34
 	for(int i=0; i<10; i++) printf("(%i, 14, %i, '2023-06-02', 'Approved'),\n", id++, user++);
