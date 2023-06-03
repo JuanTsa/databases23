@@ -39,7 +39,6 @@ END //
 -- TRIGGER 2
 -- ----------
 -- Check whenever a user makes a new reservation request, if they have the right do so (without actually increasing the value of copies_reserved)
-DELIMITER //
 CREATE TRIGGER before_reservation_insert
 BEFORE INSERT ON Reservation
 FOR EACH ROW
@@ -68,7 +67,6 @@ END //
 -- TRIGGER 3
 -- ----------
 -- Increase the copies_borrowed whenever a borrowing is approved
-DELIMITER //
 CREATE TRIGGER increase_copies_borrowed
 AFTER UPDATE ON Borrowing
 FOR EACH ROW
@@ -91,7 +89,6 @@ END //
 -- TRIGGER 4
 -- ----------
 -- Increase the copies_borrowed whenever a reservation is approved
-DELIMITER //
 CREATE TRIGGER increase_copies_reserved
 AFTER UPDATE ON Reservation
 FOR EACH ROW
@@ -114,7 +111,6 @@ END //
 -- TRIGGER 5
 -- ----------
 -- Check whether there are any available_copies before making a new borrowing
-DELIMITER //
 CREATE TRIGGER check_available_copies
 BEFORE INSERT ON Borrowing
 FOR EACH ROW
@@ -137,7 +133,6 @@ END //
 -- TRIGGER 6
 -- ----------
 -- Check whether there are any available_copies before making a new reservation
-DELIMITER //
 CREATE TRIGGER check_available_copies
 BEFORE INSERT ON Reservation
 FOR EACH ROW
@@ -160,7 +155,6 @@ END //
 -- TRIGGER 7
 -- ----------
 -- Check whether the user has a delayed borrowing before making a new borrowing
-DELIMITER //
 CREATE TRIGGER check_delayed_borrowing
 BEFORE INSERT ON Borrowing
 FOR EACH ROW
@@ -185,7 +179,6 @@ END //
 -- TRIGGER 8
 -- ----------
 -- Check whether the user has a delayed borrowing before making a new reservation
-DELIMITER //
 CREATE TRIGGER check_delayed_borrowing
 BEFORE INSERT ON Reservation
 FOR EACH ROW
@@ -203,5 +196,51 @@ BEGIN
   IF (delayed_count > 0) THEN
     -- Raise an error and prevent the new reservation from being inserted
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User has delayed borrowings. New reservation not allowed.';
+  END IF;
+END //
+DELIMETER ;
+
+-- ----------
+-- TRIGGER 9
+-- ----------
+-- Check whether the user tries to make a new borrowing on a already owned book
+CREATE TRIGGER check_duplicate_borrowing
+BEFORE INSERT ON Borrowing
+FOR EACH ROW
+BEGIN
+  DECLARE borrowing_count INT;
+  
+  -- Count the number of existing borrowings for the user and book
+  SELECT COUNT(*) INTO borrowing_count
+  FROM Borrowing
+  WHERE User_ID = NEW.User_ID
+    AND Book_ID = NEW.Book_ID;
+  
+  -- Check if the user has already borrowed the book
+  IF (borrowing_count > 0) THEN
+    -- Raise an error and prevent the new borrowing from being inserted
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User has already borrowed this book. Duplicate borrowing not allowed.';
+  END IF;
+END //
+
+-- ----------
+-- TRIGGER 10
+-- ----------
+-- Check whether the user tries to make a new reservation on a already owned book
+CREATE TRIGGER check_duplicate_reservation
+BEFORE INSERT ON Reservation
+FOR EACH ROW
+BEGIN
+  DECLARE borrowing_count INT;
+  
+  -- Count the number of existing borrowings for the book
+  SELECT COUNT(*) INTO borrowing_count
+  FROM Borrowing
+  WHERE Book_ID = NEW.Book_ID;
+  
+  -- Check if the book is already borrowed
+  IF (borrowing_count > 0) THEN
+    -- Raise an error and prevent the new reservation from being inserted
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'The book is already borrowed. Reservation not allowed.';
   END IF;
 END //
