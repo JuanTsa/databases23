@@ -2239,6 +2239,10 @@ VALUES
 (367, 140, 203, '2023-10-14', '2023-10-19', 'Approved');
 
 
+INSERT INTO `Borrowing` (`Borrowing_ID`, `Book_ID`, `User_ID`, `Borrow_Date`, `Status`)
+VALUES
+(368, XOYAN
+
 
 INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Request_Date`, `Status`)
 VALUES
