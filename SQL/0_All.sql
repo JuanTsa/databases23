@@ -4169,23 +4169,30 @@ END //
 -- TRIGGER 10
 -- ----------
 -- Check whether the user tries to make a new reservation on a already owned book
-CREATE TRIGGER check_duplicate_reservation
-BEFORE INSERT ON Reservation
+CREATE TRIGGER `check_duplicate_reservation`
+BEFORE INSERT ON `Reservation`
 FOR EACH ROW
 BEGIN
-  DECLARE borrowing_count INT;
-  
-  -- Count the number of existing borrowings for the book
-  SELECT COUNT(*) INTO borrowing_count
-  FROM Borrowing
-  WHERE Book_ID = NEW.Book_ID;
-  
-  -- Check if the book is already borrowed
-  IF (borrowing_count > 0) THEN
-    -- Raise an error and prevent the new reservation from being inserted
-    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'The book is already borrowed. Reservation not allowed.';
-  END IF;
-END //
+    DECLARE user_id INT;
+    DECLARE book_id INT;
+    DECLARE reservation_count INT;
+
+    -- Retrieve the user_id and book_id for the new reservation
+    SET user_id = NEW.User_ID;
+    SET book_id = NEW.Book_ID;
+
+    -- Check if the user has already borrowed the same book
+    SELECT COUNT(*) INTO reservation_count
+    FROM Borrowing
+    WHERE User_ID = user_id AND Book_ID = book_id;
+
+    -- If a borrowing record exists for the same user and book, raise an error
+    IF reservation_count > 0 THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Duplicate reservation not allowed.';
+    END IF;
+END;
+//
 
 -- ----------
 -- TRIGGER 11
