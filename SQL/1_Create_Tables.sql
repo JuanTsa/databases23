@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `School_Unit` (
   `School_ID` int(50) NOT NULL AUTO_INCREMENT,
   `School_Name` varchar(50) NOT NULL UNIQUE,
   `Address` varchar(50) NOT NULL UNIQUE,
-  `Phone` int(11) NOT NULL UNIQUE,
+  `Phone` int(9) NOT NULL UNIQUE,
   `Email` varchar(50) NOT NULL UNIQUE,
   `Principal_Name` varchar(50) NOT NULL,
   `Principal_Surname` varchar(50) NOT NULL,
