@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `Publisher` VARCHAR(50) NOT NULL,
   `Pages` INT(50) NOT NULL,
   `Summary` TEXT NOT NULL,
-  `Available_Copies` INT(50) NOT NULL CHECK (Available_Copies >= 0),
+  `Available_Copies` INT(50) CHECK (Available_Copies >= 0),
   `Cover` VARCHAR(1000) NOT NULL DEFAULT 'https://hotemoji.com/images/dl/1/orange-book-emoji-by-twitter.png',
   `Language` VARCHAR(50) NOT NULL,
   `Keywords` VARCHAR(100) NOT NULL,
