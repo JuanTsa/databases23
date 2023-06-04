@@ -449,3 +449,15 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Duplicate book found in the same school.';
   END IF;
 END //
+
+-- ----------
+-- TRIGGER 21
+-- ----------
+-- For a new book, make available_copies = inventory
+CREATE TRIGGER `book_insert_trigger`
+BEFORE INSERT ON `Book` FOR EACH ROW
+BEGIN
+  IF NEW.Available_Copies IS NULL THEN
+    SET NEW.Available_Copies = NEW.Inventory;
+  END IF;
+END//
