@@ -1128,7 +1128,14 @@ VALUES
 (312, 7777777777777, 7, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
 (313, 7777777777777, 8, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
 
-(31, 5872566248785, , 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
+(314, 5872566248785, 1, 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 0, 'greek', 'Nature, Science Fiction, Fantasy', 2),
+(315, 5872566248785, 2, 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 0, 'greek', 'Nature, Science Fiction, Fantasy', 2),
+(316, 5872566248785, 3, 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 0, 'greek', 'Nature, Science Fiction, Fantasy', 2),
+(317, 5872566248785, 4, 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 0, 'greek', 'Nature, Science Fiction, Fantasy', 2),
+(318, 5872566248785, 5, 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 0, 'greek', 'Nature, Science Fiction, Fantasy', 2),
+(319, 5872566248785, 6, 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 0, 'greek', 'Nature, Science Fiction, Fantasy', 2),
+(320, 5872566248785, 7, 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 0, 'greek', 'Nature, Science Fiction, Fantasy', 2),
+(321, 5872566248785, 8, 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 0, 'greek', 'Nature, Science Fiction, Fantasy', 2);
 -- 301-305: lonely authors
 -- 306-313: borrowings on hold
 -- 314-321: borrowings for on hold reservations
@@ -1639,7 +1646,15 @@ VALUES
 (7, 310),
 (7, 311),
 (7, 312),
-(7, 313);
+(7, 313),
+(56, 314,
+(56, 315),
+(56, 316),
+(56, 317),
+(56, 318),
+(56, 319),
+(56, 320),
+(56, 321);
 
 
 
@@ -2143,7 +2158,14 @@ VALUES
 (7, 310),
 (7, 311),
 (7, 312),
-(7, 313);
+(7, 313),
+(1, 315),
+(1, 316),
+(1, 317),
+(1, 318),
+(1, 319),
+(1, 320),
+(1, 321);
 
 
 
