@@ -1116,7 +1116,8 @@ VALUES
 (302, 2323232323232, 2, 'Night Shift', 'Hachette Livre', 523, 'A great and intriguing book, essential for any databases project!', 15, 'english', 'Thriller, Romance, Fantasy', 15),
 (303, 3434343434343, 3, 'We have no clue', 'HarperCollins', 102, 'A great and intriguing book, essential for any databases project!', 13, 'spanish', 'Science Fiction, Biography', 13),
 (304, 4545454545454, 4, 'Today I commited a murder', 'Simon & Schuster', 367, 'A great and intriguing book, essential for any databases project!', 18, 'greek', 'History, Self-help, Young Adult', 18),
-(305, 6767678787906, 5, 'What is to be human', 'Macmillan Publishers', 899, 'A great and intriguing book, essential for any databases project!', 5, 'chinese', 'Childish, Adventure, Horror', 5);
+(305, 6767678787906, 5, 'What is to be human', 'Macmillan Publishers', 899, 'A great and intriguing book, essential for any databases project!', 5, 'chinese', 'Childish, Adventure, Horror', 5),
+(306, 7777777777777, 6, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 40);
 
 
 INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`)
