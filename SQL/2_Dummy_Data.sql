@@ -1126,9 +1126,13 @@ VALUES
 (310, 7777777777777, 5, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
 (311, 7777777777777, 6, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
 (312, 7777777777777, 7, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
-(313, 7777777777777, 8, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10);
+(313, 7777777777777, 8, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
+
+(31, 5872566248785, , 'The Communist Dream', 'Sterling Publishing', 578, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
 -- 301-305: lonely authors
 -- 306-313: borrowings on hold
+-- 314-321: borrowings for on hold reservations
+-- XOYAN2
 
 INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`)
 VALUES
