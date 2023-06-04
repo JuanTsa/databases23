@@ -294,7 +294,7 @@ END //
 -- ----------
 -- Change the borrow_date and due_date whenever a borrowing is approved
 CREATE TRIGGER update_borrow_date
-AFTER UPDATE ON Borrowing
+BEFORE UPDATE ON Borrowing
 FOR EACH ROW
 BEGIN
   IF (NEW.Status = 'approved' AND OLD.Status = 'on hold') THEN
@@ -451,3 +451,13 @@ BEGIN
 END //
 
 DELIMETER ;
+
+-- ----------
+-- EVENT 1
+-- ----------
+-- Check old reservations and delete them
+CREATE EVENT delete_old_reservations
+ON SCHEDULE EVERY 1 HOUR
+DO
+  DELETE FROM Reservation
+  WHERE Request_Date < DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY);
