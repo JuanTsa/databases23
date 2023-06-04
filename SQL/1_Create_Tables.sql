@@ -6,8 +6,7 @@ CREATE TABLE IF NOT EXISTS `School_Unit` (
   `Email` varchar(50) NOT NULL UNIQUE,
   `Principal_Name` varchar(50) NOT NULL,
   `Principal_Surname` varchar(50) NOT NULL,
-  PRIMARY KEY (`School_ID`),
-  CONSTRAINT `chk_phone` CHECK (Phone REGEXP '^[0-9]{9}$')
+  PRIMARY KEY (`School_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `User` (
@@ -62,8 +61,7 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `Inventory` INT(50) NOT NULL CHECK (Inventory > 0),
   PRIMARY KEY (`Book_ID`),
   CONSTRAINT `chk_available_copies` CHECK (`Available_Copies` <= `Inventory`),
-  CONSTRAINT `fk_book_school_id` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CHECK (ISBN REGEXP '^[0-9]{13}$')
+  CONSTRAINT `fk_book_school_id` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `Reservation` (
