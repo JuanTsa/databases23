@@ -330,7 +330,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 15
+-- TRIGGER 16
 -- ----------
 -- Check whether the user posts a review on a book that they've already reviewed
 CREATE TRIGGER prevent_duplicate_reviews
@@ -349,4 +349,83 @@ BEGIN
   END IF;
 END //
 
-DELIMITER ;
+-- ----------
+-- TRIGGER 17
+-- ----------
+-- Check whether the user tries to borrow a book from another school
+CREATE TRIGGER prevent_cross_school_borrowing
+BEFORE INSERT ON Borrowing
+FOR EACH ROW
+BEGIN
+  DECLARE user_school_id INT;
+  DECLARE book_school_id INT;
+  
+  -- Get the school ID of the user
+  SELECT School_ID INTO user_school_id
+  FROM User
+  WHERE User_ID = NEW.User_ID;
+  
+  -- Get the school ID of the book
+  SELECT School_ID INTO book_school_id
+  FROM Book
+  WHERE Book_ID = NEW.Book_ID;
+  
+  -- Check if the user and book belong to the same school
+  IF (user_school_id <> book_school_id) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User cannot borrow a book from another school.';
+  END IF;
+END //
+
+-- ----------
+-- TRIGGER 18
+-- ----------
+-- Check whether the user tries to reserve a book from another school
+CREATE TRIGGER prevent_cross_school_reservation
+BEFORE INSERT ON Reservation
+FOR EACH ROW
+BEGIN
+  DECLARE user_school_id INT;
+  DECLARE book_school_id INT;
+  
+  -- Get the school ID of the user
+  SELECT School_ID INTO user_school_id
+  FROM User
+  WHERE User_ID = NEW.User_ID;
+  
+  -- Get the school ID of the book
+  SELECT School_ID INTO book_school_id
+  FROM Book
+  WHERE Book_ID = NEW.Book_ID;
+  
+  -- Check if the user and book belong to the same school
+  IF (user_school_id <> book_school_id) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User cannot reserve a book from another school.';
+  END IF;
+END //
+
+-- ----------
+-- TRIGGER 19
+-- ----------
+-- Check whether the user tries to review a book from another school
+CREATE TRIGGER prevent_cross_school_review
+BEFORE INSERT ON Review
+FOR EACH ROW
+BEGIN
+  DECLARE user_school_id INT;
+  DECLARE book_school_id INT;
+  
+  -- Get the school ID of the user
+  SELECT School_ID INTO user_school_id
+  FROM User
+  WHERE User_ID = NEW.User_ID;
+  
+  -- Get the school ID of the book
+  SELECT School_ID INTO book_school_id
+  FROM Book
+  WHERE Book_ID = NEW.Book_ID;
+  
+  -- Check if the user and book belong to the same school
+  IF (user_school_id <> book_school_id) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User cannot review a book from another school.';
+  END IF;
+END //
