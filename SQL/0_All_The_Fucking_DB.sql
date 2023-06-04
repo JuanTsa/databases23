@@ -4430,6 +4430,7 @@ BEGIN
   END IF;
 END//
 
+DELIMETER ;
 
 
 -- ----------
