@@ -3,27 +3,29 @@
 -- ----------
 -- Check whenever a user makes a new borrowing request, if they have the right do so (without actually increasing the value of copies_borrowed)
 DELIMITER //
-CREATE TRIGGER `check_borrowing_limit_trigger` BEFORE INSERT ON `Borrowing`
+CREATE TRIGGER `check_borrowing_limit`
+BEFORE INSERT ON `Borrowing`
 FOR EACH ROW
 BEGIN
     DECLARE total_on_hold_borrowings INT;
-
-    -- Calculate the total borrowings with status 'on hold' for the user
-    SELECT COALESCE(SUM(copies_borrowed), 0)
-    INTO total_on_hold_borrowings
+    DECLARE total_borrowings INT;
+    
+    -- Calculate total borrowings with status 'On Hold' for the user
+    SELECT COUNT(*) INTO total_on_hold_borrowings
     FROM Borrowing
-    WHERE user_id = NEW.user_id AND status = 'on hold';
-
-    -- Check if the total borrowings plus copies_borrowed exceed the max_copies limit
-    IF (total_on_hold_borrowings + NEW.copies_borrowed) > (
-        SELECT max_copies
-        FROM User
-        WHERE user_id = NEW.user_id
-    ) THEN
+    WHERE User_ID = NEW.User_ID AND Status = 'On Hold';
+    
+    -- Calculate total borrowings (including both 'On Hold' and 'Approved') for the user
+    SET total_borrowings = total_on_hold_borrowings + NEW.User_ID;
+    
+    -- Check if total borrowings exceed the user's maximum allowed copies
+    IF total_borrowings > (SELECT Max_Copies FROM User WHERE User_ID = NEW.User_ID) THEN
         SIGNAL SQLSTATE '45000'
-            SET MESSAGE_TEXT = 'Borrowing limit exceeded. Cannot proceed.';
+            SET MESSAGE_TEXT = 'Maximum borrowing limit exceeded.';
     END IF;
-END //
+END;
+//
+
 
 
 
@@ -31,27 +33,28 @@ END //
 -- TRIGGER 2
 -- ----------
 -- Check whenever a user makes a new reservation request, if they have the right do so (without actually increasing the value of copies_reserved)
-CREATE TRIGGER `check_reservation_limit_trigger` BEFORE INSERT ON `Reservation`
+CREATE TRIGGER `check_reservation_limit`
+BEFORE INSERT ON `Reservation`
 FOR EACH ROW
 BEGIN
     DECLARE total_on_hold_reservations INT;
-
-    -- Calculate the total reservations with status 'on hold' for the user
-    SELECT COALESCE(SUM(copies_reserved), 0)
-    INTO total_on_hold_reservations
+    DECLARE total_reservations INT;
+    
+    -- Calculate total reservations with status 'On Hold' for the user
+    SELECT COUNT(*) INTO total_on_hold_reservations
     FROM Reservation
-    WHERE user_id = NEW.user_id AND status = 'on hold';
-
-    -- Check if the total reservations plus copies_reserved exceed the max_copies limit
-    IF (total_on_hold_reservations + NEW.copies_reserved) > (
-        SELECT max_copies
-        FROM User
-        WHERE user_id = NEW.user_id
-    ) THEN
+    WHERE User_ID = NEW.User_ID AND Status = 'On Hold';
+    
+    -- Calculate total reservations (including both 'On Hold' and 'Approved') for the user
+    SET total_reservations = total_on_hold_reservations + NEW.User_ID;
+    
+    -- Check if total reservations exceed the user's maximum allowed copies
+    IF total_reservations > (SELECT Max_Copies FROM User WHERE User_ID = NEW.User_ID) THEN
         SIGNAL SQLSTATE '45000'
-            SET MESSAGE_TEXT = 'Reservation limit exceeded. Cannot proceed.';
+            SET MESSAGE_TEXT = 'Maximum reservation limit exceeded.';
     END IF;
-END //
+END;
+//
 
 
 -- ----------
