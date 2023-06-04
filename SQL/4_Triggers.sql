@@ -80,7 +80,7 @@ END //
 -- ----------
 -- TRIGGER 4
 -- ----------
--- Increase the copies_borrowed whenever a reservation is approved
+-- Increase the copies_reserved whenever a reservation is approved
 CREATE TRIGGER increase_copies_reserved
 AFTER UPDATE ON Reservation
 FOR EACH ROW
