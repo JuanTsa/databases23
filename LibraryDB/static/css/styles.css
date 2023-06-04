@@ -325,13 +325,13 @@
 }
 
 .box-update_profile{
-  width:500px;
-  height:620px;
+  width:600px;
+  height:430px;
 }
 
 .box-add_book{
-  width:600px;
-  height:620px
+  width:800px;
+  height:500px
 }
 
 .box-request_date{
@@ -342,6 +342,16 @@
 .box-review{
   width:400px;
   height: 400px;
+}
+
+.box-add_category{
+  width:400px;
+  height:400px;
+}
+
+.box-author{
+  width:400px;
+  height:380px;
 }
 
 .button {
@@ -368,7 +378,7 @@
 }
 
 
-.box input[type="text"], .box input[type="password"], .box input[type="date"], .box select{
+.box input[type="text"], .box input[type="password"], .box input[type="date"], .box select, .box textarea{
   margin:15px;
   padding:10px;
   border: 3px solid blue;
