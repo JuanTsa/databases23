@@ -7,7 +7,8 @@ VALUES
 (5, 'School E', 'Address E', 567891234, 'schoole5@school.com', 'Emma', 'Miller'),
 (6, 'School F', 'Address F', 678912345, 'schoolf6@school.com', 'Jose', 'Garcia'),
 (7, 'School G', 'Address G', 789456123, 'schoolg7@school.com', 'Jonathan', 'Venezuela'),
-(8, 'School H', 'Address H', 891234567, 'schoolh8@school.com', 'Mario', 'Ruiz');
+(8, 'School H', 'Address H', 891234567, 'schoolh8@school.com', 'Mario', 'Ruiz'),
+(9, 'School I', 'Address I', 912345678, 'schooli9@school.com', 'Carlos', 'Esteban');
 
 
 
@@ -559,11 +560,12 @@ VALUES
 (449, 8, 'user449', 'pass449', 'name449', 'surname449', 'name449surname449@gmail.com', 66, 'teacher', 'Approved'),
 (450, 7, 'user450', 'pass450', 'name450', 'surname450', 'name450surname450@gmail.com', 68, 'teacher', 'Approved'),
 (451, 7, 'user451', 'pass451', 'name451', 'surname451', 'name451surname451@gmail.com', 66, 'teacher', 'Approved'),
-(452, 4, 'user452', 'pass452', 'name452', 'surname452', 'name452surname452@gmail.com', 38, 'operator', 'On Hold'),
-(453, 1, 'user453', 'pass453', 'name453', 'surname453', 'name453surname453@gmail.com', 28, 'operator', 'On Hold'),
-(454, 3, 'user454', 'pass454', 'name454', 'surname454', 'name454surname454@gmail.com', 32, 'operator', 'On Hold'),
-(455, 2, 'user455', 'pass455', 'name455', 'surname455', 'name455surname455@gmail.com', 31, 'operator', 'On Hold'),
-(456, 8, 'user456', 'pass456', 'name456', 'surname456', 'name456surname456@gmail.com', 32, 'operator', 'On Hold'),
+
+(452, 9, 'user452', 'pass452', 'name452', 'surname452', 'name452surname452@gmail.com', 38, 'operator', 'On Hold'),
+(453, 9, 'user453', 'pass453', 'name453', 'surname453', 'name453surname453@gmail.com', 28, 'operator', 'On Hold'),
+(454, 9, 'user454', 'pass454', 'name454', 'surname454', 'name454surname454@gmail.com', 32, 'operator', 'On Hold'),
+(455, 9, 'user455', 'pass455', 'name455', 'surname455', 'name455surname455@gmail.com', 31, 'operator', 'On Hold'),
+(456, 9, 'user456', 'pass456', 'name456', 'surname456', 'name456surname456@gmail.com', 32, 'operator', 'On Hold'),
 (457, 5, 'user457', 'pass457', 'name457', 'surname457', 'name457surname457@gmail.com', 22, 'student', 'On Hold'),
 (458, 2, 'user458', 'pass458', 'name458', 'surname458', 'name458surname458@gmail.com', 22, 'student', 'On Hold'),
 (459, 6, 'user459', 'pass459', 'name459', 'surname459', 'name459surname459@gmail.com', 21, 'student', 'On Hold'),
