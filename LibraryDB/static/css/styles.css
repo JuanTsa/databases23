@@ -329,6 +329,21 @@
   height:620px;
 }
 
+.box-add_book{
+  width:600px;
+  height:620px
+}
+
+.box-request_date{
+  width:400px;
+  height: 300px;
+}
+
+.box-review{
+  width:400px;
+  height: 400px;
+}
+
 .button {
     background-color: cyan; 
     border: none;
@@ -353,7 +368,7 @@
 }
 
 
-.box input[type="text"], .box input[type="password"], .box select{
+.box input[type="text"], .box input[type="password"], .box input[type="date"], .box select{
   margin:15px;
   padding:10px;
   border: 3px solid blue;
@@ -366,7 +381,7 @@
 
 }
 
-.box input[type="text"]:focus, .box input[type="password"]:focus {
+.box input[type="text"]:focus, .box input[type="password"]:focus,  .box input[type="date"]:focus{
   width:200px;
   border: 3px solid rgb(0, 72, 255);
 }
@@ -389,7 +404,7 @@
   color:black;
 }
 
-#accept{
+.accept{
   background-color: #4CAF50;
   color: white;
   padding: 5px 20px;
@@ -399,30 +414,30 @@
   font-size: 16px;
 }
 
-#reject{
+.reject{
   background-color: #fc0606;
   color: white;
-  padding: 5px 32px;
+  padding: 5px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
 }
 
-#accept:hover{
+.accept:hover{
   background-color: #27932b;
 }
 
-#reject:hover{
+.reject:hover{
   background-color: #d52410;
 }
 
-.add_school{
+.add_entry{
   position: relative;
   float:right
 }
 
-#add{
+.add{
   background-color: #4CAF50;
   color: white;
   padding: 5px 20px;
@@ -432,6 +447,6 @@
   font-size: 16px;
 }
 
-#add:hover{
+.add:hover{
   background-color: #27932b;
 }
