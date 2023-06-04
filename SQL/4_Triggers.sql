@@ -190,7 +190,6 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User has delayed borrowings. New reservation not allowed.';
   END IF;
 END //
-DELIMETER ;
 
 -- ----------
 -- TRIGGER 9
