@@ -1,3 +1,4 @@
+SET GLOBAL event_scheduler=ON
 -- ----------
 -- EVENT 1
 -- ----------
