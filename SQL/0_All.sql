@@ -1,5 +1,3 @@
-CREATE DATABASE library_db;
-
 SET GLOBAL event_scheduler = ON;
 
 CREATE TABLE IF NOT EXISTS `School_Unit` (
@@ -3979,11 +3977,7 @@ BEGIN
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Maximum borrowing limit exceeded.';
     END IF;
-END;
-//
-
-
-
+END //
 
 -- ----------
 -- TRIGGER 2
@@ -4009,8 +4003,7 @@ BEGIN
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Maximum reservation limit exceeded.';
     END IF;
-END;
-//
+END //
 
 
 -- ----------
