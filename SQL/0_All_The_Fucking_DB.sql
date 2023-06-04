@@ -1,3 +1,4 @@
+SET GLOBAL event_scheduler = ON;
 -- ----------
 -- CREATE
 -- ----------
@@ -4430,13 +4431,11 @@ BEGIN
   END IF;
 END//
 
-DELIMETER ;
-
 
 -- ----------
 -- EVENT
 -- ----------
-SET GLOBAL event_scheduler = ON;
+
 -- ----------
 -- EVENT 1
 -- ----------
