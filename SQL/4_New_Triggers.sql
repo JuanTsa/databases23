@@ -450,3 +450,5 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Duplicate book found in the same school.';
   END IF;
 END //
+
+DELIMETER ;
