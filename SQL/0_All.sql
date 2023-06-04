@@ -1,3 +1,5 @@
+CREATE DATABASE library_db;
+
 SET GLOBAL event_scheduler = ON;
 
 CREATE TABLE IF NOT EXISTS `School_Unit` (
