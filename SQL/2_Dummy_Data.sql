@@ -1112,12 +1112,21 @@ VALUES
 (298, 4356258922087, 8, 'Atonement', 'Harlequin', 626, 'A great and intriguing book, essential for any databases project!', 6, 'english', 'Adventure, Thriller, Fantasy', 11),
 (299, 2475142403050, 1, 'Washington Square', 'Candlewick Press', 517, 'A great and intriguing book, essential for any databases project!', 5, 'spanish', 'Nonfiction, Cooking, Philosophy', 10),
 (300, 5163680935887, 3, 'Don Quixote Vol.2', 'Scholastic Corporation', 524, 'A great and intriguing book, essential for any databases project!', 14, 'vietnamese', 'Self-help, Poetry, Crime', 19),
+
 (301, 1212121212121, 1, 'Blood of Olympus', 'Penguin Random House', 610, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Fiction, Nonfiction, Mystery', 10),
 (302, 2323232323232, 2, 'Night Shift', 'Hachette Livre', 523, 'A great and intriguing book, essential for any databases project!', 15, 'english', 'Thriller, Romance, Fantasy', 15),
 (303, 3434343434343, 3, 'We have no clue', 'HarperCollins', 102, 'A great and intriguing book, essential for any databases project!', 13, 'spanish', 'Science Fiction, Biography', 13),
 (304, 4545454545454, 4, 'Today I commited a murder', 'Simon & Schuster', 367, 'A great and intriguing book, essential for any databases project!', 18, 'greek', 'History, Self-help, Young Adult', 18),
 (305, 6767678787906, 5, 'What is to be human', 'Macmillan Publishers', 899, 'A great and intriguing book, essential for any databases project!', 5, 'chinese', 'Childish, Adventure, Horror', 5),
-(306, 7777777777777, 6, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 40);
+
+(306, 7777777777777, 1, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
+(307, 7777777777777, 2, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
+(308, 7777777777777, 3, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
+(309, 7777777777777, 4, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
+(310, 7777777777777, 5, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
+(311, 7777777777777, 6, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
+(312, 7777777777777, 7, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
+(313, 7777777777777, 8, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5);
 
 
 INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`)
@@ -1618,7 +1627,14 @@ VALUES
 (63, 303),
 (64, 304),
 (65, 305),
-(77, 306);
+(7, 306),
+(7, 307),
+(7, 308)
+(7, 309),
+(7, 310),
+(7, 311),
+(7, 312),
+(7, 313);
 
 
 
@@ -2115,7 +2131,14 @@ VALUES
 (12, 303),
 (20, 304),
 (3, 305),
-(1, 306);
+(7, 306),
+(7, 307),
+(7, 308)
+(7, 309),
+(7, 310),
+(7, 311),
+(7, 312),
+(7, 313);
 
 
 
