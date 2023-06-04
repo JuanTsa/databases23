@@ -4173,23 +4173,24 @@ FOR EACH ROW
 BEGIN
     DECLARE user_id INT;
     DECLARE book_id INT;
-    DECLARE reservation_count INT;
+    DECLARE borrowing_count INT;
 
     -- Retrieve the user_id and book_id for the new reservation
     SET user_id = NEW.User_ID;
     SET book_id = NEW.Book_ID;
 
-    -- Check if the user has already borrowed the same book
-    SELECT COUNT(*) INTO reservation_count
+    -- Check if the user has an approved borrowing with returning_date is null for the same book
+    SELECT COUNT(*) INTO borrowing_count
     FROM Borrowing
-    WHERE User_ID = user_id AND Book_ID = book_id;
+    WHERE User_ID = user_id AND Book_ID = book_id AND Status = 'Approved' AND Returning_Date IS NULL;
 
-    -- If a borrowing record exists for the same user and book, raise an error
-    IF reservation_count > 0 THEN
+    -- If an approved borrowing record exists with returning_date is null, raise an error
+    IF borrowing_count > 0 THEN
         SIGNAL SQLSTATE '45000'
-            SET MESSAGE_TEXT = 'Duplicate reservation not allowed.';
+            SET MESSAGE_TEXT = 'Duplicate reservation not allowed. User has an approved borrowing for the same book.';
     END IF;
 END //
+
 
 -- ----------
 -- TRIGGER 11
