@@ -3976,8 +3976,7 @@ BEGIN
                 SET MESSAGE_TEXT = 'Maximum borrowing limit exceeded.';
         END IF;
     END IF;
-END;
-//
+END //
 
 -- ----------
 -- TRIGGER 2
@@ -4003,8 +4002,7 @@ BEGIN
                 SET MESSAGE_TEXT = 'Maximum reservation limit exceeded.';
         END IF;
     END IF;
-END;
-//
+END //
 
 -- ----------
 -- TRIGGER 3
@@ -4191,8 +4189,7 @@ BEGIN
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Duplicate reservation not allowed.';
     END IF;
-END;
-//
+END //
 
 -- ----------
 -- TRIGGER 11
