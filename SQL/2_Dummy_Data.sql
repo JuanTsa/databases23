@@ -2468,7 +2468,7 @@ VALUES
 (405, 298, 267, '2023-05-20', 'Approved'),
 (406, 298, 288, '2023-05-20', 'Approved'),
 (407, 298, 296, '2023-05-20', 'Approved');
-XOYAN
+-- XOYAN
 
 
 INSERT INTO `Reservation` (`Reservation_ID`, `Book_ID`, `User_ID`, `Request_Date`, `Status`)
