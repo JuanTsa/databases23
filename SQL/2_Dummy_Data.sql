@@ -806,7 +806,7 @@ VALUES
 (693, 8, 'user693', 'pass693', 'name693', 'surname693', 'name693surname693@gmail.com', 18, 'student', 'Approved'),
 (694, 8, 'user694', 'pass694', 'name694', 'surname694', 'name694surname694@gmail.com', 25, 'student', 'Approved'),
 (695, 8, 'user695', 'pass695', 'name695', 'surname695', 'name695surname695@gmail.com', 26, 'student', 'Approved'),
-(696, 8, 'user696', 'pass696', 'name696', 'surname696', 'name696surname696@gmail.com', 24, 'student', 'Approved')
+(696, 8, 'user696', 'pass696', 'name696', 'surname696', 'name696surname696@gmail.com', 24, 'student', 'Approved');
 
 
 
