@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS `School_Unit` (
   `Email` varchar(50) NOT NULL UNIQUE,
   `Principal_Name` varchar(50) NOT NULL,
   `Principal_Surname` varchar(50) NOT NULL,
-  PRIMARY KEY (`School_ID`)
+  PRIMARY KEY (`School_ID`),
+  CONSTRAINT `chk_phone` CHECK (Phone REGEXP '^[0-9]{9}$')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `User` (
