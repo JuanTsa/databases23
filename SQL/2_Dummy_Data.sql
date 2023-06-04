@@ -1119,15 +1119,16 @@ VALUES
 (304, 4545454545454, 4, 'Today I commited a murder', 'Simon & Schuster', 367, 'A great and intriguing book, essential for any databases project!', 18, 'greek', 'History, Self-help, Young Adult', 18),
 (305, 6767678787906, 5, 'What is to be human', 'Macmillan Publishers', 899, 'A great and intriguing book, essential for any databases project!', 5, 'chinese', 'Childish, Adventure, Horror', 5),
 
-(306, 7777777777777, 1, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
-(307, 7777777777777, 2, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
-(308, 7777777777777, 3, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
-(309, 7777777777777, 4, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
-(310, 7777777777777, 5, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
-(311, 7777777777777, 6, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
-(312, 7777777777777, 7, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5),
-(313, 7777777777777, 8, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 0, 'english', 'Memoir, Science Fiction, Poetry', 5);
-
+(306, 7777777777777, 1, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
+(307, 7777777777777, 2, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
+(308, 7777777777777, 3, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
+(309, 7777777777777, 4, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
+(310, 7777777777777, 5, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
+(311, 7777777777777, 6, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
+(312, 7777777777777, 7, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10),
+(313, 7777777777777, 8, 'The Bible', 'Pocket Books', 476, 'A great and intriguing book, essential for any databases project!', 10, 'english', 'Memoir, Science Fiction, Poetry', 10);
+-- 301-305: lonely authors
+-- 306-313: borrowings on hold
 
 INSERT INTO `Book_Author` (`Author_ID`, `Book_ID`)
 VALUES
@@ -2622,7 +2623,24 @@ VALUES
 (444, 313, 688, '2023-06-04', 'On Hold'),
 (445, 313, 689, '2023-06-04', 'On Hold'),
 (446, 313, 690, '2023-06-04', 'On Hold'),
-(447, 313, 691, '2023-06-04', 'On Hold');
+(447, 313, 691, '2023-06-04', 'On Hold'),
+
+(448, 314, 617, '2023-06-04', 'Approved'),
+(449, 314, 618, '2023-06-04', 'Approved'),
+(450, 315, 627, '2023-06-04', 'Approved'),
+(451, 315, 628, '2023-06-04', 'Approved'),
+(452, 316, 637, '2023-06-04', 'Approved'),
+(453, 316, 638, '2023-06-04', 'Approved'),
+(454, 317, 647, '2023-06-04', 'Approved'),
+(455, 317, 648, '2023-06-04', 'Approved'),
+(456, 318, 657, '2023-06-04', 'Approved'),
+(459, 318, 658, '2023-06-04', 'Approved'),
+(460, 319, 667, '2023-06-04', 'Approved'),
+(461, 319, 668, '2023-06-04', 'Approved'),
+(462, 320, 677, '2023-06-04', 'Approved'),
+(463, 320, 678, '2023-06-04', 'Approved'),
+(464, 321, 687, '2023-06-04', 'Approved'),
+(465, 321, 688, '2023-06-04', 'Approved');
 -- XOYAN
 
 
