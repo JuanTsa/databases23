@@ -1,0 +1,13 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<form class="box box-search_bar" action="/home/borrowings_in_school/active/search" method="POST">
+    <h2>Search By</h2>
+    <select id="option" name="Option" style="width: 190px;" required>
+        <option value="" disabled selected>Select Option</option>
+        <option value="Username">Username</option>
+        <option value="All">All</option>
+      </select><br>
+      <input type="text" placeholder="Give Input" name="Input">
+      <input type="submit" value="Search"> 
+   </form>
+{% endblock %}

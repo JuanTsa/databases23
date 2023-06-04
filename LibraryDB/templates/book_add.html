@@ -1,0 +1,33 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<form class="box box-add_book" action="/home/books/search/add" method="POST">
+    <h1>Add Book</h1>
+    <input type="text" placeholder="ISBN" name="ISBN" required>
+    <input type="text" placeholder="Title" name="Title"  required>
+    <input type="text" placeholder="Publisher" name="Publisher"  required><br>
+    <input type="text" placeholder="Pages" name="Pages"  required>
+    <input type="text" placeholder="Summary" name="Summary"  required>
+    <input type="text" placeholder="Url For Cover" name="Cover"  required><br>
+    <input type="text" placeholder="Language" name="Language"  required>
+    <input type="text" placeholder="Keywords" name="Keywords"  required>
+    <input type="text" placeholder="Inventory" name="Inventory"  required><br>
+    <select id="category" name="Category" style="width: 190px;" required>
+        <option value="" disabled selected>Category</option>
+        {% for category in categories %}
+        <option value="{{category.Category_Name}}">{{category.Category_Name}}</option>
+        {% endfor %}
+    </select>
+    <select id="author" name="Author_ID" style="width: 190px;" required>
+        <option value="" disabled selected>Author ID</option>
+        {% for author in authors %}
+        <option value="{{author.Author_ID}}">{{author.Author_ID}}</option>
+        {% endfor %}
+    </select><br>
+    <input type="submit" value="Submit"><br>
+    <a href="\home\books\see_authors" style="color: white; padding:15px;">See Authors</a>
+    <a href="\home\books\add_author" style="color: white; padding:15px;">Add Author</a>
+    <a href="\home\books\add_category" style="color: white; padding:15px;">Add Category</a>
+
+   </form>
+   
+{% endblock %}

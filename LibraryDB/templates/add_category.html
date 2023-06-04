@@ -1,0 +1,8 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<form class="box box-category" action="/home/books/add_category" method="POST">
+    <h2>Add Category</h2>
+      <input type="text" placeholder="Category Name" name="Category Name"><br>
+      <input type="submit" value="Submit"> 
+   </form>
+{% endblock %}

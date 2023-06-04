@@ -1,0 +1,8 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<form class="box box-request_date" action="/home/books/search/reserve/{{ result[0] }}" method="POST">
+    <h2>Choose Request Date</h2>
+      <input type="date" placeholder="Request Date" name="Request Date" style="color:white"><br>
+      <input type="submit" value="Submit"> 
+   </form>
+{% endblock %}

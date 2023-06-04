@@ -1,0 +1,9 @@
+{% extends "global_layout.html" %}
+{% block content %}
+<form class="box box-author" action="/home/books/add_author" method="POST">
+    <h2>Add Author</h2>
+      <input type="text" placeholder="Author Name" name="Author Name"><br>
+      <input type="text" placeholder="Author Surame" name="Author Surname"><br>
+      <input type="submit" value="Submit"> 
+   </form>
+{% endblock %}
