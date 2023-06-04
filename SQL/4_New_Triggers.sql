@@ -429,3 +429,24 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'User cannot review a book from another school.';
   END IF;
 END //
+
+-- ----------
+-- TRIGGER 20
+-- ----------
+-- Check whether the new book already exists in the school
+CREATE TRIGGER prevent_duplicate_book_in_school
+BEFORE INSERT ON Book
+FOR EACH ROW
+BEGIN
+  DECLARE existing_book_id INT;
+  
+  -- Check if the book with the same title already exists in the same school
+  SELECT Book_ID INTO existing_book_id
+  FROM Book
+  WHERE Title = NEW.Title AND School_ID = NEW.School_ID;
+  
+  -- If the book with the same title exists in the same school, raise an error
+  IF (existing_book_id IS NOT NULL) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Duplicate book found in the same school.';
+  END IF;
+END //
