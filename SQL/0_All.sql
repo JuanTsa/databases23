@@ -3970,7 +3970,7 @@ BEGIN
     WHERE User_ID = NEW.User_ID AND Status = 'On Hold';
     
     -- Calculate total borrowings (including both 'On Hold' and 'Approved') for the user
-    SET total_borrowings = total_on_hold_borrowings + NEW.User_ID;
+    SET total_borrowings = total_on_hold_borrowings + (SELECT Copies_Borrowed FROM User WHERE User_ID = NEW.User_ID);
     
     -- Check if total borrowings exceed the user's maximum allowed copies
     IF total_borrowings > (SELECT Max_Copies FROM User WHERE User_ID = NEW.User_ID) THEN
@@ -4000,7 +4000,7 @@ BEGIN
     WHERE User_ID = NEW.User_ID AND Status = 'On Hold';
     
     -- Calculate total reservations (including both 'On Hold' and 'Approved') for the user
-    SET total_reservations = total_on_hold_reservations + NEW.User_ID;
+    SET total_reservations = total_on_hold_reservations + (SELECT Copies_Reserved FROM User WHERE User_ID = NEW.User_ID);
     
     -- Check if total reservations exceed the user's maximum allowed copies
     IF total_reservations > (SELECT Max_Copies FROM User WHERE User_ID = NEW.User_ID) THEN
