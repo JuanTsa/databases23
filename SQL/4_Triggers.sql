@@ -219,28 +219,6 @@ END //
 -- ----------
 -- TRIGGER 10
 -- ----------
--- Check whether the user tries to make a new reservation on a already owned book
-CREATE TRIGGER check_duplicate_reservation
-BEFORE INSERT ON Reservation
-FOR EACH ROW
-BEGIN
-  DECLARE borrowing_count INT;
-  
-  -- Count the number of existing borrowings for the book
-  SELECT COUNT(*) INTO borrowing_count
-  FROM Borrowing
-  WHERE Book_ID = NEW.Book_ID;
-  
-  -- Check if the book is already borrowed
-  IF (borrowing_count > 0) THEN
-    -- Raise an error and prevent the new reservation from being inserted
-    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'The book is already borrowed. Reservation not allowed.';
-  END IF;
-END //
-
--- ----------
--- TRIGGER 11
--- ----------
 -- Check whether the user tries to make a new reservation on a already reserved book
 CREATE TRIGGER check_duplicate_reservation_vol2
 BEFORE INSERT ON Reservation
@@ -262,7 +240,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 12
+-- TRIGGER 11
 -- ----------
 -- Decrease the available copies of a book whenever a borrowing is approved
 CREATE TRIGGER update_available_copies
@@ -277,7 +255,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 13
+-- TRIGGER 12
 -- ----------
 -- Increase the available copies of a book whenever a borrowing is completed
 CREATE TRIGGER update_available_copies_vol2
@@ -292,7 +270,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 14
+-- TRIGGER 13
 -- ----------
 -- Change the borrow_date and due_date whenever a borrowing is approved
 CREATE TRIGGER update_borrow_date
@@ -306,7 +284,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 15
+-- TRIGGER 14
 -- ----------
 --  Check whether the available_copies changes from 0 to 1. Then, delete the oldest reservation of the same book (if one exists) and make a new borrowing, with the same data and status 'on hold'
 CREATE TRIGGER update_book_available_copies
@@ -331,7 +309,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 16
+-- TRIGGER 15
 -- ----------
 -- Check whether the user posts a review on a book that they've already reviewed
 CREATE TRIGGER prevent_duplicate_reviews
@@ -351,7 +329,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 17
+-- TRIGGER 16
 -- ----------
 -- Check whether the user tries to borrow a book from another school
 CREATE TRIGGER prevent_cross_school_borrowing
@@ -378,7 +356,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 18
+-- TRIGGER 17
 -- ----------
 -- Check whether the user tries to reserve a book from another school
 CREATE TRIGGER prevent_cross_school_reservation
@@ -405,7 +383,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 19
+-- TRIGGER 18
 -- ----------
 -- Check whether the user tries to review a book from another school
 CREATE TRIGGER prevent_cross_school_review
@@ -432,7 +410,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 20
+-- TRIGGER 19
 -- ----------
 -- Check whether the new book already exists in the school
 CREATE TRIGGER prevent_duplicate_book_in_school
@@ -453,7 +431,7 @@ BEGIN
 END //
 
 -- ----------
--- TRIGGER 21
+-- TRIGGER 20
 -- ----------
 -- For a new book, make available_copies = inventory
 CREATE TRIGGER `book_insert_trigger`
