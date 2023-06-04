@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS `User` (
   `User_Type` enum('Administrator', 'Operator', 'Teacher', 'Student') NOT NULL,
   `Status` enum('Approved', 'On Hold') NOT NULL,
   PRIMARY KEY (`User_ID`),
-  CHECK (`Max_Copies` >= `Copies_Borrowed` AND `Max_Copies` >= `Copies_Reserved`),
   CHECK (`Copies_Borrowed` >= 0),
   CHECK (`Copies_Reserved` >= 0),
   CONSTRAINT `fk_user_id_school_unit` FOREIGN KEY (`School_ID`) REFERENCES `School_Unit` (`School_ID`) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -3957,54 +3956,55 @@ WHERE User_ID IN (617, 618, 627, 628, 637, 638, 647, 648, 657, 658, 667, 668, 67
 -- ----------
 -- Check whenever a user makes a new borrowing request, if they have the right do so (without actually increasing the value of copies_borrowed)
 DELIMITER //
-CREATE TRIGGER `check_borrowing_limit`
-BEFORE INSERT ON `Borrowing`
+CREATE TRIGGER `check_borrowing_approval`
+BEFORE UPDATE ON `Borrowing`
 FOR EACH ROW
 BEGIN
-    DECLARE total_on_hold_borrowings INT;
-    DECLARE total_borrowings INT;
-    
-    -- Calculate total borrowings with status 'On Hold' for the user
-    SELECT COUNT(*) INTO total_on_hold_borrowings
-    FROM Borrowing
-    WHERE User_ID = NEW.User_ID AND Status = 'On Hold';
-    
-    -- Calculate total borrowings (including both 'On Hold' and 'Approved') for the user
-    SET total_borrowings = total_on_hold_borrowings + (SELECT Copies_Borrowed FROM User WHERE User_ID = NEW.User_ID);
-    
-    -- Check if total borrowings exceed the user's maximum allowed copies
-    IF total_borrowings > (SELECT Max_Copies FROM User WHERE User_ID = NEW.User_ID) THEN
-        SIGNAL SQLSTATE '45000'
-            SET MESSAGE_TEXT = 'Maximum borrowing limit exceeded.';
+    DECLARE user_copies_borrowed INT;
+    DECLARE user_max_copies INT;
+
+    -- Retrieve the copies_borrowed and max_copies for the user
+    SELECT Copies_Borrowed, Max_Copies INTO user_copies_borrowed, user_max_copies
+    FROM User
+    WHERE User_ID = NEW.User_ID;
+
+    -- Check if the status is being updated from 'On Hold' to 'Approved'
+    IF OLD.Status = 'On Hold' AND NEW.Status = 'Approved' THEN
+        -- Check if copies_borrowed is equal to max_copies
+        IF user_copies_borrowed = user_max_copies THEN
+            SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'Maximum borrowing limit exceeded.';
+        END IF;
     END IF;
-END //
+END;
+//
 
 -- ----------
 -- TRIGGER 2
 -- ----------
 -- Check whenever a user makes a new reservation request, if they have the right do so (without actually increasing the value of copies_reserved)
-CREATE TRIGGER `check_reservation_limit`
-BEFORE INSERT ON `Reservation`
+CREATE TRIGGER `check_reservation_approval`
+BEFORE UPDATE ON `Reservation`
 FOR EACH ROW
 BEGIN
-    DECLARE total_on_hold_reservations INT;
-    DECLARE total_reservations INT;
-    
-    -- Calculate total reservations with status 'On Hold' for the user
-    SELECT COUNT(*) INTO total_on_hold_reservations
-    FROM Reservation
-    WHERE User_ID = NEW.User_ID AND Status = 'On Hold';
-    
-    -- Calculate total reservations (including both 'On Hold' and 'Approved') for the user
-    SET total_reservations = total_on_hold_reservations + (SELECT Copies_Reserved FROM User WHERE User_ID = NEW.User_ID);
-    
-    -- Check if total reservations exceed the user's maximum allowed copies
-    IF total_reservations > (SELECT Max_Copies FROM User WHERE User_ID = NEW.User_ID) THEN
-        SIGNAL SQLSTATE '45000'
-            SET MESSAGE_TEXT = 'Maximum reservation limit exceeded.';
-    END IF;
-END //
+    DECLARE user_copies_reserved INT;
+    DECLARE user_max_copies INT;
 
+    -- Retrieve the copies_reserved and max_copies for the user
+    SELECT Copies_Reserved, Max_Copies INTO user_copies_reserved, user_max_copies
+    FROM User
+    WHERE User_ID = NEW.User_ID;
+
+    -- Check if the status is being updated from 'On Hold' to 'Approved'
+    IF OLD.Status = 'On Hold' AND NEW.Status = 'Approved' THEN
+        -- Check if copies_reserved is equal to max_copies
+        IF user_copies_reserved = user_max_copies THEN
+            SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'Maximum reservation limit exceeded.';
+        END IF;
+    END IF;
+END;
+//
 
 -- ----------
 -- TRIGGER 3
