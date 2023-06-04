@@ -4182,7 +4182,7 @@ BEGIN
     -- Check if the user has an approved borrowing with returning_date is null for the same book
     SELECT COUNT(*) INTO borrowing_count
     FROM Borrowing
-    WHERE User_ID = user_id AND Book_ID = book_id AND Status = 'Approved' AND Returning_Date IS NULL;
+    WHERE ((User_ID = user_id) AND (Book_ID = book_id) AND (Status = 'Approved') AND (Returning_Date IS NULL));
 
     -- If an approved borrowing record exists with returning_date is null, raise an error
     IF borrowing_count > 0 THEN
